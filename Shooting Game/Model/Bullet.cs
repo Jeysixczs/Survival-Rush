@@ -32,11 +32,12 @@ namespace Shooting_Game.Model
                 case Direction.Left: PictureBox.Left -= 10; break;
                 case Direction.Right: PictureBox.Left += 10; break;
             }
-
-            if (PictureBox.Top < 0 || PictureBox.Left < 0 || PictureBox.Top > 600 || PictureBox.Left > 800)
+            if (PictureBox.Top < 0 || PictureBox.Left < 0 || PictureBox.Top > 868 || PictureBox.Left > 1463)
             {
-                IsActive = false; // Bullet goes off screen and is deactivated
+                IsActive = false; // Bullet goes off-screen and is deactivated
             }
+
+
         }
 
         public override void OnInteract(Player player) { }

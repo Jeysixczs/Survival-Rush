@@ -98,6 +98,9 @@
     <EmbeddedResource Include="View\SinglePlayerForm.resx">
       <DependentUpon>SinglePlayerForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\TwoPlayerForm.resx">
+      <DependentUpon>TwoPlayerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

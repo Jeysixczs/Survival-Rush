@@ -17,6 +17,7 @@ namespace Shooting_Game.View
         private GamePresenter presenter;
         private Player player;
 
+
         public void SetPresenter(GamePresenter presenter) => this.presenter = presenter;
 
         public SinglePlayerForm()

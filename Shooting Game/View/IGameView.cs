@@ -2,6 +2,7 @@
 using Shooting_Game.Presenter;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,5 +16,6 @@ namespace Shooting_Game.View
         void SpawnEntity(GameEntity entity);
         void RemoveEntity(GameEntity entity);
         void Show();
+        Size ClientSize { get; }
     }
 }
