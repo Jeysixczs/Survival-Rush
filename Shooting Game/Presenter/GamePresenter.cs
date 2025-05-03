@@ -36,6 +36,10 @@ namespace Shooting_Game.Presenter
             SpawnPotion();
             SpawnAmmo();
             StartZombieChase();
+
+            //test
+
+
         }
 
         public void StartTwoPlayerGame(Player p1, Player p2)
@@ -49,6 +53,10 @@ namespace Shooting_Game.Presenter
             SpawnPotion();
             SpawnAmmo();
             StartZombieChase();
+
+            //test
+
+
         }
 
         private void SetDifficulty(int difficulty)
@@ -115,38 +123,38 @@ namespace Shooting_Game.Presenter
             zombieMoveTimer.Start();
         }
 
-        private void CheckBulletZombieCollision()
-        {
-            foreach (var bullet in bullets.ToList())
-            {
-                foreach (var zombie in zombies.ToList())
-                {
-                    if (bullet.PictureBox.Bounds.IntersectsWith(zombie.PictureBox.Bounds))
-                    {
-                        bullets.Remove(bullet);
-                        singlePlayerView?.RemoveEntity(bullet);
-                        twoPlayerView?.RemoveEntity(bullet);
+        //private void CheckBulletZombieCollision()
+        //{
+        //    foreach (var bullet in bullets.ToList())
+        //    {
+        //        foreach (var zombie in zombies.ToList())
+        //        {
+        //            if (bullet.PictureBox.Bounds.IntersectsWith(zombie.PictureBox.Bounds))
+        //            {
+        //                bullets.Remove(bullet);
+        //                singlePlayerView?.RemoveEntity(bullet);
+        //                twoPlayerView?.RemoveEntity(bullet);
 
-                        zombies.Remove(zombie);
-                        singlePlayerView?.RemoveEntity(zombie);
-                        twoPlayerView?.RemoveEntity(zombie);
+        //                zombies.Remove(zombie);
+        //                singlePlayerView?.RemoveEntity(zombie);
+        //                twoPlayerView?.RemoveEntity(zombie);
 
-                        Random rand = new Random();
-                        if (rand.Next(100) < 50)
-                        {
-                            if (rand.Next(2) == 0)
-                                SpawnPotion();
-                            else
-                                SpawnAmmo();
-                        }
+        //                Random rand = new Random();
+        //                if (rand.Next(100) < 50)
+        //                {
+        //                    if (rand.Next(2) == 0)
+        //                        SpawnPotion();
+        //                    else
+        //                        SpawnAmmo();
+        //                }
 
-                        // Spawn a new zombie to maintain count
-                        SpawnZombie();
-                        break;
-                    }
-                }
-            }
-        }
+        //                // Spawn a new zombie to maintain count
+        //                SpawnZombie();
+        //                break;
+        //            }
+        //        }
+        //    }
+        //}
 
         private void MoveZombieTowards(Zombie zombie, Player target)
         {
@@ -392,5 +400,70 @@ namespace Shooting_Game.Presenter
             twoPlayerView.UpdatePlayer1Status(player1.Health, player1.Ammo);
             twoPlayerView.UpdatePlayer2Status(player2.Health, player2.Ammo);
         }
+
+
+        //testing
+
+
+
+        private void CheckBulletZombieCollision()
+        {
+            foreach (var bullet in bullets.ToList())
+            {
+                foreach (var zombie in zombies.ToList())
+                {
+                    if (bullet.PictureBox.Bounds.IntersectsWith(zombie.PictureBox.Bounds))
+                    {
+                        bullets.Remove(bullet);
+                        singlePlayerView?.RemoveEntity(bullet);
+                        twoPlayerView?.RemoveEntity(bullet);
+
+                        zombies.Remove(zombie);
+                        singlePlayerView?.RemoveEntity(zombie);
+                        twoPlayerView?.RemoveEntity(zombie);
+
+                        // Get the location where the zombie died
+                        Point dropLocation = zombie.PictureBox.Location;
+
+                        Random rand = new Random();
+                        if (rand.Next(100) < 50)
+                        {
+                            if (rand.Next(2) == 0)
+                                SpawnPotion(dropLocation); // Pass the zombie's location
+                            else
+                                SpawnAmmo(dropLocation); // Pass the zombie's location
+                        }
+
+                        // Spawn a new zombie to maintain count
+                        SpawnZombie();
+                        break;
+                    }
+                }
+            }
+        }
+
+        private void SpawnPotion(Point location)
+        {
+            PotionFactory factory = new PotionFactory();
+            GameEntity potion = factory.CreateEntity();
+            potion.PictureBox = new PictureBox { Size = new Size(40, 40), BackColor = Color.Purple };
+            potion.PictureBox.Location = location; // Set the drop location where the zombie died
+            singlePlayerView?.SpawnEntity(potion);
+            twoPlayerView?.SpawnEntity(potion);
+        }
+
+        private void SpawnAmmo(Point location)
+        {
+            AmmoFactory factory = new AmmoFactory();
+            GameEntity ammo = factory.CreateEntity();
+            ammo.PictureBox = new PictureBox { Size = new Size(40, 40), BackColor = Color.Orange };
+            ammo.PictureBox.Location = location; // Set the drop location where the zombie died
+            singlePlayerView?.SpawnEntity(ammo);
+            twoPlayerView?.SpawnEntity(ammo);
+        }
+
+
+
+
     }
 }

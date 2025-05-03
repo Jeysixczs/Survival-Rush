@@ -19,10 +19,16 @@ namespace Shooting_Game.View
             InitializeComponent();
             this.KeyDown += (s, ev) => presenter.HandleKeyPress(ev.KeyCode);
             // this.KeyUp += (s, ev) => presenter.HandleKeyRelease(ev.KeyCode);
+            // Inside the Form constructor or Load
+
+
+
+
         }
 
         private GamePresenter presenter;
         private Player player1, player2;
+
 
         public void SetPresenter(GamePresenter presenter) => this.presenter = presenter;
 
@@ -52,7 +58,7 @@ namespace Shooting_Game.View
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            player1 = new Player { PictureBox = new PictureBox { Size = new Size(40, 40), BackColor = Color.Green } };
+            player1 = new Player { PictureBox = new PictureBox { Size = new Size(40, 40), BackColor = Color.Black } };
             player2 = new Player { PictureBox = new PictureBox { Size = new Size(40, 40), BackColor = Color.Red } };
             player1.PictureBox.Location = new Point(150, 150);
             player2.PictureBox.Location = new Point(300, 150);
