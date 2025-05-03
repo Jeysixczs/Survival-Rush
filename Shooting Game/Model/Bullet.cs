@@ -21,23 +21,49 @@ namespace Shooting_Game.Model
             Direction = direction;
         }
 
+
+        // In Bullet.cs
         public void Move()
         {
             if (!IsActive) return;
 
             switch (Direction)
             {
-                case Direction.Up: PictureBox.Top -= 10; break;
-                case Direction.Down: PictureBox.Top += 10; break;
-                case Direction.Left: PictureBox.Left -= 10; break;
-                case Direction.Right: PictureBox.Left += 10; break;
+                case Direction.Up:
+                    PictureBox.Top -= 10;
+                    break;
+                case Direction.Down:
+                    PictureBox.Top += 10;
+                    break;
+                case Direction.Left:
+                    PictureBox.Left -= 10;
+                    break;
+                case Direction.Right:
+                    PictureBox.Left += 10;
+                    break;
+                case Direction.UpLeft:
+                    PictureBox.Top -= 7;
+                    PictureBox.Left -= 7;
+                    break;
+                case Direction.UpRight:
+                    PictureBox.Top -= 7;
+                    PictureBox.Left += 7;
+                    break;
+                case Direction.DownLeft:
+                    PictureBox.Top += 7;
+                    PictureBox.Left -= 7;
+                    break;
+                case Direction.DownRight:
+                    PictureBox.Top += 7;
+                    PictureBox.Left += 7;
+                    break;
             }
-            if (PictureBox.Top < 0 || PictureBox.Left < 0 || PictureBox.Top > 868 || PictureBox.Left > 1463)
+
+            if (PictureBox.Top < 0 || PictureBox.Left < 0 ||
+                PictureBox.Top > 868 || PictureBox.Left > 1463)
             {
-                IsActive = false; // Bullet goes off-screen and is deactivated
+                IsActive = false;
             }
-
-
         }
 
         public override void OnInteract(Player player) { }

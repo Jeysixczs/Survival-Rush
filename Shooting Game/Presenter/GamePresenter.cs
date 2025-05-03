@@ -164,185 +164,44 @@ namespace Shooting_Game.Presenter
         //    }
         //}
 
-        private void ShootBullet(Player player, Direction direction)
-        {
-            if (player.Ammo <= 0) return;
-            player.Ammo--;
-
-            var bullet = new Bullet(direction)
-            {
-                PictureBox = new PictureBox
-                {
-                    Size = new Size(10, 10),
-                    BackColor = Color.Yellow,
-                    Location = new Point(player.PictureBox.Left + player.PictureBox.Width / 2, player.PictureBox.Top)
-                },
-                Direction = player.GetLastDirection()
-            };
-
-            bullets.Add(bullet);
-
-            if (singlePlayerView != null) singlePlayerView.SpawnEntity(bullet);
-            if (twoPlayerView != null) twoPlayerView.SpawnEntity(bullet);
-
-            var timer = new Timer { Interval = 50 };
-            timer.Tick += (s, e) =>
-            {
-                bullet.Move();
-                if (bullet.PictureBox.Top < 0 ||
-                    bullet.PictureBox.Left < 0 ||
-                    bullet.PictureBox.Right > FormWidth ||
-                    bullet.PictureBox.Bottom > FormHeight)
-                {
-                    timer.Stop();
-                    bullets.Remove(bullet);
-                    singlePlayerView?.RemoveEntity(bullet);
-                    twoPlayerView?.RemoveEntity(bullet);
-                }
-            };
-            timer.Start();
-        }
-
-        //private void HandleSinglePlayerControls(Keys key)
+        //private void ShootBullet(Player player, Direction direction)
         //{
-        //    if (player1 == null) return;
+        //    if (player.Ammo <= 0) return;
+        //    player.Ammo--;
 
-        //    switch (key)
+        //    var bullet = new Bullet(direction)
         //    {
-        //        case Keys.W:
-        //            if (player1.PictureBox.Top > 0)
-        //            {
-        //                player1.PictureBox.Top -= 10;
-        //                player1.SetLastDirection(Direction.Up);
-        //            }
-        //            break;
-        //        case Keys.S:
-        //            if (player1.PictureBox.Bottom + 10 < FormHeight)
-        //            {
-        //                player1.PictureBox.Top += 10;
-        //                player1.SetLastDirection(Direction.Down);
-        //            }
-        //            break;
-        //        case Keys.A:
-        //            if (player1.PictureBox.Left > 0)
-        //            {
-        //                player1.PictureBox.Left -= 10;
-        //                player1.SetLastDirection(Direction.Left);
-        //            }
-        //            break;
-        //        case Keys.D:
-        //            if (player1.PictureBox.Right + 10 < FormWidth)
-        //            {
-        //                player1.PictureBox.Left += 10;
-        //                player1.SetLastDirection(Direction.Right);
-        //            }
-        //            break;
-        //        case Keys.Q:
-        //            player1.Dash(player1.GetLastDirection());
-        //            break;
-        //        case Keys.E:
-        //            player1.SpreadShot();
-        //            break;
-        //        case Keys.Space:
-        //            ShootBullet(player1, Direction.Up);
-        //            break;
-        //    }
+        //        PictureBox = new PictureBox
+        //        {
+        //            Size = new Size(10, 10),
+        //            BackColor = Color.Yellow,
+        //            Location = new Point(player.PictureBox.Left + player.PictureBox.Width / 2, player.PictureBox.Top)
+        //        },
+        //        Direction = player.GetLastDirection()
+        //    };
 
-        //    singlePlayerView.UpdatePlayerStatus(player1.Health, player1.Ammo);
+        //    bullets.Add(bullet);
+
+        //    if (singlePlayerView != null) singlePlayerView.SpawnEntity(bullet);
+        //    if (twoPlayerView != null) twoPlayerView.SpawnEntity(bullet);
+
+        //    var timer = new Timer { Interval = 50 };
+        //    timer.Tick += (s, e) =>
+        //    {
+        //        bullet.Move();
+        //        if (bullet.PictureBox.Top < 0 ||
+        //            bullet.PictureBox.Left < 0 ||
+        //            bullet.PictureBox.Right > FormWidth ||
+        //            bullet.PictureBox.Bottom > FormHeight)
+        //        {
+        //            timer.Stop();
+        //            bullets.Remove(bullet);
+        //            singlePlayerView?.RemoveEntity(bullet);
+        //            twoPlayerView?.RemoveEntity(bullet);
+        //        }
+        //    };
+        //    timer.Start();
         //}
-
-        //private void HandleTwoPlayerControls(Keys key)
-        //{
-        //    if (player1 == null || player2 == null) return;
-
-        //    switch (key)
-        //    {
-        //        case Keys.W:
-        //            if (player1.PictureBox.Top > 0)
-        //            {
-        //                player1.PictureBox.Top -= 10;
-        //                player1.SetLastDirection(Direction.Up);
-        //            }
-        //            break;
-        //        case Keys.S:
-        //            if (player1.PictureBox.Bottom + 10 < FormHeight)
-        //            {
-        //                player1.PictureBox.Top += 10;
-        //                player1.SetLastDirection(Direction.Down);
-        //            }
-        //            break;
-        //        case Keys.A:
-        //            if (player1.PictureBox.Left > 0)
-        //            {
-        //                player1.PictureBox.Left -= 10;
-        //                player1.SetLastDirection(Direction.Left);
-        //            }
-        //            break;
-        //        case Keys.D:
-        //            if (player1.PictureBox.Right + 10 < FormWidth)
-        //            {
-        //                player1.PictureBox.Left += 10;
-        //                player1.SetLastDirection(Direction.Right);
-        //            }
-        //            break;
-        //        case Keys.Q:
-        //            player1.Dash(player1.GetLastDirection());
-        //            break;
-        //        case Keys.E:
-        //            player1.SpreadShot();
-        //            break;
-        //        case Keys.Space:
-        //            ShootBullet(player1, Direction.Up);
-        //            break;
-        //    }
-
-        //    switch (key)
-        //    {
-        //        case Keys.Up:
-        //            if (player2.PictureBox.Top > 0)
-        //            {
-        //                player2.PictureBox.Top -= 10;
-        //                player2.SetLastDirection(Direction.Up);
-        //            }
-        //            break;
-        //        case Keys.Down:
-        //            if (player2.PictureBox.Bottom + 10 < FormHeight)
-        //            {
-        //                player2.PictureBox.Top += 10;
-        //                player2.SetLastDirection(Direction.Down);
-        //            }
-        //            break;
-        //        case Keys.Left:
-        //            if (player2.PictureBox.Left > 0)
-        //            {
-        //                player2.PictureBox.Left -= 10;
-        //                player2.SetLastDirection(Direction.Left);
-        //            }
-        //            break;
-        //        case Keys.Right:
-        //            if (player2.PictureBox.Right + 10 < FormWidth)
-        //            {
-        //                player2.PictureBox.Left += 10;
-        //                player2.SetLastDirection(Direction.Right);
-        //            }
-        //            break;
-        //        case Keys.ShiftKey:
-        //            player2.Dash(player2.GetLastDirection());
-        //            break;
-        //        case Keys.ControlKey:
-        //            player2.SpreadShot();
-        //            break;
-        //        case Keys.Enter:
-        //            ShootBullet(player2, Direction.Up);
-        //            break;
-        //    }
-
-        //    twoPlayerView.UpdatePlayer1Status(player1.Health, player1.Ammo);
-        //    twoPlayerView.UpdatePlayer2Status(player2.Health, player2.Ammo);
-        //}
-
-
-        //testing
 
 
 
@@ -661,6 +520,97 @@ namespace Shooting_Game.Presenter
             }
         }
 
+        //try
 
+        // In GamePresenter.cs
+        private void ShootBullet(Player player, Direction direction)
+        {
+            if (player.Ammo <= 0) return;
+
+            if (player.IsSpreadShotActive)
+            {
+                // Shoot 5 bullets in a spread pattern
+                ShootSpreadBullets(player, direction);
+                player.Ammo -= 5; // Deduct 5 ammo for the spread shot
+            }
+            else
+            {
+                // Normal single bullet
+                CreateBullet(player, direction);
+                player.Ammo--;
+            }
+
+            // Update UI
+            singlePlayerView?.UpdatePlayerStatus(player1.Health, player1.Ammo);
+            twoPlayerView?.UpdatePlayer1Status(player1.Health, player1.Ammo);
+            if (player2 != null) twoPlayerView?.UpdatePlayer2Status(player2.Health, player2.Ammo);
+        }
+
+        private void ShootSpreadBullets(Player player, Direction mainDirection)
+        {
+            // Center bullet
+            CreateBullet(player, mainDirection);
+
+            // Calculate angles for spread bullets based on direction
+            switch (mainDirection)
+            {
+                case Direction.Up:
+                case Direction.Down:
+                    // Left and right spread for vertical shots
+                    CreateBullet(player, Direction.Left);
+                    CreateBullet(player, Direction.Right);
+                    // More angled bullets
+                    CreateBullet(player, mainDirection == Direction.Up ? Direction.UpLeft : Direction.DownLeft);
+                    CreateBullet(player, mainDirection == Direction.Up ? Direction.UpRight : Direction.DownRight);
+                    break;
+                case Direction.Left:
+                case Direction.Right:
+                    // Up and down spread for horizontal shots
+                    CreateBullet(player, Direction.Up);
+                    CreateBullet(player, Direction.Down);
+                    // More angled bullets
+                    CreateBullet(player, mainDirection == Direction.Left ? Direction.UpLeft : Direction.UpRight);
+                    CreateBullet(player, mainDirection == Direction.Left ? Direction.DownLeft : Direction.DownRight);
+                    break;
+            }
+        }
+
+        private void CreateBullet(Player player, Direction direction)
+        {
+            var bullet = new Bullet(direction)
+            {
+                PictureBox = new PictureBox
+                {
+                    Size = new Size(10, 10),
+                    BackColor = Color.Yellow,
+                    Location = new Point(
+                        player.PictureBox.Left + player.PictureBox.Width / 2 - 5,
+                        player.PictureBox.Top + player.PictureBox.Height / 2 - 5
+                    )
+                },
+                Direction = direction
+            };
+
+            bullets.Add(bullet);
+            singlePlayerView?.SpawnEntity(bullet);
+            twoPlayerView?.SpawnEntity(bullet);
+
+            var timer = new Timer { Interval = 50 };
+            timer.Tick += (s, e) =>
+            {
+                bullet.Move();
+                if (bullet.PictureBox.Top < 0 ||
+                    bullet.PictureBox.Left < 0 ||
+                    bullet.PictureBox.Right > FormWidth ||
+                    bullet.PictureBox.Bottom > FormHeight)
+                {
+                    timer.Stop();
+                    bullets.Remove(bullet);
+                    singlePlayerView?.RemoveEntity(bullet);
+                    twoPlayerView?.RemoveEntity(bullet);
+                }
+            };
+            timer.Start();
+        }
     }
 }

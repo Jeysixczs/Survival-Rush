@@ -67,17 +67,27 @@ namespace Shooting_Game.Model
         {
             return lastDirection;
         }
+
+
+        private bool isSpreadShotActive = false;
+        private DateTime spreadShotEndTime;
+
+        public bool IsSpreadShotActive => isSpreadShotActive && DateTime.Now < spreadShotEndTime;
+
         public void SpreadShot()
         {
             if (!canSpread) return;
+
+            isSpreadShotActive = true;
+            spreadShotEndTime = DateTime.Now.AddSeconds(5);
             canSpread = false;
-            // Shoot multiple bullets for 5 seconds
+
             Task.Delay(5000).ContinueWith(_ =>
             {
-                // End spread shot
-                Task.Delay(10000).ContinueWith(__ => canSpread = true);
+                isSpreadShotActive = false;
+                Task.Delay(10000).ContinueWith(__ => canSpread = true); // 10 second cooldown
             });
         }
     }
-    public enum Direction { Up, Down, Left, Right }
+    public enum Direction { Up, Down, Left, Right, UpLeft, UpRight, DownLeft, DownRight }
 }
