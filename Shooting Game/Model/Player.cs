@@ -20,30 +20,41 @@ namespace Shooting_Game.Model
 
 
 
-        public void Dash(Direction direction)
+        public void Dash(Direction direction, int formWidth, int formHeight)
         {
             if (!canDash) return;
 
-            // Perform the flicker effect (move quickly in the given direction)
+            int dashDistance = 50;
+
+            int newX = PictureBox.Left;
+            int newY = PictureBox.Top;
+
             switch (direction)
             {
                 case Direction.Up:
-                    PictureBox.Top -= 50;
+                    newY -= dashDistance;
                     break;
                 case Direction.Down:
-                    PictureBox.Top += 50;
+                    newY += dashDistance;
                     break;
                 case Direction.Left:
-                    PictureBox.Left -= 50;
+                    newX -= dashDistance;
                     break;
                 case Direction.Right:
-                    PictureBox.Left += 50;
+                    newX += dashDistance;
                     break;
             }
 
+            // Clamp the position to stay inside the form bounds
+            newX = Math.Max(0, Math.Min(newX, formWidth - PictureBox.Width));
+            newY = Math.Max(0, Math.Min(newY, formHeight - PictureBox.Height));
+
+            PictureBox.Location = new System.Drawing.Point(newX, newY);
+
             canDash = false;
-            Task.Delay(200).ContinueWith(_ => canDash = true); // Reset dash cooldown
+            Task.Delay(200).ContinueWith(_ => canDash = true); // Cooldown
         }
+
 
         // Method to update the last direction based on movement
         public void SetLastDirection(Direction direction)

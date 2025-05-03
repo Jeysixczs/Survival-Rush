@@ -23,10 +23,18 @@ namespace Shooting_Game.View
         public SinglePlayerForm()
         {
             InitializeComponent();
-            this.KeyDown += (s, ev) => presenter.HandleKeyPress(ev.KeyCode);
-            // this.KeyUp += (s, ev) => presenter.HandleKeyRelease(ev.KeyCode);
 
-            //test
+
+            KeyDown += (s, e) =>
+            {
+                presenter.OnKeyDown(e.KeyCode);
+            };
+
+            KeyUp += (s, e) =>
+            {
+                presenter.OnKeyUp(e.KeyCode);
+            };
+
 
 
         }
@@ -58,7 +66,7 @@ namespace Shooting_Game.View
             presenter.SetSinglePlayerView(this);
             presenter.StartSinglePlayerGame(player);
 
-            this.KeyDown += (s, ev) => presenter.HandleKeyPress(ev.KeyCode);
+
         }
     }
 }

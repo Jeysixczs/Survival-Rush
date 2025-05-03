@@ -17,9 +17,20 @@ namespace Shooting_Game.View
         public TwoPlayerForm()
         {
             InitializeComponent();
-            this.KeyDown += (s, ev) => presenter.HandleKeyPress(ev.KeyCode);
+
             // this.KeyUp += (s, ev) => presenter.HandleKeyRelease(ev.KeyCode);
             // Inside the Form constructor or Load
+
+            KeyDown += (s, e) =>
+            {
+                presenter.OnKeyDown(e.KeyCode);
+            };
+
+            KeyUp += (s, e) =>
+            {
+                presenter.OnKeyUp(e.KeyCode);
+            };
+
 
 
 

@@ -37,6 +37,9 @@ namespace Shooting_Game.Presenter
             SpawnAmmo();
             StartZombieChase();
 
+            StartMovementTimer();
+
+
             //test
 
 
@@ -53,6 +56,9 @@ namespace Shooting_Game.Presenter
             SpawnPotion();
             SpawnAmmo();
             StartZombieChase();
+
+            StartMovementTimer();
+
 
             //test
 
@@ -146,17 +152,17 @@ namespace Shooting_Game.Presenter
             twoPlayerView = view;
         }
 
-        public void HandleKeyPress(Keys key)
-        {
-            if (GameManager.Instance.IsSinglePlayer)
-            {
-                HandleSinglePlayerControls(key);
-            }
-            else
-            {
-                HandleTwoPlayerControls(key);
-            }
-        }
+        //public void HandleKeyPress(Keys key)
+        //{
+        //    if (GameManager.Instance.IsSinglePlayer)
+        //    {
+        //        HandleSinglePlayerControls(key);
+        //    }
+        //    else
+        //    {
+        //        HandleTwoPlayerControls(key);
+        //    }
+        //}
 
         private void ShootBullet(Player player, Direction direction)
         {
@@ -197,143 +203,143 @@ namespace Shooting_Game.Presenter
             timer.Start();
         }
 
-        private void HandleSinglePlayerControls(Keys key)
-        {
-            if (player1 == null) return;
+        //private void HandleSinglePlayerControls(Keys key)
+        //{
+        //    if (player1 == null) return;
 
-            switch (key)
-            {
-                case Keys.W:
-                    if (player1.PictureBox.Top > 0)
-                    {
-                        player1.PictureBox.Top -= 10;
-                        player1.SetLastDirection(Direction.Up);
-                    }
-                    break;
-                case Keys.S:
-                    if (player1.PictureBox.Bottom + 10 < FormHeight)
-                    {
-                        player1.PictureBox.Top += 10;
-                        player1.SetLastDirection(Direction.Down);
-                    }
-                    break;
-                case Keys.A:
-                    if (player1.PictureBox.Left > 0)
-                    {
-                        player1.PictureBox.Left -= 10;
-                        player1.SetLastDirection(Direction.Left);
-                    }
-                    break;
-                case Keys.D:
-                    if (player1.PictureBox.Right + 10 < FormWidth)
-                    {
-                        player1.PictureBox.Left += 10;
-                        player1.SetLastDirection(Direction.Right);
-                    }
-                    break;
-                case Keys.Q:
-                    player1.Dash(player1.GetLastDirection());
-                    break;
-                case Keys.E:
-                    player1.SpreadShot();
-                    break;
-                case Keys.Space:
-                    ShootBullet(player1, Direction.Up);
-                    break;
-            }
+        //    switch (key)
+        //    {
+        //        case Keys.W:
+        //            if (player1.PictureBox.Top > 0)
+        //            {
+        //                player1.PictureBox.Top -= 10;
+        //                player1.SetLastDirection(Direction.Up);
+        //            }
+        //            break;
+        //        case Keys.S:
+        //            if (player1.PictureBox.Bottom + 10 < FormHeight)
+        //            {
+        //                player1.PictureBox.Top += 10;
+        //                player1.SetLastDirection(Direction.Down);
+        //            }
+        //            break;
+        //        case Keys.A:
+        //            if (player1.PictureBox.Left > 0)
+        //            {
+        //                player1.PictureBox.Left -= 10;
+        //                player1.SetLastDirection(Direction.Left);
+        //            }
+        //            break;
+        //        case Keys.D:
+        //            if (player1.PictureBox.Right + 10 < FormWidth)
+        //            {
+        //                player1.PictureBox.Left += 10;
+        //                player1.SetLastDirection(Direction.Right);
+        //            }
+        //            break;
+        //        case Keys.Q:
+        //            player1.Dash(player1.GetLastDirection());
+        //            break;
+        //        case Keys.E:
+        //            player1.SpreadShot();
+        //            break;
+        //        case Keys.Space:
+        //            ShootBullet(player1, Direction.Up);
+        //            break;
+        //    }
 
-            singlePlayerView.UpdatePlayerStatus(player1.Health, player1.Ammo);
-        }
+        //    singlePlayerView.UpdatePlayerStatus(player1.Health, player1.Ammo);
+        //}
 
-        private void HandleTwoPlayerControls(Keys key)
-        {
-            if (player1 == null || player2 == null) return;
+        //private void HandleTwoPlayerControls(Keys key)
+        //{
+        //    if (player1 == null || player2 == null) return;
 
-            switch (key)
-            {
-                case Keys.W:
-                    if (player1.PictureBox.Top > 0)
-                    {
-                        player1.PictureBox.Top -= 10;
-                        player1.SetLastDirection(Direction.Up);
-                    }
-                    break;
-                case Keys.S:
-                    if (player1.PictureBox.Bottom + 10 < FormHeight)
-                    {
-                        player1.PictureBox.Top += 10;
-                        player1.SetLastDirection(Direction.Down);
-                    }
-                    break;
-                case Keys.A:
-                    if (player1.PictureBox.Left > 0)
-                    {
-                        player1.PictureBox.Left -= 10;
-                        player1.SetLastDirection(Direction.Left);
-                    }
-                    break;
-                case Keys.D:
-                    if (player1.PictureBox.Right + 10 < FormWidth)
-                    {
-                        player1.PictureBox.Left += 10;
-                        player1.SetLastDirection(Direction.Right);
-                    }
-                    break;
-                case Keys.Q:
-                    player1.Dash(player1.GetLastDirection());
-                    break;
-                case Keys.E:
-                    player1.SpreadShot();
-                    break;
-                case Keys.Space:
-                    ShootBullet(player1, Direction.Up);
-                    break;
-            }
+        //    switch (key)
+        //    {
+        //        case Keys.W:
+        //            if (player1.PictureBox.Top > 0)
+        //            {
+        //                player1.PictureBox.Top -= 10;
+        //                player1.SetLastDirection(Direction.Up);
+        //            }
+        //            break;
+        //        case Keys.S:
+        //            if (player1.PictureBox.Bottom + 10 < FormHeight)
+        //            {
+        //                player1.PictureBox.Top += 10;
+        //                player1.SetLastDirection(Direction.Down);
+        //            }
+        //            break;
+        //        case Keys.A:
+        //            if (player1.PictureBox.Left > 0)
+        //            {
+        //                player1.PictureBox.Left -= 10;
+        //                player1.SetLastDirection(Direction.Left);
+        //            }
+        //            break;
+        //        case Keys.D:
+        //            if (player1.PictureBox.Right + 10 < FormWidth)
+        //            {
+        //                player1.PictureBox.Left += 10;
+        //                player1.SetLastDirection(Direction.Right);
+        //            }
+        //            break;
+        //        case Keys.Q:
+        //            player1.Dash(player1.GetLastDirection());
+        //            break;
+        //        case Keys.E:
+        //            player1.SpreadShot();
+        //            break;
+        //        case Keys.Space:
+        //            ShootBullet(player1, Direction.Up);
+        //            break;
+        //    }
 
-            switch (key)
-            {
-                case Keys.Up:
-                    if (player2.PictureBox.Top > 0)
-                    {
-                        player2.PictureBox.Top -= 10;
-                        player2.SetLastDirection(Direction.Up);
-                    }
-                    break;
-                case Keys.Down:
-                    if (player2.PictureBox.Bottom + 10 < FormHeight)
-                    {
-                        player2.PictureBox.Top += 10;
-                        player2.SetLastDirection(Direction.Down);
-                    }
-                    break;
-                case Keys.Left:
-                    if (player2.PictureBox.Left > 0)
-                    {
-                        player2.PictureBox.Left -= 10;
-                        player2.SetLastDirection(Direction.Left);
-                    }
-                    break;
-                case Keys.Right:
-                    if (player2.PictureBox.Right + 10 < FormWidth)
-                    {
-                        player2.PictureBox.Left += 10;
-                        player2.SetLastDirection(Direction.Right);
-                    }
-                    break;
-                case Keys.ShiftKey:
-                    player2.Dash(player2.GetLastDirection());
-                    break;
-                case Keys.ControlKey:
-                    player2.SpreadShot();
-                    break;
-                case Keys.Enter:
-                    ShootBullet(player2, Direction.Up);
-                    break;
-            }
+        //    switch (key)
+        //    {
+        //        case Keys.Up:
+        //            if (player2.PictureBox.Top > 0)
+        //            {
+        //                player2.PictureBox.Top -= 10;
+        //                player2.SetLastDirection(Direction.Up);
+        //            }
+        //            break;
+        //        case Keys.Down:
+        //            if (player2.PictureBox.Bottom + 10 < FormHeight)
+        //            {
+        //                player2.PictureBox.Top += 10;
+        //                player2.SetLastDirection(Direction.Down);
+        //            }
+        //            break;
+        //        case Keys.Left:
+        //            if (player2.PictureBox.Left > 0)
+        //            {
+        //                player2.PictureBox.Left -= 10;
+        //                player2.SetLastDirection(Direction.Left);
+        //            }
+        //            break;
+        //        case Keys.Right:
+        //            if (player2.PictureBox.Right + 10 < FormWidth)
+        //            {
+        //                player2.PictureBox.Left += 10;
+        //                player2.SetLastDirection(Direction.Right);
+        //            }
+        //            break;
+        //        case Keys.ShiftKey:
+        //            player2.Dash(player2.GetLastDirection());
+        //            break;
+        //        case Keys.ControlKey:
+        //            player2.SpreadShot();
+        //            break;
+        //        case Keys.Enter:
+        //            ShootBullet(player2, Direction.Up);
+        //            break;
+        //    }
 
-            twoPlayerView.UpdatePlayer1Status(player1.Health, player1.Ammo);
-            twoPlayerView.UpdatePlayer2Status(player2.Health, player2.Ammo);
-        }
+        //    twoPlayerView.UpdatePlayer1Status(player1.Health, player1.Ammo);
+        //    twoPlayerView.UpdatePlayer2Status(player2.Health, player2.Ammo);
+        //}
 
 
         //testing
@@ -507,6 +513,154 @@ namespace Shooting_Game.Presenter
             singlePlayerView?.SpawnEntity(ammo);
             twoPlayerView?.SpawnEntity(ammo);
         }
+
+        // trying to fix the moving player
+
+        private HashSet<Keys> pressedKeys = new HashSet<Keys>();
+
+        public void OnKeyDown(Keys key)
+        {
+            if (!pressedKeys.Contains(key))
+            {
+                pressedKeys.Add(key);
+
+                // Handle dash and shooting on key press (not held)
+                if (GameManager.Instance.IsSinglePlayer)
+                {
+                    HandleSinglePlayerActions(key);
+                }
+                else
+                {
+                    HandleTwoPlayerActions(key);
+                }
+            }
+        }
+
+        public void OnKeyUp(Keys key)
+        {
+            pressedKeys.Remove(key);
+        }
+
+        private Timer movementTimer;
+
+        private void StartMovementTimer()
+        {
+            movementTimer = new Timer { Interval = 20 };
+            movementTimer.Tick += (s, e) =>
+            {
+                ProcessPlayerMovement();
+            };
+            movementTimer.Start();
+        }
+
+        private void ProcessPlayerMovement()
+        {
+            int moveAmount = 10;
+
+            if (player1 != null)
+            {
+                if (pressedKeys.Contains(Keys.W) && player1.PictureBox.Top > 0)
+                {
+                    player1.PictureBox.Top -= moveAmount;
+                    player1.SetLastDirection(Direction.Up);
+                }
+                if (pressedKeys.Contains(Keys.S) && player1.PictureBox.Bottom + moveAmount < FormHeight)
+                {
+                    player1.PictureBox.Top += moveAmount;
+                    player1.SetLastDirection(Direction.Down);
+                }
+                if (pressedKeys.Contains(Keys.A) && player1.PictureBox.Left > 0)
+                {
+                    player1.PictureBox.Left -= moveAmount;
+                    player1.SetLastDirection(Direction.Left);
+                }
+                if (pressedKeys.Contains(Keys.D) && player1.PictureBox.Right + moveAmount < FormWidth)
+                {
+                    player1.PictureBox.Left += moveAmount;
+                    player1.SetLastDirection(Direction.Right);
+                }
+            }
+
+            if (player2 != null)
+            {
+                if (pressedKeys.Contains(Keys.Up) && player2.PictureBox.Top > 0)
+                {
+                    player2.PictureBox.Top -= moveAmount;
+                    player2.SetLastDirection(Direction.Up);
+                }
+                if (pressedKeys.Contains(Keys.Down) && player2.PictureBox.Bottom + moveAmount < FormHeight)
+                {
+                    player2.PictureBox.Top += moveAmount;
+                    player2.SetLastDirection(Direction.Down);
+                }
+                if (pressedKeys.Contains(Keys.Left) && player2.PictureBox.Left > 0)
+                {
+                    player2.PictureBox.Left -= moveAmount;
+                    player2.SetLastDirection(Direction.Left);
+                }
+                if (pressedKeys.Contains(Keys.Right) && player2.PictureBox.Right + moveAmount < FormWidth)
+                {
+                    player2.PictureBox.Left += moveAmount;
+                    player2.SetLastDirection(Direction.Right);
+                }
+            }
+
+            // Keep UI updated
+            singlePlayerView?.UpdatePlayerStatus(player1.Health, player1.Ammo);
+            twoPlayerView?.UpdatePlayer1Status(player1.Health, player1.Ammo);
+            if (player2 != null)
+                twoPlayerView?.UpdatePlayer2Status(player2.Health, player2.Ammo);
+        }
+
+        private void HandleSinglePlayerActions(Keys key)
+        {
+            if (player1 == null) return;
+
+            switch (key)
+            {
+                case Keys.Q:
+                    player1.Dash(player1.GetLastDirection(), FormWidth, FormHeight);
+                    break;
+                case Keys.E:
+                    player1.SpreadShot();
+                    break;
+                case Keys.Space:
+                    ShootBullet(player1, player1.GetLastDirection());
+                    break;
+            }
+        }
+
+        private void HandleTwoPlayerActions(Keys key)
+        {
+            if (player1 == null || player2 == null) return;
+
+            switch (key)
+            {
+                // Player 1
+                case Keys.Q:
+                    player1.Dash(player1.GetLastDirection(), FormWidth, FormHeight);
+                    break;
+                case Keys.E:
+                    player1.SpreadShot();
+                    break;
+                case Keys.Space:
+                    ShootBullet(player1, player1.GetLastDirection());
+                    break;
+
+                // Player 2
+                case Keys.ShiftKey:
+                    player2.Dash(player2.GetLastDirection(), FormWidth, FormHeight);
+
+                    break;
+                case Keys.ControlKey:
+                    player2.SpreadShot();
+                    break;
+                case Keys.Enter:
+                    ShootBullet(player2, player2.GetLastDirection());
+                    break;
+            }
+        }
+
 
     }
 }
