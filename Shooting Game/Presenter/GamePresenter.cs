@@ -33,8 +33,7 @@ namespace Shooting_Game.Presenter
             singlePlayerView.UpdatePlayerStatus(player1.Health, player1.Ammo);
             SetDifficulty(GameManager.Instance.Difficulty);
             for (int i = 0; i < zombieCount; i++) SpawnZombie();
-            SpawnPotion();
-            SpawnAmmo();
+
             StartZombieChase();
             StartMovementTimer();
         }
@@ -47,8 +46,8 @@ namespace Shooting_Game.Presenter
             twoPlayerView.UpdatePlayer2Status(player2.Health, player2.Ammo);
             SetDifficulty(GameManager.Instance.Difficulty);
             for (int i = 0; i < zombieCount; i++) SpawnZombie();
-            SpawnPotion();
-            SpawnAmmo();
+            //SpawnPotion();
+            //SpawnAmmo();
             StartZombieChase();
             StartMovementTimer();
         }
@@ -110,39 +109,6 @@ namespace Shooting_Game.Presenter
             return Math.Sqrt(dx * dx + dy * dy);
         }
 
-        private void SpawnPotion()
-        {
-            PotionFactory factory = new PotionFactory();
-            GameEntity potion = factory.CreateEntity();
-            potion.PictureBox = new PictureBox
-            {
-                Size = new Size(40, 40),
-                BackColor = Color.Purple,
-                Location = new Point(new Random().Next(0, FormWidth - 40), new Random().Next(0, FormHeight - 40))
-            };
-
-            potionDrops.Add((Potion)potion);
-
-            singlePlayerView?.SpawnEntity(potion);
-            twoPlayerView?.SpawnEntity(potion);
-        }
-
-        private void SpawnAmmo()
-        {
-            AmmoFactory factory = new AmmoFactory();
-            GameEntity ammo = factory.CreateEntity();
-            ammo.PictureBox = new PictureBox
-            {
-                Size = new Size(40, 40),
-                BackColor = Color.Orange,
-                Location = new Point(new Random().Next(0, FormWidth - 40), new Random().Next(0, FormHeight - 40))
-            };
-
-            ammoDrops.Add((Ammo)ammo);
-
-            singlePlayerView?.SpawnEntity(ammo);
-            twoPlayerView?.SpawnEntity(ammo);
-        }
 
 
         public void SetSinglePlayerView(IGameView view)
@@ -305,33 +271,74 @@ namespace Shooting_Game.Presenter
         private List<Potion> GetPotionDrops() => potionDrops;
         private List<Ammo> GetAmmoDrops() => ammoDrops;
 
+        //drop where the zombie dies
         private void SpawnPotion(Point location)
         {
             PotionFactory factory = new PotionFactory();
             GameEntity potion = factory.CreateEntity();
-            potion.PictureBox = new PictureBox { Size = new Size(40, 40), BackColor = Color.Purple };
-            potion.PictureBox.Location = location;
+            potion.PictureBox = new PictureBox
+            {
+                Size = new Size(40, 40),
+                BackColor = Color.Transparent,
+                SizeMode = PictureBoxSizeMode.Zoom,
+                Image = Properties.Resources.antidote_potion,
+                Location = location
+            };
 
-            // Add potion to drop list
             potionDrops.Add((Potion)potion);
 
             singlePlayerView?.SpawnEntity(potion);
             twoPlayerView?.SpawnEntity(potion);
+
+            // Set up a timer to remove after 3 seconds if not picked up
+            Timer removalTimer = new Timer { Interval = 3000 };
+            removalTimer.Tick += (s, e) =>
+            {
+                removalTimer.Stop();
+                if (potionDrops.Contains((Potion)potion))
+                {
+                    potionDrops.Remove((Potion)potion);
+                    singlePlayerView?.RemoveEntity(potion);
+                    twoPlayerView?.RemoveEntity(potion);
+                }
+            };
+            removalTimer.Start();
         }
+
 
         private void SpawnAmmo(Point location)
         {
             AmmoFactory factory = new AmmoFactory();
             GameEntity ammo = factory.CreateEntity();
-            ammo.PictureBox = new PictureBox { Size = new Size(40, 40), BackColor = Color.Orange };
-            ammo.PictureBox.Location = location;
+            ammo.PictureBox = new PictureBox
+            {
+                Size = new Size(40, 40),
+                BackColor = Color.Transparent,
+                SizeMode = PictureBoxSizeMode.Zoom,
+                Image = Properties.Resources.ammo_rifle_alt_32px,
+                Location = location
+            };
 
-            // Add ammo to drop list
             ammoDrops.Add((Ammo)ammo);
 
             singlePlayerView?.SpawnEntity(ammo);
             twoPlayerView?.SpawnEntity(ammo);
+
+            // Set up a timer to remove after 3 seconds if not picked up
+            Timer removalTimer = new Timer { Interval = 10000 };
+            removalTimer.Tick += (s, e) =>
+            {
+                removalTimer.Stop();
+                if (ammoDrops.Contains((Ammo)ammo))
+                {
+                    ammoDrops.Remove((Ammo)ammo);
+                    singlePlayerView?.RemoveEntity(ammo);
+                    twoPlayerView?.RemoveEntity(ammo);
+                }
+            };
+            removalTimer.Start();
         }
+
 
         // trying to fix the moving player
 

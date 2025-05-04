@@ -129,6 +129,14 @@
   <ItemGroup>
     <None Include="Resources\MainMenu.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\antidote_potion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\twoplayers.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ammo-rifle-alt 32px.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

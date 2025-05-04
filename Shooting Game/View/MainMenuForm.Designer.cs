@@ -47,10 +47,10 @@
             // 
             this.pictureBoxStart.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxStart.BackgroundImage")));
             this.pictureBoxStart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxStart.Location = new System.Drawing.Point(778, 761);
-            this.pictureBoxStart.Margin = new System.Windows.Forms.Padding(21, 14, 21, 14);
+            this.pictureBoxStart.Location = new System.Drawing.Point(584, 618);
+            this.pictureBoxStart.Margin = new System.Windows.Forms.Padding(16, 11, 16, 11);
             this.pictureBoxStart.Name = "pictureBoxStart";
-            this.pictureBoxStart.Size = new System.Drawing.Size(380, 92);
+            this.pictureBoxStart.Size = new System.Drawing.Size(285, 75);
             this.pictureBoxStart.TabIndex = 16;
             this.pictureBoxStart.TabStop = false;
             this.pictureBoxStart.Click += new System.EventHandler(this.pictureBoxStart_Click);
@@ -60,10 +60,11 @@
             this.btnTwoPlayer.BackColor = System.Drawing.Color.Transparent;
             this.btnTwoPlayer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTwoPlayer.BackgroundImage")));
             this.btnTwoPlayer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnTwoPlayer.Location = new System.Drawing.Point(1002, 180);
-            this.btnTwoPlayer.Margin = new System.Windows.Forms.Padding(21, 14, 21, 14);
+            this.btnTwoPlayer.Image = global::Shooting_Game.Properties.Resources.twoplayers;
+            this.btnTwoPlayer.Location = new System.Drawing.Point(752, 146);
+            this.btnTwoPlayer.Margin = new System.Windows.Forms.Padding(16, 11, 16, 11);
             this.btnTwoPlayer.Name = "btnTwoPlayer";
-            this.btnTwoPlayer.Size = new System.Drawing.Size(607, 431);
+            this.btnTwoPlayer.Size = new System.Drawing.Size(455, 350);
             this.btnTwoPlayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnTwoPlayer.TabIndex = 14;
             this.btnTwoPlayer.TabStop = false;
@@ -74,10 +75,10 @@
             this.btnSinglePlayer.BackColor = System.Drawing.Color.Transparent;
             this.btnSinglePlayer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSinglePlayer.BackgroundImage")));
             this.btnSinglePlayer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSinglePlayer.Location = new System.Drawing.Point(327, 199);
-            this.btnSinglePlayer.Margin = new System.Windows.Forms.Padding(21, 14, 21, 14);
+            this.btnSinglePlayer.Location = new System.Drawing.Point(245, 162);
+            this.btnSinglePlayer.Margin = new System.Windows.Forms.Padding(16, 11, 16, 11);
             this.btnSinglePlayer.Name = "btnSinglePlayer";
-            this.btnSinglePlayer.Size = new System.Drawing.Size(584, 391);
+            this.btnSinglePlayer.Size = new System.Drawing.Size(438, 318);
             this.btnSinglePlayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnSinglePlayer.TabIndex = 15;
             this.btnSinglePlayer.TabStop = false;
@@ -88,10 +89,10 @@
             this.btnDifficultyHard.BackColor = System.Drawing.Color.Transparent;
             this.btnDifficultyHard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDifficultyHard.Image = global::Shooting_Game.Properties.Resources.btnhardicon;
-            this.btnDifficultyHard.Location = new System.Drawing.Point(1186, 637);
-            this.btnDifficultyHard.Margin = new System.Windows.Forms.Padding(16, 2, 16, 2);
+            this.btnDifficultyHard.Location = new System.Drawing.Point(890, 518);
+            this.btnDifficultyHard.Margin = new System.Windows.Forms.Padding(12, 2, 12, 2);
             this.btnDifficultyHard.Name = "btnDifficultyHard";
-            this.btnDifficultyHard.Size = new System.Drawing.Size(349, 92);
+            this.btnDifficultyHard.Size = new System.Drawing.Size(262, 75);
             this.btnDifficultyHard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnDifficultyHard.TabIndex = 11;
             this.btnDifficultyHard.TabStop = false;
@@ -102,10 +103,10 @@
             this.btnDifficultyEasy.BackColor = System.Drawing.Color.Transparent;
             this.btnDifficultyEasy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDifficultyEasy.Image = global::Shooting_Game.Properties.Resources.btneasyicon;
-            this.btnDifficultyEasy.Location = new System.Drawing.Point(366, 637);
-            this.btnDifficultyEasy.Margin = new System.Windows.Forms.Padding(16, 2, 16, 2);
+            this.btnDifficultyEasy.Location = new System.Drawing.Point(274, 518);
+            this.btnDifficultyEasy.Margin = new System.Windows.Forms.Padding(12, 2, 12, 2);
             this.btnDifficultyEasy.Name = "btnDifficultyEasy";
-            this.btnDifficultyEasy.Size = new System.Drawing.Size(349, 92);
+            this.btnDifficultyEasy.Size = new System.Drawing.Size(262, 75);
             this.btnDifficultyEasy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnDifficultyEasy.TabIndex = 12;
             this.btnDifficultyEasy.TabStop = false;
@@ -116,10 +117,10 @@
             this.btnDifficultyMedium.BackColor = System.Drawing.Color.Transparent;
             this.btnDifficultyMedium.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDifficultyMedium.Image = global::Shooting_Game.Properties.Resources.btnmediumicon;
-            this.btnDifficultyMedium.Location = new System.Drawing.Point(793, 637);
-            this.btnDifficultyMedium.Margin = new System.Windows.Forms.Padding(16, 2, 16, 2);
+            this.btnDifficultyMedium.Location = new System.Drawing.Point(595, 518);
+            this.btnDifficultyMedium.Margin = new System.Windows.Forms.Padding(12, 2, 12, 2);
             this.btnDifficultyMedium.Name = "btnDifficultyMedium";
-            this.btnDifficultyMedium.Size = new System.Drawing.Size(349, 92);
+            this.btnDifficultyMedium.Size = new System.Drawing.Size(262, 75);
             this.btnDifficultyMedium.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnDifficultyMedium.TabIndex = 13;
             this.btnDifficultyMedium.TabStop = false;
@@ -127,19 +128,19 @@
             // 
             // MainMenuForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = global::Shooting_Game.Properties.Resources.MainMenu;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1951, 1068);
+            this.ClientSize = new System.Drawing.Size(1443, 862);
             this.Controls.Add(this.pictureBoxStart);
             this.Controls.Add(this.btnTwoPlayer);
             this.Controls.Add(this.btnSinglePlayer);
             this.Controls.Add(this.btnDifficultyHard);
             this.Controls.Add(this.btnDifficultyEasy);
             this.Controls.Add(this.btnDifficultyMedium);
-            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainMenuForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";

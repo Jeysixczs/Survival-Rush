@@ -63,6 +63,26 @@ namespace Shooting_Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ammo_rifle_alt_32px {
+            get {
+                object obj = ResourceManager.GetObject("ammo-rifle-alt 32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap antidote_potion {
+            get {
+                object obj = ResourceManager.GetObject("antidote_potion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btneasyicon {
             get {
                 object obj = ResourceManager.GetObject("btneasyicon", resourceCulture);
@@ -106,6 +126,16 @@ namespace Shooting_Game.Properties {
         internal static System.Drawing.Bitmap MainMenu {
             get {
                 object obj = ResourceManager.GetObject("MainMenu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap twoplayers {
+            get {
+                object obj = ResourceManager.GetObject("twoplayers", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
