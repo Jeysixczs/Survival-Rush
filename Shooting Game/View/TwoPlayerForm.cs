@@ -22,8 +22,6 @@ namespace Shooting_Game.View
 
             InitializeComponent();
 
-            // this.KeyUp += (s, ev) => presenter.HandleKeyRelease(ev.KeyCode);
-            // Inside the Form constructor or Load
 
             KeyDown += (s, e) =>
             {
