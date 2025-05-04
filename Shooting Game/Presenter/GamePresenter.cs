@@ -69,8 +69,10 @@ namespace Shooting_Game.Presenter
             {
                 PictureBox = new PictureBox
                 {
-                    Size = new Size(40, 40),
-                    BackColor = Color.Black,
+                    Size = new Size(64, 64),
+                    BackColor = Color.Transparent,
+                    SizeMode = PictureBoxSizeMode.Zoom,
+                    Image = Properties.Resources.idledownbluebird,
                     Location = new Point(new Random().Next(0, FormWidth - 40), new Random().Next(0, FormHeight - 40))
                 }
             };
@@ -379,33 +381,117 @@ namespace Shooting_Game.Presenter
             movementTimer.Start();
         }
 
+
+        private int animationElapsed = 0;
+        private int animationSwitchInterval = 50;
+
+        private bool isUpGif1 = true;
+        private bool isDownGif1 = true;
+        private bool isLeftGif1 = true;
+        private bool isRightGif1 = true;
+
+        private bool isUpGif2 = true;
+        private bool isDownGif2 = true;
+        private bool isLeftGif2 = true;
+        private bool isRightGif2 = true;
+
+
+
         private void ProcessPlayerMovement()
         {
             int moveAmount = 5;
+            bool player1Moved = false;
+            animationElapsed += movementTimer.Interval;
 
             if (player1 != null)
             {
+                // Movement and animation for W
                 if (pressedKeys.Contains(Keys.W) && player1.PictureBox.Top > 0)
                 {
                     player1.PictureBox.Top -= moveAmount;
                     player1.SetLastDirection(Direction.Up);
+                    player1Moved = true;
+
+                    if (animationElapsed >= animationSwitchInterval)
+                    {
+                        isUpGif1 = !isUpGif1;
+                        player1.PictureBox.Image = isUpGif1 ? Properties.Resources.walkingupbluebird : Properties.Resources.walkingup2bluebird;
+                    }
                 }
+
+                // Movement and animation for S
                 if (pressedKeys.Contains(Keys.S) && player1.PictureBox.Bottom + moveAmount < FormHeight)
                 {
                     player1.PictureBox.Top += moveAmount;
                     player1.SetLastDirection(Direction.Down);
+                    player1Moved = true;
+
+                    if (animationElapsed >= animationSwitchInterval)
+                    {
+                        isDownGif1 = !isDownGif1;
+                        player1.PictureBox.Image = isDownGif1 ? Properties.Resources.walkingdownbluebird : Properties.Resources.walkingdown2bluebird;
+                    }
                 }
+
+                // Movement and animation for A
                 if (pressedKeys.Contains(Keys.A) && player1.PictureBox.Left > 0)
                 {
                     player1.PictureBox.Left -= moveAmount;
                     player1.SetLastDirection(Direction.Left);
+                    player1Moved = true;
+
+                    if (animationElapsed >= animationSwitchInterval)
+                    {
+                        isLeftGif1 = !isLeftGif1;
+                        player1.PictureBox.Image = isLeftGif1 ? Properties.Resources.walkingleftbluebird : Properties.Resources.walingleft2bluebird;
+                    }
                 }
+
+                // Movement and animation for D
                 if (pressedKeys.Contains(Keys.D) && player1.PictureBox.Right + moveAmount < FormWidth)
                 {
                     player1.PictureBox.Left += moveAmount;
                     player1.SetLastDirection(Direction.Right);
+                    player1Moved = true;
+
+                    if (animationElapsed >= animationSwitchInterval)
+                    {
+                        isRightGif1 = !isRightGif1;
+                        player1.PictureBox.Image = isRightGif1 ? Properties.Resources.walkingrightbluebird : Properties.Resources.walkinright2bluebird;
+                    }
+                }
+
+                // Handle Idle Animation
+                if (!player1Moved)
+                {
+                    switch (player1.GetLastDirection())
+                    {
+                        case Direction.Up:
+                            player1.PictureBox.Image = Properties.Resources.idleupbluebird;
+                            break;
+                        case Direction.Down:
+                            player1.PictureBox.Image = Properties.Resources.idledownbluebird;
+                            break;
+                        case Direction.Left:
+                            player1.PictureBox.Image = Properties.Resources.idleleftbluebird;
+                            break;
+                        case Direction.Right:
+                            player1.PictureBox.Image = Properties.Resources.idlerightbluebird;
+                            break;
+                    }
                 }
             }
+
+
+
+
+
+            // plaeyr 2
+
+
+            bool player2Moved = false;
+            animationElapsed += movementTimer.Interval;
+
 
             if (player2 != null)
             {
@@ -413,30 +499,85 @@ namespace Shooting_Game.Presenter
                 {
                     player2.PictureBox.Top -= moveAmount;
                     player2.SetLastDirection(Direction.Up);
+                    player2Moved = true;
+
+                    if (animationElapsed >= animationSwitchInterval)
+                    {
+                        isUpGif2 = !isUpGif2;
+                        player2.PictureBox.Image = isUpGif2 ? Properties.Resources.walkingupbluebird : Properties.Resources.walkingup2bluebird;
+                    }
                 }
+
                 if (pressedKeys.Contains(Keys.Down) && player2.PictureBox.Bottom + moveAmount < FormHeight)
                 {
                     player2.PictureBox.Top += moveAmount;
                     player2.SetLastDirection(Direction.Down);
+                    player2Moved = true;
+
+                    if (animationElapsed >= animationSwitchInterval)
+                    {
+                        isDownGif2 = !isDownGif2;
+                        player2.PictureBox.Image = isDownGif2 ? Properties.Resources.walkingdownbluebird : Properties.Resources.walkingdown2bluebird;
+                    }
                 }
+
                 if (pressedKeys.Contains(Keys.Left) && player2.PictureBox.Left > 0)
                 {
                     player2.PictureBox.Left -= moveAmount;
                     player2.SetLastDirection(Direction.Left);
+                    player2Moved = true;
+
+                    if (animationElapsed >= animationSwitchInterval)
+                    {
+                        isLeftGif2 = !isLeftGif2;
+                        player2.PictureBox.Image = isLeftGif2 ? Properties.Resources.walkingleftbluebird : Properties.Resources.walingleft2bluebird;
+                    }
                 }
+
                 if (pressedKeys.Contains(Keys.Right) && player2.PictureBox.Right + moveAmount < FormWidth)
                 {
                     player2.PictureBox.Left += moveAmount;
                     player2.SetLastDirection(Direction.Right);
+                    player2Moved = true;
+
+                    if (animationElapsed >= animationSwitchInterval)
+                    {
+                        isRightGif2 = !isRightGif2;
+                        player2.PictureBox.Image = isRightGif2 ? Properties.Resources.walkingrightbluebird : Properties.Resources.walkinright2bluebird;
+                    }
+                }
+
+                if (!player2Moved)
+                {
+                    switch (player2.GetLastDirection())
+                    {
+                        case Direction.Up:
+                            player2.PictureBox.Image = Properties.Resources.idleupbluebird;
+                            break;
+                        case Direction.Down:
+                            player2.PictureBox.Image = Properties.Resources.idledownbluebird;
+                            break;
+                        case Direction.Left:
+                            player2.PictureBox.Image = Properties.Resources.idleleftbluebird;
+                            break;
+                        case Direction.Right:
+                            player2.PictureBox.Image = Properties.Resources.idlerightbluebird;
+                            break;
+                    }
                 }
             }
 
-            // Keep UI updated
-            singlePlayerView?.UpdatePlayerStatus(player1.Health, player1.Ammo);
-            twoPlayerView?.UpdatePlayer1Status(player1.Health, player1.Ammo);
+            if (animationElapsed >= animationSwitchInterval)
+                animationElapsed = 0;
+
+            // Update UI
+            singlePlayerView?.UpdatePlayerStatus(player1?.Health ?? 0, player1?.Ammo ?? 0);
+            twoPlayerView?.UpdatePlayer1Status(player1?.Health ?? 0, player1?.Ammo ?? 0);
             if (player2 != null)
                 twoPlayerView?.UpdatePlayer2Status(player2.Health, player2.Ammo);
         }
+
+
 
         private void HandleSinglePlayerActions(Keys key)
         {

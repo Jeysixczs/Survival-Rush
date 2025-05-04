@@ -63,8 +63,28 @@ namespace Shooting_Game.View
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            player1 = new Player { PictureBox = new PictureBox { Size = new Size(40, 40), BackColor = Color.Black } };
-            player2 = new Player { PictureBox = new PictureBox { Size = new Size(40, 40), BackColor = Color.Red } };
+            player1 = new Player
+            {
+                PictureBox = new PictureBox
+                {
+                    Size = new Size(64, 64),
+                    BackColor = Color.Transparent,
+
+                    SizeMode = PictureBoxSizeMode.Zoom
+                }
+            };
+
+            player2 = new Player
+            {
+                PictureBox = new PictureBox
+                {
+                    Size = new Size(64, 64),
+                    BackColor = Color.Red,
+
+                    SizeMode = PictureBoxSizeMode.Zoom
+                }
+            };
+
             player1.PictureBox.Location = new Point(150, 150);
             player2.PictureBox.Location = new Point(300, 150);
             Controls.Add(player1.PictureBox);

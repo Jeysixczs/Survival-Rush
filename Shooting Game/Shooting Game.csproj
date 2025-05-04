@@ -138,5 +138,44 @@
   <ItemGroup>
     <None Include="Resources\ammo-rifle-alt 32px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\idledownbluebird.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\idledownbluebird1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\idleleftbluebird.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\idlerightbluebird.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\idleupbluebird.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\walingleft2bluebird.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\walkingdown2bluebird.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\walkingdownbluebird.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\walkingleftbluebird.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\walkingrightbluebird.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\walkingup2bluebird.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\walkingupbluebird.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\walkinright2bluebird.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

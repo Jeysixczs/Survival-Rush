@@ -123,6 +123,56 @@ namespace Shooting_Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap idledownbluebird {
+            get {
+                object obj = ResourceManager.GetObject("idledownbluebird", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap idledownbluebird1 {
+            get {
+                object obj = ResourceManager.GetObject("idledownbluebird1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap idleleftbluebird {
+            get {
+                object obj = ResourceManager.GetObject("idleleftbluebird", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap idlerightbluebird {
+            get {
+                object obj = ResourceManager.GetObject("idlerightbluebird", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap idleupbluebird {
+            get {
+                object obj = ResourceManager.GetObject("idleupbluebird", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MainMenu {
             get {
                 object obj = ResourceManager.GetObject("MainMenu", resourceCulture);
@@ -136,6 +186,86 @@ namespace Shooting_Game.Properties {
         internal static System.Drawing.Bitmap twoplayers {
             get {
                 object obj = ResourceManager.GetObject("twoplayers", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap walingleft2bluebird {
+            get {
+                object obj = ResourceManager.GetObject("walingleft2bluebird", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap walkingdown2bluebird {
+            get {
+                object obj = ResourceManager.GetObject("walkingdown2bluebird", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap walkingdownbluebird {
+            get {
+                object obj = ResourceManager.GetObject("walkingdownbluebird", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap walkingleftbluebird {
+            get {
+                object obj = ResourceManager.GetObject("walkingleftbluebird", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap walkingrightbluebird {
+            get {
+                object obj = ResourceManager.GetObject("walkingrightbluebird", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap walkingup2bluebird {
+            get {
+                object obj = ResourceManager.GetObject("walkingup2bluebird", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap walkingupbluebird {
+            get {
+                object obj = ResourceManager.GetObject("walkingupbluebird", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap walkinright2bluebird {
+            get {
+                object obj = ResourceManager.GetObject("walkinright2bluebird", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
