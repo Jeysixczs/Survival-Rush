@@ -36,13 +36,7 @@ namespace Shooting_Game.Presenter
             SpawnPotion();
             SpawnAmmo();
             StartZombieChase();
-
             StartMovementTimer();
-
-
-            //test
-
-
         }
 
         public void StartTwoPlayerGame(Player p1, Player p2)
@@ -56,13 +50,7 @@ namespace Shooting_Game.Presenter
             SpawnPotion();
             SpawnAmmo();
             StartZombieChase();
-
             StartMovementTimer();
-
-
-            //test
-
-
         }
 
         private void SetDifficulty(int difficulty)
@@ -122,12 +110,29 @@ namespace Shooting_Game.Presenter
             return Math.Sqrt(dx * dx + dy * dy);
         }
 
+        //private void SpawnPotion()
+        //{
+        //    PotionFactory factory = new PotionFactory();
+        //    GameEntity potion = factory.CreateEntity();
+        //    potion.PictureBox = new PictureBox { Size = new Size(40, 40), BackColor = Color.Purple };
+        //    //potion.PictureBox.Location = new Point(200, 150);
+        //    singlePlayerView?.SpawnEntity(potion);
+        //    twoPlayerView?.SpawnEntity(potion);
+        //}
+
         private void SpawnPotion()
         {
             PotionFactory factory = new PotionFactory();
             GameEntity potion = factory.CreateEntity();
-            potion.PictureBox = new PictureBox { Size = new Size(40, 40), BackColor = Color.Purple };
-            potion.PictureBox.Location = new Point(200, 150);
+            potion.PictureBox = new PictureBox
+            {
+                Size = new Size(40, 40),
+                BackColor = Color.Purple,
+                Location = new Point(new Random().Next(0, FormWidth - 40), new Random().Next(0, FormHeight - 40))
+            };
+
+            potionDrops.Add((Potion)potion);
+
             singlePlayerView?.SpawnEntity(potion);
             twoPlayerView?.SpawnEntity(potion);
         }
@@ -136,11 +141,19 @@ namespace Shooting_Game.Presenter
         {
             AmmoFactory factory = new AmmoFactory();
             GameEntity ammo = factory.CreateEntity();
-            ammo.PictureBox = new PictureBox { Size = new Size(40, 40), BackColor = Color.Orange };
-            ammo.PictureBox.Location = new Point(300, 200);
+            ammo.PictureBox = new PictureBox
+            {
+                Size = new Size(40, 40),
+                BackColor = Color.Orange,
+                Location = new Point(new Random().Next(0, FormWidth - 40), new Random().Next(0, FormHeight - 40))
+            };
+
+            ammoDrops.Add((Ammo)ammo);
+
             singlePlayerView?.SpawnEntity(ammo);
             twoPlayerView?.SpawnEntity(ammo);
         }
+
 
         public void SetSinglePlayerView(IGameView view)
         {
@@ -151,59 +164,6 @@ namespace Shooting_Game.Presenter
         {
             twoPlayerView = view;
         }
-
-        //public void HandleKeyPress(Keys key)
-        //{
-        //    if (GameManager.Instance.IsSinglePlayer)
-        //    {
-        //        HandleSinglePlayerControls(key);
-        //    }
-        //    else
-        //    {
-        //        HandleTwoPlayerControls(key);
-        //    }
-        //}
-
-        //private void ShootBullet(Player player, Direction direction)
-        //{
-        //    if (player.Ammo <= 0) return;
-        //    player.Ammo--;
-
-        //    var bullet = new Bullet(direction)
-        //    {
-        //        PictureBox = new PictureBox
-        //        {
-        //            Size = new Size(10, 10),
-        //            BackColor = Color.Yellow,
-        //            Location = new Point(player.PictureBox.Left + player.PictureBox.Width / 2, player.PictureBox.Top)
-        //        },
-        //        Direction = player.GetLastDirection()
-        //    };
-
-        //    bullets.Add(bullet);
-
-        //    if (singlePlayerView != null) singlePlayerView.SpawnEntity(bullet);
-        //    if (twoPlayerView != null) twoPlayerView.SpawnEntity(bullet);
-
-        //    var timer = new Timer { Interval = 50 };
-        //    timer.Tick += (s, e) =>
-        //    {
-        //        bullet.Move();
-        //        if (bullet.PictureBox.Top < 0 ||
-        //            bullet.PictureBox.Left < 0 ||
-        //            bullet.PictureBox.Right > FormWidth ||
-        //            bullet.PictureBox.Bottom > FormHeight)
-        //        {
-        //            timer.Stop();
-        //            bullets.Remove(bullet);
-        //            singlePlayerView?.RemoveEntity(bullet);
-        //            twoPlayerView?.RemoveEntity(bullet);
-        //        }
-        //    };
-        //    timer.Start();
-        //}
-
-
 
         private void CheckBulletZombieCollision()
         {
@@ -522,7 +482,7 @@ namespace Shooting_Game.Presenter
 
         //try
 
-        // In GamePresenter.cs
+
         private void ShootBullet(Player player, Direction direction)
         {
             if (player.Ammo <= 0) return;

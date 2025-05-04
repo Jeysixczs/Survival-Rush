@@ -15,7 +15,6 @@ namespace Shooting_Game.View
         void UpdatePlayerStatus(int health, int ammo);
         void SpawnEntity(GameEntity entity);
         void RemoveEntity(GameEntity entity);
-        void Show();
-        Size ClientSize { get; }
+
     }
 }

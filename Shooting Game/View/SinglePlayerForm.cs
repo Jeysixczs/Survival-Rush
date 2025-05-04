@@ -22,6 +22,10 @@ namespace Shooting_Game.View
 
         public SinglePlayerForm()
         {
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+
             InitializeComponent();
 
 

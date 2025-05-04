@@ -18,8 +18,11 @@ namespace Shooting_Game
         private MainMenuPresenter presenter;
         public MainMenuForm()
         {
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
             InitializeComponent();
-            presenter = new MainMenuPresenter(this); // 🔹 This will now show 1 reference
+            presenter = new MainMenuPresenter(this);
             SetPresenter(presenter);
         }
 
@@ -34,9 +37,6 @@ namespace Shooting_Game
 
         public void ShowGameForm()
         {
-            //var form2 = new SinglePlayerForm();  // Create the Form2 for single-player
-            //form2.Show();
-            //this.Hide();
 
             var form2 = new SinglePlayerForm();
             var gamePresenter = new GamePresenter();
