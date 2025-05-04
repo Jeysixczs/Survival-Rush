@@ -58,15 +58,7 @@ namespace Shooting_Game.View
             Controls.Add(entity.PictureBox);
         }
 
-        public void UpdatePlayer1Status(int health, int ammo)
-        {
-            this.Text = $"P1 - Health: {health} | Ammo: {ammo} | " + this.Text;
-        }
 
-        public void UpdatePlayer2Status(int health, int ammo)
-        {
-            this.Text += $" | P2 - Health: {health} | Ammo: {ammo}";
-        }
 
         protected override void OnLoad(EventArgs e)
         {
@@ -83,5 +75,46 @@ namespace Shooting_Game.View
 
 
         }
+        //test
+        private bool player1Dead = false;
+        private bool player2Dead = false;
+
+        public void UpdatePlayer1Status(int health, int ammo)
+        {
+            health = Math.Max(0, Math.Min(health, 100));
+            progressBar1.Value = health;
+            label1.Text = $"P1 Ammo: {ammo}";
+
+            if (health == 0 && !player1Dead)
+            {
+                player1Dead = true;
+                MessageBox.Show("Player 1 is dead!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                CheckBothPlayersDead();
+            }
+        }
+
+        public void UpdatePlayer2Status(int health, int ammo)
+        {
+            health = Math.Max(0, Math.Min(health, 100));
+            progressBar2.Value = health;
+            label2.Text = $"P2 Ammo: {ammo}";
+
+            if (health == 0 && !player2Dead)
+            {
+                player2Dead = true;
+                MessageBox.Show("Player 2 is dead!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                CheckBothPlayersDead();
+            }
+        }
+
+        private void CheckBothPlayersDead()
+        {
+            if (player1Dead && player2Dead)
+            {
+                MessageBox.Show("Both players are dead! Game Over.", "Game Over", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close(); // Closes the game window
+            }
+        }
+
     }
 }

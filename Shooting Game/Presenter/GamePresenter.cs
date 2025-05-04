@@ -110,16 +110,6 @@ namespace Shooting_Game.Presenter
             return Math.Sqrt(dx * dx + dy * dy);
         }
 
-        //private void SpawnPotion()
-        //{
-        //    PotionFactory factory = new PotionFactory();
-        //    GameEntity potion = factory.CreateEntity();
-        //    potion.PictureBox = new PictureBox { Size = new Size(40, 40), BackColor = Color.Purple };
-        //    //potion.PictureBox.Location = new Point(200, 150);
-        //    singlePlayerView?.SpawnEntity(potion);
-        //    twoPlayerView?.SpawnEntity(potion);
-        //}
-
         private void SpawnPotion()
         {
             PotionFactory factory = new PotionFactory();
@@ -241,64 +231,74 @@ namespace Shooting_Game.Presenter
 
         private void CheckPlayerPickupCollision()
         {
-            // Check for collisions with drop items (potion and ammo)
+            // Player 1 - Potion Pickup
             foreach (var potion in GetPotionDrops().ToList())
             {
                 if (player1.PictureBox.Bounds.IntersectsWith(potion.PictureBox.Bounds))
                 {
-                    player1.Health += 20; // Increase health by 20 when potion is collected
-                    singlePlayerView?.UpdatePlayerStatus(player1.Health, player1.Ammo);
-                    twoPlayerView?.UpdatePlayer1Status(player1.Health, player1.Ammo);
+                    if (player1.Health < 100) // Only pick up if health is not full
+                    {
+                        player1.Health = Math.Min(player1.Health + 20, 100); // Cap at 100
+                        singlePlayerView?.UpdatePlayerStatus(player1.Health, player1.Ammo);
+                        twoPlayerView?.UpdatePlayer1Status(player1.Health, player1.Ammo);
 
-                    singlePlayerView?.RemoveEntity(potion);
-                    twoPlayerView?.RemoveEntity(potion);
-                    GetPotionDrops().Remove(potion); // Remove potion from the list
+                        singlePlayerView?.RemoveEntity(potion);
+                        twoPlayerView?.RemoveEntity(potion);
+                        GetPotionDrops().Remove(potion);
+                    }
                 }
             }
 
+            // Player 1 - Ammo Pickup
             foreach (var ammo in GetAmmoDrops().ToList())
             {
                 if (player1.PictureBox.Bounds.IntersectsWith(ammo.PictureBox.Bounds))
                 {
-                    player1.Ammo += 10; // Add 10 ammo when ammo is collected
+                    player1.Ammo += 10;
                     singlePlayerView?.UpdatePlayerStatus(player1.Health, player1.Ammo);
                     twoPlayerView?.UpdatePlayer1Status(player1.Health, player1.Ammo);
 
                     singlePlayerView?.RemoveEntity(ammo);
                     twoPlayerView?.RemoveEntity(ammo);
-                    GetAmmoDrops().Remove(ammo); // Remove ammo from the list
+                    GetAmmoDrops().Remove(ammo);
                 }
             }
 
-            if (player2 != null) // Handle for two-player mode
+            if (player2 != null)
             {
+                // Player 2 - Potion Pickup
                 foreach (var potion in GetPotionDrops().ToList())
                 {
                     if (player2.PictureBox.Bounds.IntersectsWith(potion.PictureBox.Bounds))
                     {
-                        player2.Health += 20; // Increase health by 20 when potion is collected
-                        twoPlayerView?.UpdatePlayer2Status(player2.Health, player2.Ammo);
+                        if (player2.Health < 100)
+                        {
+                            player2.Health = Math.Min(player2.Health + 20, 100);
+                            twoPlayerView?.UpdatePlayer2Status(player2.Health, player2.Ammo);
 
-                        singlePlayerView?.RemoveEntity(potion);
-                        twoPlayerView?.RemoveEntity(potion);
-                        GetPotionDrops().Remove(potion); // Remove potion from the list
+                            singlePlayerView?.RemoveEntity(potion);
+                            twoPlayerView?.RemoveEntity(potion);
+                            GetPotionDrops().Remove(potion);
+                        }
                     }
                 }
 
+                // Player 2 - Ammo Pickup
                 foreach (var ammo in GetAmmoDrops().ToList())
                 {
                     if (player2.PictureBox.Bounds.IntersectsWith(ammo.PictureBox.Bounds))
                     {
-                        player2.Ammo += 10; // Add 10 ammo when ammo is collected
+                        player2.Ammo += 10;
                         twoPlayerView?.UpdatePlayer2Status(player2.Health, player2.Ammo);
 
                         singlePlayerView?.RemoveEntity(ammo);
                         twoPlayerView?.RemoveEntity(ammo);
-                        GetAmmoDrops().Remove(ammo); // Remove ammo from the list
+                        GetAmmoDrops().Remove(ammo);
                     }
                 }
             }
         }
+
         private List<Potion> potionDrops = new List<Potion>();
         private List<Ammo> ammoDrops = new List<Ammo>();
 
