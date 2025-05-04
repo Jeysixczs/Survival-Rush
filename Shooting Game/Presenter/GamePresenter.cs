@@ -374,7 +374,7 @@ namespace Shooting_Game.Presenter
 
         private void ProcessPlayerMovement()
         {
-            int moveAmount = 10;
+            int moveAmount = 5;
 
             if (player1 != null)
             {

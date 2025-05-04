@@ -30,32 +30,32 @@ namespace Shooting_Game.Model
             switch (Direction)
             {
                 case Direction.Up:
-                    PictureBox.Top -= 10;
+                    PictureBox.Top -= 20;
                     break;
                 case Direction.Down:
-                    PictureBox.Top += 10;
+                    PictureBox.Top += 20;
                     break;
                 case Direction.Left:
-                    PictureBox.Left -= 10;
+                    PictureBox.Left -= 20;
                     break;
                 case Direction.Right:
-                    PictureBox.Left += 10;
+                    PictureBox.Left += 20;
                     break;
                 case Direction.UpLeft:
-                    PictureBox.Top -= 7;
-                    PictureBox.Left -= 7;
+                    PictureBox.Top -= 14;
+                    PictureBox.Left -= 14;
                     break;
                 case Direction.UpRight:
-                    PictureBox.Top -= 7;
-                    PictureBox.Left += 7;
+                    PictureBox.Top -= 14;
+                    PictureBox.Left += 14;
                     break;
                 case Direction.DownLeft:
-                    PictureBox.Top += 7;
-                    PictureBox.Left -= 7;
+                    PictureBox.Top += 14;
+                    PictureBox.Left -= 14;
                     break;
                 case Direction.DownRight:
-                    PictureBox.Top += 7;
-                    PictureBox.Left += 7;
+                    PictureBox.Top += 14;
+                    PictureBox.Left += 14;
                     break;
             }
 
