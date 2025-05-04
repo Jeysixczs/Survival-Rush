@@ -383,7 +383,7 @@ namespace Shooting_Game.Presenter
 
 
         private int animationElapsed = 0;
-        private int animationSwitchInterval = 50;
+        private int animationSwitchInterval = 100;
 
         private bool isUpGif1 = true;
         private bool isDownGif1 = true;
@@ -415,7 +415,7 @@ namespace Shooting_Game.Presenter
                     if (animationElapsed >= animationSwitchInterval)
                     {
                         isUpGif1 = !isUpGif1;
-                        player1.PictureBox.Image = isUpGif1 ? Properties.Resources.walkingupbluebird : Properties.Resources.walkingup2bluebird;
+                        player1.PictureBox.Image = isUpGif1 ? Properties.Resources.walkingupbluebirds : Properties.Resources.walkingup2bluebird;
                     }
                 }
 
@@ -481,10 +481,6 @@ namespace Shooting_Game.Presenter
                     }
                 }
             }
-
-
-
-
 
             // plaeyr 2
 
