@@ -686,13 +686,17 @@ namespace Shooting_Game.Presenter
                 PictureBox = new PictureBox
                 {
                     Size = new Size(10, 10),
-                    BackColor = Color.Yellow,
+                    BackColor = Color.Red,
+                    //   Image = Properties.Resources.antidote_potion,
+
                     Location = new Point(
                         player.PictureBox.Left + player.PictureBox.Width / 2 - 5,
                         player.PictureBox.Top + player.PictureBox.Height / 2 - 5
                     )
                 },
                 Direction = direction
+
+
             };
 
             bullets.Add(bullet);

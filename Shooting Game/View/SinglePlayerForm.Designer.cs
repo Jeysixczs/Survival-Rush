@@ -59,6 +59,7 @@
             this.Name = "SinglePlayerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SinglePlayerForm";
+            this.Load += new System.EventHandler(this.SinglePlayerForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

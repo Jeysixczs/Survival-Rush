@@ -103,5 +103,10 @@ namespace Shooting_Game.View
 
 
         }
+
+        private void SinglePlayerForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace Shooting_Game.Model
 
         public Bullet(Direction direction)
         {
-            PictureBox = new PictureBox { Size = new Size(10, 10), BackColor = Color.Yellow };
+            PictureBox = new PictureBox { Size = new Size(10, 10), Image = Properties.Resources.antidote_potion };
             IsActive = true;
             Direction = direction;
         }
