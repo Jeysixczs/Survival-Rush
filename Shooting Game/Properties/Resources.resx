@@ -118,106 +118,151 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="walkingdownbluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\walkingdownbluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="walingleft2bluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\walingleft2bluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="walkingupbluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\walkingupbluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="idlerightbluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\idlerightbluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="walkingdown2bluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\walkingdown2bluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MainMenu" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MainMenu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ammo-rifle-alt 32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ammo-rifle-alt 32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="twoplayers" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\twoplayers.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="btneasyicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btneasyicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="antidote_potion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\antidote_potion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btnhardicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnhardicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="idledownbluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\idledownbluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="walkingupbluebirds" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\walkingupbluebirds.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="walkingrightbluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\walkingrightbluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="idledownbluebird1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\idledownbluebird1.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="walkingup2bluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\walkingup2bluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="idleleftwhitebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\idleleftwhitebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="idleleftbluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\idleleftbluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="walkingleftbluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\walkingleftbluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="walkinright2bluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\walkinright2bluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="btnStartGameicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnStartGameicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="btnmediumicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnmediumicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="idleupbluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\idleupbluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="idledownwhitebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\idledownwhitebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="idleleftwhitebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\idleleftwhitebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="idlerightwhitebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\idlerightwhitebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="idleupwhitebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\idleupwhitebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="walkingdown2whitebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\walkingdown2whitebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="walkingdownwhitebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\walkingdownwhitebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="idledownbluebird1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\idledownbluebird1.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="walkingleft2whitebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\walkingleft2whitebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="walkingupwhitebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\walkingupwhitebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="walkingleftwhitebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\walkingleftwhitebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="walkingright2whitebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\walkingright2whitebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="walkingup2bluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\walkingup2bluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="walkingrightwhitebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\walkingrightwhitebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="fireballdown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fireballdown.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MainMenu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MainMenu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="walingleft2bluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\walingleft2bluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="walkingupbluebirds" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\walkingupbluebirds.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="walkingdown2whitebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\walkingdown2whitebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="walkingup2whitebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\walkingup2whitebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="walkingupwhitebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\walkingupwhitebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="walkinright2bluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\walkinright2bluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="walkingdown2bluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\walkingdown2bluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="walkingdownwhitebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\walkingdownwhitebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnhardicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnhardicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="idlerightwhitebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\idlerightwhitebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnStartGameicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnStartGameicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="walkingupbluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\walkingupbluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fireballleft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fireballleft.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fireballup" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fireballup.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fireball_side_medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fireball_side_medium.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="idlerightbluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\idlerightbluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fireballdownleft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fireballdownleft.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="walkingrightbluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\walkingrightbluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ammo-rifle-alt 32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ammo-rifle-alt 32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="meteor_side_medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\meteor_side_medium.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="idleupbluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\idleupbluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fireballleftup" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fireballleftup.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fireballleftdown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fireballleftdown.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="idleupwhitebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\idleupwhitebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="walkingdownbluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\walkingdownbluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fireball_high_speed_side_small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fireball_high_speed_side_small.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="idledownwhitebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\idledownwhitebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="walkingleftbluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\walkingleftbluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fireball_side_medium_explode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fireball_side_medium_explode.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="walkingright2whitebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\walkingright2whitebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="idledownbluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\idledownbluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="walkingrightwhitebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\walkingrightwhitebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="twoplayers" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\twoplayers.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnmediumicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnmediumicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fireballupleft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fireballupleft.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="firedownleft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\firedownleft.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="firedownright" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\firedownright.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fireupleft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fireupleft.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fireupright" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fireupright.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

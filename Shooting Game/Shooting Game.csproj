@@ -115,6 +115,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\.editorconfig" />
     <None Include="Resources\btneasyicon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -215,6 +216,51 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\walkingupwhitebird.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fireball_high_speed_side_small.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\meteor_side_medium.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fireball_side_medium.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fireballleftdown.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fireballleftup.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fireballup.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fireballupleft.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fireballdown.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fireballdownleft.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fireballleft.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fireball_side_medium_explode.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\firedownleft.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\firedownright.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fireupleft.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fireupright.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

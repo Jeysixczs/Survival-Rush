@@ -60,7 +60,6 @@
             this.btnTwoPlayer.BackColor = System.Drawing.Color.Transparent;
             this.btnTwoPlayer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTwoPlayer.BackgroundImage")));
             this.btnTwoPlayer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnTwoPlayer.Image = global::Shooting_Game.Properties.Resources.twoplayers;
             this.btnTwoPlayer.Location = new System.Drawing.Point(752, 146);
             this.btnTwoPlayer.Margin = new System.Windows.Forms.Padding(16, 11, 16, 11);
             this.btnTwoPlayer.Name = "btnTwoPlayer";

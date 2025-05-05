@@ -11,6 +11,9 @@ namespace Shooting_Game.Model
         public override void OnInteract(Player player)
         {
             player.Health -= 10;
+
         }
+        public bool IsDying { get; set; } = false;
+
     }
 }

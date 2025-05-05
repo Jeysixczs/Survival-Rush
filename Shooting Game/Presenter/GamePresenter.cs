@@ -155,6 +155,8 @@ namespace Shooting_Game.Presenter
                         SpawnZombie();
                         break;
                     }
+
+
                 }
             }
         }
@@ -681,22 +683,22 @@ namespace Shooting_Game.Presenter
 
         private void CreateBullet(Player player, Direction direction)
         {
+            Image bulletImage = GetBulletImageForDirection(direction);
+
             var bullet = new Bullet(direction)
             {
                 PictureBox = new PictureBox
                 {
-                    Size = new Size(10, 10),
-                    BackColor = Color.Red,
-                    //   Image = Properties.Resources.antidote_potion,
-
+                    Size = new Size(64, 64),
+                    BackColor = Color.Transparent,
+                    Image = bulletImage,
+                    SizeMode = PictureBoxSizeMode.StretchImage,
                     Location = new Point(
-                        player.PictureBox.Left + player.PictureBox.Width / 2 - 5,
-                        player.PictureBox.Top + player.PictureBox.Height / 2 - 5
+                        player.PictureBox.Left + player.PictureBox.Width / 2 - 32,
+                        player.PictureBox.Top + player.PictureBox.Height / 2 - 32
                     )
                 },
                 Direction = direction
-
-
             };
 
             bullets.Add(bullet);
@@ -720,5 +722,37 @@ namespace Shooting_Game.Presenter
             };
             timer.Start();
         }
+
+        private Image GetBulletImageForDirection(Direction direction)
+        {
+            switch (direction)
+            {
+                case Direction.Up:
+                    return Properties.Resources.fireballup;
+                case Direction.Down:
+                    return Properties.Resources.fireballdown;
+                case Direction.Left:
+                    return Properties.Resources.fireballleft;
+                case Direction.Right:
+                    return Properties.Resources.fireball_side_medium;
+                case Direction.UpLeft:
+                    return Properties.Resources.fireupleft;
+                case Direction.UpRight:
+                    return Properties.Resources.fireupright;
+                case Direction.DownLeft:
+                    return Properties.Resources.firedownleft;
+                case Direction.DownRight:
+                    return Properties.Resources.firedownright;
+                default:
+                    return Properties.Resources.fireball_high_speed_side_small; // fallback
+            }
+        }
+
+        //test
+
+
+
+
+
     }
 }

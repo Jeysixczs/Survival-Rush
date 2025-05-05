@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Shooting_Game.Factory
 {
-    class ZombieFactory : EntityFactory
+    public class ZombieFactory : EntityFactory
     {
         public override GameEntity CreateEntity() => new Zombie();
     }
