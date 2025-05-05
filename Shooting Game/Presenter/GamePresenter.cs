@@ -500,7 +500,7 @@ namespace Shooting_Game.Presenter
                     if (animationElapsed >= animationSwitchInterval)
                     {
                         isUpGif2 = !isUpGif2;
-                        player2.PictureBox.Image = isUpGif2 ? Properties.Resources.walkingupbluebird : Properties.Resources.walkingup2bluebird;
+                        player2.PictureBox.Image = isUpGif2 ? Properties.Resources.walkingupwhitebird : Properties.Resources.walkingup2whitebird;
                     }
                 }
 
@@ -513,7 +513,7 @@ namespace Shooting_Game.Presenter
                     if (animationElapsed >= animationSwitchInterval)
                     {
                         isDownGif2 = !isDownGif2;
-                        player2.PictureBox.Image = isDownGif2 ? Properties.Resources.walkingdownbluebird : Properties.Resources.walkingdown2bluebird;
+                        player2.PictureBox.Image = isDownGif2 ? Properties.Resources.walkingdownwhitebird : Properties.Resources.walkingdown2whitebird;
                     }
                 }
 
@@ -526,7 +526,7 @@ namespace Shooting_Game.Presenter
                     if (animationElapsed >= animationSwitchInterval)
                     {
                         isLeftGif2 = !isLeftGif2;
-                        player2.PictureBox.Image = isLeftGif2 ? Properties.Resources.walkingleftbluebird : Properties.Resources.walingleft2bluebird;
+                        player2.PictureBox.Image = isLeftGif2 ? Properties.Resources.walkingleftwhitebird : Properties.Resources.walkingleft2whitebird;
                     }
                 }
 
@@ -539,7 +539,7 @@ namespace Shooting_Game.Presenter
                     if (animationElapsed >= animationSwitchInterval)
                     {
                         isRightGif2 = !isRightGif2;
-                        player2.PictureBox.Image = isRightGif2 ? Properties.Resources.walkingrightbluebird : Properties.Resources.walkinright2bluebird;
+                        player2.PictureBox.Image = isRightGif2 ? Properties.Resources.walkingrightwhitebird : Properties.Resources.walkingright2whitebird;
                     }
                 }
 
@@ -548,16 +548,16 @@ namespace Shooting_Game.Presenter
                     switch (player2.GetLastDirection())
                     {
                         case Direction.Up:
-                            player2.PictureBox.Image = Properties.Resources.idleupbluebird;
+                            player2.PictureBox.Image = Properties.Resources.idleupwhitebird;
                             break;
                         case Direction.Down:
-                            player2.PictureBox.Image = Properties.Resources.idledownbluebird;
+                            player2.PictureBox.Image = Properties.Resources.idledownwhitebird;
                             break;
                         case Direction.Left:
-                            player2.PictureBox.Image = Properties.Resources.idleleftbluebird;
+                            player2.PictureBox.Image = Properties.Resources.idleleftwhitebird;
                             break;
                         case Direction.Right:
-                            player2.PictureBox.Image = Properties.Resources.idlerightbluebird;
+                            player2.PictureBox.Image = Properties.Resources.idlerightwhitebird;
                             break;
                     }
                 }

@@ -180,5 +180,41 @@
   <ItemGroup>
     <None Include="Resources\walkingupbluebirds.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\idledownwhitebird.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\idleleftwhitebird.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\idlerightwhitebird.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\idleupwhitebird.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\walkingdown2whitebird.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\walkingdownwhitebird.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\walkingleft2whitebird.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\walkingleftwhitebird.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\walkingright2whitebird.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\walkingrightwhitebird.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\walkingup2whitebird.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\walkingupwhitebird.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -68,7 +68,7 @@ namespace Shooting_Game.View
                 PictureBox = new PictureBox
                 {
                     Size = new Size(64, 64),
-                    BackColor = Color.Transparent,
+                    BackColor = Color.Red,
 
                     SizeMode = PictureBoxSizeMode.Zoom
                 }
