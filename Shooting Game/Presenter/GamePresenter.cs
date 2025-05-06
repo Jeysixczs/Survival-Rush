@@ -867,6 +867,7 @@ namespace Shooting_Game.Presenter
                         zombie.PictureBox.Image = Properties.Resources.fireball_side_medium_explode;
                         break;
 
+
                     case 2:
                         // Animation complete
                         deathTimer.Stop();
@@ -985,59 +986,59 @@ namespace Shooting_Game.Presenter
 
         //test path finder
 
-        private void MoveZombieTowards(Zombie zombie, Player target)
-        {
-            int speed = 5;
-            Point zPos = zombie.PictureBox.Location;
-            Point tPos = target.PictureBox.Location;
+        //private void MoveZombieTowards(Zombie zombie, Player target)
+        //{
+        //    int speed = 5;
+        //    Point zPos = zombie.PictureBox.Location;
+        //    Point tPos = target.PictureBox.Location;
 
-            // Calculate direct path vector
-            int dx = tPos.X - zPos.X;
-            int dy = tPos.Y - zPos.Y;
+        //    // Calculate direct path vector
+        //    int dx = tPos.X - zPos.X;
+        //    int dy = tPos.Y - zPos.Y;
 
-            double length = Math.Sqrt(dx * dx + dy * dy);
-            if (length == 0) return;
+        //    double length = Math.Sqrt(dx * dx + dy * dy);
+        //    if (length == 0) return;
 
-            // Normalize direction vector
-            int moveX = (int)(dx / length * speed);
-            int moveY = (int)(dy / length * speed);
+        //    // Normalize direction vector
+        //    int moveX = (int)(dx / length * speed);
+        //    int moveY = (int)(dy / length * speed);
 
-            // Try direct path first
-            Rectangle proposedPosition = new Rectangle(
-                zPos.X + moveX,
-                zPos.Y + moveY,
-                zombie.PictureBox.Width,
-                zombie.PictureBox.Height
-            );
+        //    // Try direct path first
+        //    Rectangle proposedPosition = new Rectangle(
+        //        zPos.X + moveX,
+        //        zPos.Y + moveY,
+        //        zombie.PictureBox.Width,
+        //        zombie.PictureBox.Height
+        //    );
 
-            if (!IsCollidingWithWall(proposedPosition))
-            {
-                zombie.PictureBox.Location = new Point(zPos.X + moveX, zPos.Y + moveY);
-                return;
-            }
+        //    if (!IsCollidingWithWall(proposedPosition))
+        //    {
+        //        zombie.PictureBox.Location = new Point(zPos.X + moveX, zPos.Y + moveY);
+        //        return;
+        //    }
 
-            // If direct path blocked, try alternative paths (simple obstacle avoidance)
-            Point[] alternativeDirections = GetAlternativeDirections(zPos, tPos, speed);
+        //    // If direct path blocked, try alternative paths (simple obstacle avoidance)
+        //    Point[] alternativeDirections = GetAlternativeDirections(zPos, tPos, speed);
 
-            foreach (var direction in alternativeDirections)
-            {
-                proposedPosition = new Rectangle(
-                    zPos.X + direction.X,
-                    zPos.Y + direction.Y,
-                    zombie.PictureBox.Width,
-                    zombie.PictureBox.Height
-                );
+        //    foreach (var direction in alternativeDirections)
+        //    {
+        //        proposedPosition = new Rectangle(
+        //            zPos.X + direction.X,
+        //            zPos.Y + direction.Y,
+        //            zombie.PictureBox.Width,
+        //            zombie.PictureBox.Height
+        //        );
 
-                if (!IsCollidingWithWall(proposedPosition))
-                {
-                    zombie.PictureBox.Location = new Point(zPos.X + direction.X, zPos.Y + direction.Y);
-                    return;
-                }
-            }
+        //        if (!IsCollidingWithWall(proposedPosition))
+        //        {
+        //            zombie.PictureBox.Location = new Point(zPos.X + direction.X, zPos.Y + direction.Y);
+        //            return;
+        //        }
+        //    }
 
-            // If all paths blocked, try random movement to get unstuck
-            TryRandomMovement(zombie, speed);
-        }
+        //    // If all paths blocked, try random movement to get unstuck
+        //    TryRandomMovement(zombie, speed);
+        //}
 
         private Point[] GetAlternativeDirections(Point currentPos, Point targetPos, int speed)
         {
@@ -1118,6 +1119,82 @@ namespace Shooting_Game.Presenter
             }
         }
 
+        private void MoveZombieTowards(Zombie zombie, Player target)
+        {
+            int speed = 5;
+            Point zPos = zombie.PictureBox.Location;
+            Point tPos = target.PictureBox.Location;
+
+            // Calculate direct path vector
+            int dx = tPos.X - zPos.X;
+            int dy = tPos.Y - zPos.Y;
+
+            double length = Math.Sqrt(dx * dx + dy * dy);
+            if (length == 0) return;
+
+            // Normalize direction vector
+            int moveX = (int)(dx / length * speed);
+            int moveY = (int)(dy / length * speed);
+
+            // Try direct path first
+            Rectangle proposedPosition = new Rectangle(
+                zPos.X + moveX,
+                zPos.Y + moveY,
+                zombie.PictureBox.Width,
+                zombie.PictureBox.Height
+            );
+
+            if (!IsCollidingWithWall(proposedPosition) && !IsCollidingWithOtherZombies(zombie, proposedPosition))
+            {
+                zombie.PictureBox.Location = new Point(zPos.X + moveX, zPos.Y + moveY);
+                return;
+            }
+
+            // If direct path blocked, try alternative paths (simple obstacle avoidance)
+            Point[] alternativeDirections = GetAlternativeDirections(zPos, tPos, speed);
+
+            foreach (var direction in alternativeDirections)
+            {
+                proposedPosition = new Rectangle(
+                    zPos.X + direction.X,
+                    zPos.Y + direction.Y,
+                    zombie.PictureBox.Width,
+                    zombie.PictureBox.Height
+                );
+
+                if (!IsCollidingWithWall(proposedPosition) && !IsCollidingWithOtherZombies(zombie, proposedPosition))
+                {
+                    zombie.PictureBox.Location = new Point(zPos.X + direction.X, zPos.Y + direction.Y);
+                    return;
+                }
+            }
+
+            // If all paths blocked, try random movement to get unstuck
+            TryRandomMovement(zombie, speed);
+        }
+
+        private bool IsCollidingWithOtherZombies(Zombie currentZombie, Rectangle proposedBounds)
+        {
+            int padding = 5; // Small buffer to keep zombies slightly apart
+            Rectangle paddedBounds = new Rectangle(
+                proposedBounds.X - padding,
+                proposedBounds.Y - padding,
+                proposedBounds.Width + padding * 2,
+                proposedBounds.Height + padding * 2
+            );
+
+            foreach (var otherZombie in zombies)
+            {
+                if (otherZombie == currentZombie || otherZombie.State != ZombieState.Alive)
+                    continue;
+
+                if (otherZombie.PictureBox.Bounds.IntersectsWith(paddedBounds))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 
 }
