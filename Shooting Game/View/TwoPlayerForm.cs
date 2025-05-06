@@ -16,9 +16,9 @@ namespace Shooting_Game.View
     {
         public TwoPlayerForm()
         {
-            this.MinimizeBox = false;
-            this.MaximizeBox = false;
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            //this.MinimizeBox = false;
+            //this.MaximizeBox = false;
+            //this.FormBorderStyle = FormBorderStyle.FixedDialog;
 
             InitializeComponent();
 
@@ -108,7 +108,7 @@ namespace Shooting_Game.View
             if (health == 0 && !player1Dead)
             {
                 player1Dead = true;
-                MessageBox.Show("Player 1 is dead!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //   MessageBox.Show("Player 1 is dead!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 CheckBothPlayersDead();
             }
         }
@@ -122,14 +122,19 @@ namespace Shooting_Game.View
             if (health == 0 && !player2Dead)
             {
                 player2Dead = true;
-                MessageBox.Show("Player 2 is dead!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //  MessageBox.Show("Player 2 is dead!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 CheckBothPlayersDead();
             }
         }
 
         private void TwoPlayerForm_Load(object sender, EventArgs e)
         {
+            AudioManager.PlayMusic(Properties.Resources.twoplayermusci, 0.5f);
+        }
 
+        private void TwoPlayerForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // AudioManager.StopMusic();
         }
 
         private void CheckBothPlayersDead()
@@ -138,6 +143,8 @@ namespace Shooting_Game.View
             {
                 MessageBox.Show("Both players are dead! Game Over.", "Game Over", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close(); // Closes the game window
+                MainMenuForm mainMenu = new MainMenuForm();
+                mainMenu.Show();
             }
         }
 

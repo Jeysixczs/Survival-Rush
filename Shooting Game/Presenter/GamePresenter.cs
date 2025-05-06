@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Shooting_Game.Model.Zombie;
 
+using NAudio.Wave;
+
 namespace Shooting_Game.Presenter
 {
     public class GamePresenter
@@ -124,81 +126,6 @@ namespace Shooting_Game.Presenter
             twoPlayerView = view;
         }
 
-        //private void CheckBulletZombieCollision()
-        //{
-        //    foreach (var bullet in bullets.ToList())
-        //    {
-        //        foreach (var zombie in zombies.ToList())
-        //        {
-        //            if (bullet.PictureBox.Bounds.IntersectsWith(zombie.PictureBox.Bounds))
-        //            {
-        //                bullets.Remove(bullet);
-        //                singlePlayerView?.RemoveEntity(bullet);
-        //                twoPlayerView?.RemoveEntity(bullet);
-
-        //                zombies.Remove(zombie);
-        //                singlePlayerView?.RemoveEntity(zombie);
-        //                twoPlayerView?.RemoveEntity(zombie);
-
-        //                // Get the location where the zombie died
-        //                Point dropLocation = zombie.PictureBox.Location;
-
-        //                Random rand = new Random();
-        //                if (rand.Next(100) < 50)
-        //                {
-        //                    if (rand.Next(2) == 0)
-        //                        SpawnPotion(dropLocation); // Pass the zombie's location
-        //                    else
-        //                        SpawnAmmo(dropLocation); // Pass the zombie's location
-        //                }
-
-        //                // Spawn a new zombie to maintain count
-        //                SpawnZombie();
-        //                break;
-        //            }
-
-
-        //        }
-        //    }
-        //}
-
-
-        //private void StartZombieChase()
-        //{
-        //    zombieMoveTimer = new Timer { Interval = 100 };
-        //    zombieMoveTimer.Tick += (s, e) =>
-        //    {
-        //        foreach (var zombie in zombies.ToList())
-        //        {
-        //            Player target = player1;
-        //            if (player2 != null)
-        //            {
-        //                double d1 = GetDistance(zombie.PictureBox.Location, player1.PictureBox.Location);
-        //                double d2 = GetDistance(zombie.PictureBox.Location, player2.PictureBox.Location);
-        //                target = d2 < d1 ? player2 : player1;
-        //            }
-
-        //            MoveZombieTowards(zombie, target);
-
-        //            if (zombie.PictureBox.Bounds.IntersectsWith(player1.PictureBox.Bounds))
-        //            {
-        //                player1.Health -= 1;
-        //                singlePlayerView?.UpdatePlayerStatus(player1.Health, player1.Ammo);
-        //                twoPlayerView?.UpdatePlayer1Status(player1.Health, player1.Ammo);
-        //            }
-
-        //            if (player2 != null && zombie.PictureBox.Bounds.IntersectsWith(player2.PictureBox.Bounds))
-        //            {
-        //                player2.Health -= 1;
-        //                twoPlayerView?.UpdatePlayer2Status(player2.Health, player2.Ammo);
-        //            }
-        //        }
-
-        //        CheckBulletZombieCollision();
-        //        CheckPlayerPickupCollision(); // Check for player-item collisions
-        //    };
-        //    zombieMoveTimer.Start();
-        //}
 
         private void CheckPlayerPickupCollision()
         {
@@ -930,6 +857,7 @@ namespace Shooting_Game.Presenter
             }
         }
 
+        //adding background music in all forms
 
 
 

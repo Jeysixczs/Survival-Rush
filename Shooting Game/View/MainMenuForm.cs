@@ -83,8 +83,9 @@ namespace Shooting_Game
 
         private void pictureBoxStart_Click(object sender, EventArgs e)
         {
-
+            AudioManager.StopMusic();
             presenter.StartGame();
+            this.Hide();
             if (GameManager.Instance.IsSinglePlayer)
             {
                 MessageBox.Show("Starting Single Player Game");
@@ -96,6 +97,18 @@ namespace Shooting_Game
 
 
 
+        }
+
+        private void MainMenuForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+
+        }
+
+        private void MainMenuForm_Load(object sender, EventArgs e)
+        {
+
+            AudioManager.PlayMusic(Properties.Resources.mainmenumusic, 0.5f);
         }
     }
 }

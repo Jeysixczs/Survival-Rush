@@ -360,12 +360,42 @@ namespace Shooting_Game.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] mainmenumusic {
+            get {
+                object obj = ResourceManager.GetObject("mainmenumusic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap meteor_side_medium {
             get {
                 object obj = ResourceManager.GetObject("meteor_side_medium", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] singleplayermusic {
+            get {
+                object obj = ResourceManager.GetObject("singleplayermusic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] twoplayermusci {
+            get {
+                object obj = ResourceManager.GetObject("twoplayermusci", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

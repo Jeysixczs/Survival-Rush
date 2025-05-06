@@ -55,10 +55,13 @@
             this.ClientSize = new System.Drawing.Size(1463, 868);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBar1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SinglePlayerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SinglePlayerForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SinglePlayerForm_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SinglePlayerForm_FormClosed);
             this.Load += new System.EventHandler(this.SinglePlayerForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

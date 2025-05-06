@@ -265,4 +265,13 @@
   <data name="explosion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\explosionSouonds.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="mainmenumusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stg_st005.ogg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="singleplayermusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stg_bs002.ogg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="twoplayermusci" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stg_bs007.ogg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

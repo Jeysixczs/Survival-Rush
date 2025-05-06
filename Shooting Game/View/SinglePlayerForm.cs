@@ -75,6 +75,8 @@ namespace Shooting_Game.View
                 MessageBox.Show("Game Over!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 // Optional: Disable game controls or stop the game loop here
                 Close();// Close the application
+                MainMenuForm mainMenu = new MainMenuForm();
+                mainMenu.Show();
             }
 
             // Update ammo label
@@ -106,6 +108,17 @@ namespace Shooting_Game.View
 
         private void SinglePlayerForm_Load(object sender, EventArgs e)
         {
+            AudioManager.PlayMusic(Properties.Resources.singleplayermusic, 0.5f);
+        }
+
+        private void SinglePlayerForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
+
+        private void SinglePlayerForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            AudioManager.StopMusic();
 
         }
     }

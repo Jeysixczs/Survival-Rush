@@ -143,6 +143,8 @@
             this.Name = "MainMenuForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMenuForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainMenuForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnTwoPlayer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSinglePlayer)).EndInit();

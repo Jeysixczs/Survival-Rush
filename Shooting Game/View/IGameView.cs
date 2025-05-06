@@ -16,5 +16,6 @@ namespace Shooting_Game.View
         void SpawnEntity(GameEntity entity);
         void RemoveEntity(GameEntity entity);
 
+
     }
 }

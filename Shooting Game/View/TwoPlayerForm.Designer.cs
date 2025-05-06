@@ -79,6 +79,7 @@
             this.Name = "TwoPlayerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TwoPlayerForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TwoPlayerForm_FormClosing);
             this.Load += new System.EventHandler(this.TwoPlayerForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
