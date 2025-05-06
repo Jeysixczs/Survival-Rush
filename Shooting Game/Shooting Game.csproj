@@ -98,7 +98,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AudioManager.cs" />
+    <Compile Include="Sound System\AudioManager.cs" />
     <Compile Include="Factory\AmmoFactory.cs" />
     <Compile Include="Factory\EntityFactory.cs" />
     <Compile Include="Factory\PotionFactory.cs" />
@@ -121,7 +121,7 @@
     <Compile Include="View\MainMenuForm.Designer.cs">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Core\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\SinglePlayerForm.cs">
       <SubType>Form</SubType>
