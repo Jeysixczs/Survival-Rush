@@ -13,6 +13,7 @@ namespace Shooting_Game.Model
 
         public Direction Direction { get; set; }
         public bool IsActive { get; set; }
+        public Timer MovementTimer { get; set; }
 
         public Bullet(Direction direction)
         {

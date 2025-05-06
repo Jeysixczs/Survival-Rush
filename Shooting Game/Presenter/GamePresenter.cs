@@ -12,6 +12,7 @@ using static Shooting_Game.Model.Zombie;
 
 using NAudio.Wave;
 
+
 namespace Shooting_Game.Presenter
 {
     public class GamePresenter
@@ -20,7 +21,26 @@ namespace Shooting_Game.Presenter
         private ITwoPlayerGameView twoPlayerView;
         private Player player1;
         private Player player2;
+        private int animationElapsed = 0;
+        private int animationSwitchInterval = 100;
+        //cooldown bullet attack 
 
+        private bool player1CanShoot = true;
+        private bool player2CanShoot = true;
+        private const int NORMAL_SHOT_COOLDOWN_MS = 300;  // 0.3 second for normal shots
+        private const int SPREAD_SHOT_COOLDOWN_MS = 1000; // 0.5 second cooldown
+        private Timer player1CooldownTimer;
+        private Timer player2CooldownTimer;
+
+        private bool isUpGif1 = true;
+        private bool isDownGif1 = true;
+        private bool isLeftGif1 = true;
+        private bool isRightGif1 = true;
+
+        private bool isUpGif2 = true;
+        private bool isDownGif2 = true;
+        private bool isLeftGif2 = true;
+        private bool isRightGif2 = true;
         private const int FormWidth = 1463;
         private const int FormHeight = 868;
 
@@ -32,11 +52,35 @@ namespace Shooting_Game.Presenter
 
         public void StartSinglePlayerGame(Player player)
         {
+            //player1 = player;
+            //singlePlayerView.UpdatePlayerStatus(player1.Health, player1.Ammo);
+            //SetDifficulty(GameManager.Instance.Difficulty);
+            //for (int i = 0; i < zombieCount; i++) SpawnZombie();
+            //twoPlayerView = null;
+            //StartZombieChase();
+            //StartMovementTimer();
+            zombies.Clear();
+            bullets.Clear();
+            potionDrops.Clear();
+            ammoDrops.Clear();
+
+            // Initialize single player
             player1 = player;
-            singlePlayerView.UpdatePlayerStatus(player1.Health, player1.Ammo);
+            player2 = null; // Explicitly set player2 to null
+
+            // Reset player state
+            player1.Health = 100;
+            player1.Ammo = 30;
+
+            // Update view
+            singlePlayerView?.UpdatePlayerStatus(player1.Health, player1.Ammo);
+            twoPlayerView = null; // Ensure two player view is not used
+
+            // Set difficulty and spawn zombies
             SetDifficulty(GameManager.Instance.Difficulty);
             for (int i = 0; i < zombieCount; i++) SpawnZombie();
 
+            // Start game timers
             StartZombieChase();
             StartMovementTimer();
         }
@@ -85,27 +129,6 @@ namespace Shooting_Game.Presenter
             twoPlayerView?.SpawnEntity(zombie);
         }
 
-
-
-
-        private void MoveZombieTowards(Zombie zombie, Player target)
-        {
-            int speed = 5;
-            Point zPos = zombie.PictureBox.Location;
-            Point tPos = target.PictureBox.Location;
-
-            int dx = tPos.X - zPos.X;
-            int dy = tPos.Y - zPos.Y;
-
-            double length = Math.Sqrt(dx * dx + dy * dy);
-            if (length == 0) return;
-
-            int moveX = (int)(dx / length * speed);
-            int moveY = (int)(dy / length * speed);
-
-            zombie.PictureBox.Left += moveX;
-            zombie.PictureBox.Top += moveY;
-        }
 
         private double GetDistance(Point a, Point b)
         {
@@ -237,7 +260,6 @@ namespace Shooting_Game.Presenter
             removalTimer.Start();
         }
 
-
         private void SpawnAmmo(Point location)
         {
             AmmoFactory factory = new AmmoFactory();
@@ -312,25 +334,11 @@ namespace Shooting_Game.Presenter
         }
 
 
-        private int animationElapsed = 0;
-        private int animationSwitchInterval = 100;
-
-        private bool isUpGif1 = true;
-        private bool isDownGif1 = true;
-        private bool isLeftGif1 = true;
-        private bool isRightGif1 = true;
-
-        private bool isUpGif2 = true;
-        private bool isDownGif2 = true;
-        private bool isLeftGif2 = true;
-        private bool isRightGif2 = true;
-
-
-
         private void ProcessPlayerMovement()
         {
             int moveAmount = 5;
             bool player1Moved = false;
+
             animationElapsed += movementTimer.Interval;
 
             if (player1 != null)
@@ -354,7 +362,9 @@ namespace Shooting_Game.Presenter
                         if (animationElapsed >= animationSwitchInterval)
                         {
                             isUpGif1 = !isUpGif1;
-                            player1.PictureBox.Image = isUpGif1 ? Properties.Resources.walkingupbluebirds : Properties.Resources.walkingup2bluebird;
+                            player1.PictureBox.Image = isUpGif1 ?
+                                Properties.Resources.walkingupbluebirds :
+                                Properties.Resources.walkingup2bluebird;
                         }
                     }
                 }
@@ -378,7 +388,9 @@ namespace Shooting_Game.Presenter
                         if (animationElapsed >= animationSwitchInterval)
                         {
                             isDownGif1 = !isDownGif1;
-                            player1.PictureBox.Image = isDownGif1 ? Properties.Resources.walkingdownbluebird : Properties.Resources.walkingdown2bluebird;
+                            player1.PictureBox.Image = isDownGif1 ?
+                                Properties.Resources.walkingdownbluebird :
+                                Properties.Resources.walkingdown2bluebird;
                         }
                     }
                 }
@@ -402,7 +414,9 @@ namespace Shooting_Game.Presenter
                         if (animationElapsed >= animationSwitchInterval)
                         {
                             isLeftGif1 = !isLeftGif1;
-                            player1.PictureBox.Image = isLeftGif1 ? Properties.Resources.walkingleftbluebird : Properties.Resources.walingleft2bluebird;
+                            player1.PictureBox.Image = isLeftGif1 ?
+                                Properties.Resources.walkingleftbluebird :
+                                Properties.Resources.walingleft2bluebird;
                         }
                     }
                 }
@@ -426,7 +440,9 @@ namespace Shooting_Game.Presenter
                         if (animationElapsed >= animationSwitchInterval)
                         {
                             isRightGif1 = !isRightGif1;
-                            player1.PictureBox.Image = isRightGif1 ? Properties.Resources.walkingrightbluebird : Properties.Resources.walkinright2bluebird;
+                            player1.PictureBox.Image = isRightGif1 ?
+                                Properties.Resources.walkingrightbluebird :
+                                Properties.Resources.walkinright2bluebird;
                         }
                     }
                 }
@@ -452,127 +468,128 @@ namespace Shooting_Game.Presenter
                 }
             }
 
+
             // plaeyr 2
 
 
-            bool player2Moved = false;
+
             animationElapsed += movementTimer.Interval;
 
-
-            if (pressedKeys.Contains(Keys.Up) && player2.PictureBox.Top > 0)
+            if (player2 != null)
             {
-                Rectangle proposedPosition = new Rectangle(
-                    player2.PictureBox.Left,
-                    player2.PictureBox.Top - moveAmount,
-                    player2.PictureBox.Width,
-                    player2.PictureBox.Height
-                );
+                bool player2moved = false;
 
-                if (!IsCollidingWithWall(proposedPosition))
+                // ... (keep existing player 2 movement code)
+                if (pressedKeys.Contains(Keys.Up) && player2.PictureBox.Top > 0)
                 {
-                    player2.PictureBox.Top -= moveAmount;
-                    player2.SetLastDirection(Direction.Up);
-                    player2Moved = true;
+                    Rectangle proposedPosition = new Rectangle(
+                        player2.PictureBox.Left,
+                        player2.PictureBox.Top - moveAmount,
+                        player2.PictureBox.Width,
+                        player2.PictureBox.Height
+                    );
 
-                    if (animationElapsed >= animationSwitchInterval)
+                    if (!IsCollidingWithWall(proposedPosition))
                     {
-                        isUpGif2 = !isUpGif2;
-                        player2.PictureBox.Image = isUpGif2 ? Properties.Resources.walkingupwhitebird : Properties.Resources.walkingup2whitebird;
+                        player2.PictureBox.Top -= moveAmount;
+                        player2.SetLastDirection(Direction.Up);
+                        if (animationElapsed >= animationSwitchInterval)
+                        {
+                            isUpGif2 = !isUpGif2;
+                            player2.PictureBox.Image = isUpGif2 ? Properties.Resources.walkingupwhitebird : Properties.Resources.walkingup2whitebird;
+                        }
+                    }
+                }
+
+                // Movement and animation for Down
+                if (pressedKeys.Contains(Keys.Down) && player2.PictureBox.Bottom + moveAmount < FormHeight)
+                {
+                    Rectangle proposedPosition = new Rectangle(
+                        player2.PictureBox.Left,
+                        player2.PictureBox.Top + moveAmount,
+                        player2.PictureBox.Width,
+                        player2.PictureBox.Height
+                    );
+
+                    if (!IsCollidingWithWall(proposedPosition))
+                    {
+                        player2.PictureBox.Top += moveAmount;
+                        player2.SetLastDirection(Direction.Down);
+                        if (animationElapsed >= animationSwitchInterval)
+                        {
+                            isDownGif2 = !isDownGif2;
+                            player2.PictureBox.Image = isDownGif2 ? Properties.Resources.walkingdownwhitebird : Properties.Resources.walkingdown2whitebird;
+                        }
+                    }
+                }
+
+                // Movement and animation for Left
+                if (pressedKeys.Contains(Keys.Left) && player2.PictureBox.Left > 0)
+                {
+                    Rectangle proposedPosition = new Rectangle(
+                        player2.PictureBox.Left - moveAmount,
+                        player2.PictureBox.Top,
+                        player2.PictureBox.Width,
+                        player2.PictureBox.Height
+                    );
+
+                    if (!IsCollidingWithWall(proposedPosition))
+                    {
+                        player2.PictureBox.Left -= moveAmount;
+                        player2.SetLastDirection(Direction.Left);
+                        if (animationElapsed >= animationSwitchInterval)
+                        {
+                            isLeftGif2 = !isLeftGif2;
+                            player2.PictureBox.Image = isLeftGif2 ? Properties.Resources.walkingleftwhitebird : Properties.Resources.walkingleft2whitebird;
+                        }
+                    }
+                }
+
+                // Movement and animation for Right
+                if (pressedKeys.Contains(Keys.Right) && player2.PictureBox.Right + moveAmount < FormWidth)
+                {
+                    Rectangle proposedPosition = new Rectangle(
+                        player2.PictureBox.Left + moveAmount,
+                        player2.PictureBox.Top,
+                        player2.PictureBox.Width,
+                        player2.PictureBox.Height
+                    );
+
+                    if (!IsCollidingWithWall(proposedPosition))
+                    {
+                        player2.PictureBox.Left += moveAmount;
+                        player2.SetLastDirection(Direction.Right);
+                        if (animationElapsed >= animationSwitchInterval)
+                        {
+                            isRightGif2 = !isRightGif2;
+                            player2.PictureBox.Image = isRightGif2 ? Properties.Resources.walkingrightwhitebird : Properties.Resources.walkingright2whitebird;
+                        }
+                    }
+                }
+                if (!player2moved)
+                {
+                    switch (player2.GetLastDirection())
+                    {
+                        case Direction.Up:
+                            player2.PictureBox.Image = Properties.Resources.idleupwhitebird;
+                            break;
+                        case Direction.Down:
+                            player2.PictureBox.Image = Properties.Resources.idledownwhitebird;
+                            break;
+                        case Direction.Left:
+                            player2.PictureBox.Image = Properties.Resources.idleleftwhitebird;
+                            break;
+                        case Direction.Right:
+                            player2.PictureBox.Image = Properties.Resources.idlerightwhitebird;
+                            break;
                     }
                 }
             }
 
-            // Movement and animation for Down
-            if (pressedKeys.Contains(Keys.Down) && player2.PictureBox.Bottom + moveAmount < FormHeight)
-            {
-                Rectangle proposedPosition = new Rectangle(
-                    player2.PictureBox.Left,
-                    player2.PictureBox.Top + moveAmount,
-                    player2.PictureBox.Width,
-                    player2.PictureBox.Height
-                );
 
-                if (!IsCollidingWithWall(proposedPosition))
-                {
-                    player2.PictureBox.Top += moveAmount;
-                    player2.SetLastDirection(Direction.Down);
-                    player2Moved = true;
-
-                    if (animationElapsed >= animationSwitchInterval)
-                    {
-                        isDownGif2 = !isDownGif2;
-                        player2.PictureBox.Image = isDownGif2 ? Properties.Resources.walkingdownwhitebird : Properties.Resources.walkingdown2whitebird;
-                    }
-                }
-            }
-
-            // Movement and animation for Left
-            if (pressedKeys.Contains(Keys.Left) && player2.PictureBox.Left > 0)
-            {
-                Rectangle proposedPosition = new Rectangle(
-                    player2.PictureBox.Left - moveAmount,
-                    player2.PictureBox.Top,
-                    player2.PictureBox.Width,
-                    player2.PictureBox.Height
-                );
-
-                if (!IsCollidingWithWall(proposedPosition))
-                {
-                    player2.PictureBox.Left -= moveAmount;
-                    player2.SetLastDirection(Direction.Left);
-                    player2Moved = true;
-
-                    if (animationElapsed >= animationSwitchInterval)
-                    {
-                        isLeftGif2 = !isLeftGif2;
-                        player2.PictureBox.Image = isLeftGif2 ? Properties.Resources.walkingleftwhitebird : Properties.Resources.walkingleft2whitebird;
-                    }
-                }
-            }
-
-            // Movement and animation for Right
-            if (pressedKeys.Contains(Keys.Right) && player2.PictureBox.Right + moveAmount < FormWidth)
-            {
-                Rectangle proposedPosition = new Rectangle(
-                    player2.PictureBox.Left + moveAmount,
-                    player2.PictureBox.Top,
-                    player2.PictureBox.Width,
-                    player2.PictureBox.Height
-                );
-
-                if (!IsCollidingWithWall(proposedPosition))
-                {
-                    player2.PictureBox.Left += moveAmount;
-                    player2.SetLastDirection(Direction.Right);
-                    player2Moved = true;
-
-                    if (animationElapsed >= animationSwitchInterval)
-                    {
-                        isRightGif2 = !isRightGif2;
-                        player2.PictureBox.Image = isRightGif2 ? Properties.Resources.walkingrightwhitebird : Properties.Resources.walkingright2whitebird;
-                    }
-                }
-            }
 
             // Handle Idle Animation for Player 2
-            if (!player2Moved)
-            {
-                switch (player2.GetLastDirection())
-                {
-                    case Direction.Up:
-                        player2.PictureBox.Image = Properties.Resources.idleupwhitebird;
-                        break;
-                    case Direction.Down:
-                        player2.PictureBox.Image = Properties.Resources.idledownwhitebird;
-                        break;
-                    case Direction.Left:
-                        player2.PictureBox.Image = Properties.Resources.idleleftwhitebird;
-                        break;
-                    case Direction.Right:
-                        player2.PictureBox.Image = Properties.Resources.idlerightwhitebird;
-                        break;
-                }
-            }
+
             if (animationElapsed >= animationSwitchInterval)
                 animationElapsed = 0;
 
@@ -684,26 +701,45 @@ namespace Shooting_Game.Presenter
                 Direction = direction
             };
 
+
+
             bullets.Add(bullet);
             singlePlayerView?.SpawnEntity(bullet);
             twoPlayerView?.SpawnEntity(bullet);
 
             var timer = new Timer { Interval = 50 };
+            bullet.MovementTimer = timer;
             timer.Tick += (s, e) =>
             {
                 bullet.Move();
+
+                // Check if bullet is out of bounds
                 if (bullet.PictureBox.Top < 0 ||
                     bullet.PictureBox.Left < 0 ||
                     bullet.PictureBox.Right > FormWidth ||
                     bullet.PictureBox.Bottom > FormHeight)
                 {
-                    timer.Stop();
-                    bullets.Remove(bullet);
-                    singlePlayerView?.RemoveEntity(bullet);
-                    twoPlayerView?.RemoveEntity(bullet);
+                    RemoveBullet(bullet, timer);
+                    return;
+                }
+
+                // Check if bullet hits a wall
+                if (IsCollidingWithWall(bullet.PictureBox.Bounds))
+                {
+                    RemoveBullet(bullet, timer);
+                    return;
                 }
             };
             timer.Start();
+        }
+
+        private void RemoveBullet(Bullet bullet, Timer timer)
+        {
+            timer.Stop();
+            bullets.Remove(bullet);
+            singlePlayerView?.RemoveEntity(bullet);
+            twoPlayerView?.RemoveEntity(bullet);
+            timer.Dispose();
         }
 
         private Image GetBulletImageForDirection(Direction direction)
@@ -732,16 +768,7 @@ namespace Shooting_Game.Presenter
 
         }
 
-        //test
 
-        //cooldown bullet attack 
-
-        private bool player1CanShoot = true;
-        private bool player2CanShoot = true;
-        private const int NORMAL_SHOT_COOLDOWN_MS = 300;  // 0.3 second for normal shots
-        private const int SPREAD_SHOT_COOLDOWN_MS = 1000; // 0.5 second cooldown
-        private Timer player1CooldownTimer;
-        private Timer player2CooldownTimer;
 
         private void ShootBullet(Player player, Direction direction)
         {
@@ -808,7 +835,7 @@ namespace Shooting_Game.Presenter
             if (player2 != null) twoPlayerView?.UpdatePlayer2Status(player2.Health, player2.Ammo);
         }
 
-        //try dead annimation
+        //try dead annimation for zombie
 
         private async void StartZombieDeathAnimation(Zombie zombie)
         {
@@ -915,14 +942,20 @@ namespace Shooting_Game.Presenter
         {
             foreach (var bullet in bullets.ToList())
             {
+                if (IsCollidingWithWall(bullet.PictureBox.Bounds))
+                {
+                    RemoveBullet(bullet, bullet.MovementTimer);
+                    continue;
+                }
+
                 foreach (var zombie in zombies.ToList())
                 {
                     if (zombie.State == ZombieState.Alive &&
                         bullet.PictureBox.Bounds.IntersectsWith(zombie.PictureBox.Bounds))
                     {
-                        bullets.Remove(bullet);
-                        singlePlayerView?.RemoveEntity(bullet);
-                        twoPlayerView?.RemoveEntity(bullet);
+                        // Find and stop the bullet's timer
+                        var timer = bullet.MovementTimer; // You'll need to add this property to Bullet class
+                        RemoveBullet(bullet, timer);
 
                         // Start dying animation instead of immediately removing
                         StartZombieDeathAnimation(zombie);
@@ -931,8 +964,6 @@ namespace Shooting_Game.Presenter
                 }
             }
         }
-
-
 
         // add wals
         private bool IsCollidingWithWall(Rectangle bounds)
@@ -950,5 +981,143 @@ namespace Shooting_Game.Presenter
             }
             return false;
         }
+
+
+        //test path finder
+
+        private void MoveZombieTowards(Zombie zombie, Player target)
+        {
+            int speed = 5;
+            Point zPos = zombie.PictureBox.Location;
+            Point tPos = target.PictureBox.Location;
+
+            // Calculate direct path vector
+            int dx = tPos.X - zPos.X;
+            int dy = tPos.Y - zPos.Y;
+
+            double length = Math.Sqrt(dx * dx + dy * dy);
+            if (length == 0) return;
+
+            // Normalize direction vector
+            int moveX = (int)(dx / length * speed);
+            int moveY = (int)(dy / length * speed);
+
+            // Try direct path first
+            Rectangle proposedPosition = new Rectangle(
+                zPos.X + moveX,
+                zPos.Y + moveY,
+                zombie.PictureBox.Width,
+                zombie.PictureBox.Height
+            );
+
+            if (!IsCollidingWithWall(proposedPosition))
+            {
+                zombie.PictureBox.Location = new Point(zPos.X + moveX, zPos.Y + moveY);
+                return;
+            }
+
+            // If direct path blocked, try alternative paths (simple obstacle avoidance)
+            Point[] alternativeDirections = GetAlternativeDirections(zPos, tPos, speed);
+
+            foreach (var direction in alternativeDirections)
+            {
+                proposedPosition = new Rectangle(
+                    zPos.X + direction.X,
+                    zPos.Y + direction.Y,
+                    zombie.PictureBox.Width,
+                    zombie.PictureBox.Height
+                );
+
+                if (!IsCollidingWithWall(proposedPosition))
+                {
+                    zombie.PictureBox.Location = new Point(zPos.X + direction.X, zPos.Y + direction.Y);
+                    return;
+                }
+            }
+
+            // If all paths blocked, try random movement to get unstuck
+            TryRandomMovement(zombie, speed);
+        }
+
+        private Point[] GetAlternativeDirections(Point currentPos, Point targetPos, int speed)
+        {
+            int dx = targetPos.X - currentPos.X;
+            int dy = targetPos.Y - currentPos.Y;
+
+            // Prioritize directions that still move toward player
+            List<Point> directions = new List<Point>();
+
+            // Add perpendicular directions based on primary movement axis
+            if (Math.Abs(dx) > Math.Abs(dy))
+            {
+                // Mostly horizontal movement - try vertical alternatives
+                directions.Add(new Point(0, speed)); // Up
+                directions.Add(new Point(0, -speed)); // Down
+                directions.Add(new Point(dx > 0 ? speed : -speed, speed)); // Diagonal
+                directions.Add(new Point(dx > 0 ? speed : -speed, -speed)); // Diagonal
+            }
+            else
+            {
+                // Mostly vertical movement - try horizontal alternatives
+                directions.Add(new Point(speed, 0)); // Right
+                directions.Add(new Point(-speed, 0)); // Left
+                directions.Add(new Point(speed, dy > 0 ? speed : -speed)); // Diagonal
+                directions.Add(new Point(-speed, dy > 0 ? speed : -speed)); // Diagonal
+            }
+
+            // Add some random directions to help with complex mazes
+            Random rand = new Random();
+            for (int i = 0; i < 2; i++)
+            {
+                int randX = rand.Next(-speed, speed + 1);
+                int randY = rand.Next(-speed, speed + 1);
+                if (randX != 0 || randY != 0)
+                {
+                    directions.Add(new Point(randX, randY));
+                }
+            }
+
+            return directions.ToArray();
+        }
+
+        private void TryRandomMovement(Zombie zombie, int speed)
+        {
+            // If completely stuck, try random movement
+            Random rand = new Random();
+            Point[] possibleMoves = new Point[]
+            {
+        new Point(speed, 0),
+        new Point(-speed, 0),
+        new Point(0, speed),
+        new Point(0, -speed),
+        new Point(speed, speed),
+        new Point(speed, -speed),
+        new Point(-speed, speed),
+        new Point(-speed, -speed)
+            };
+
+            // Shuffle the possible moves
+            possibleMoves = possibleMoves.OrderBy(x => rand.Next()).ToArray();
+
+            Point currentPos = zombie.PictureBox.Location;
+
+            foreach (var move in possibleMoves)
+            {
+                Rectangle proposedPosition = new Rectangle(
+                    currentPos.X + move.X,
+                    currentPos.Y + move.Y,
+                    zombie.PictureBox.Width,
+                    zombie.PictureBox.Height
+                );
+
+                if (!IsCollidingWithWall(proposedPosition))
+                {
+                    zombie.PictureBox.Location = new Point(currentPos.X + move.X, currentPos.Y + move.Y);
+                    return;
+                }
+            }
+        }
+
     }
+
 }

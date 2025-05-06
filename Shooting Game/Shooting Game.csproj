@@ -102,7 +102,6 @@
     <Compile Include="Factory\AmmoFactory.cs" />
     <Compile Include="Factory\EntityFactory.cs" />
     <Compile Include="Factory\PotionFactory.cs" />
-    <Compile Include="Factory\ZombieFactory.cs" />
     <Compile Include="Model\Ammo.cs" />
     <Compile Include="Model\Bullet.cs" />
     <Compile Include="Model\GameEntity.cs" />

@@ -53,9 +53,9 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBox1.Location = new System.Drawing.Point(361, 170);
+            this.pictureBox1.Location = new System.Drawing.Point(578, 550);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 327);
+            this.pictureBox1.Size = new System.Drawing.Size(100, 135);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Tag = "WALL";
