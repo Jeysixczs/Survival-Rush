@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Shooting_Game.View
 {
@@ -15,6 +16,7 @@ namespace Shooting_Game.View
         void UpdatePlayerStatus(int health, int ammo);
         void SpawnEntity(GameEntity entity);
         void RemoveEntity(GameEntity entity);
+        List<PictureBox> GetWalls();
 
 
     }

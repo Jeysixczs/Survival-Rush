@@ -121,5 +121,18 @@ namespace Shooting_Game.View
             AudioManager.StopMusic();
 
         }
+
+        public List<PictureBox> GetWalls()
+        {
+            List<PictureBox> walls = new List<PictureBox>();
+            foreach (Control control in this.Controls)
+            {
+                if (control is PictureBox pb && pb.Tag?.ToString() == "WALL")
+                {
+                    walls.Add(pb);
+                }
+            }
+            return walls;
+        }
     }
 }

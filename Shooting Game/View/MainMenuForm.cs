@@ -26,7 +26,6 @@ namespace Shooting_Game
             presenter = new MainMenuPresenter(this);
             SetPresenter(presenter);
 
-
         }
 
         public void SetPresenter(MainMenuPresenter presenter)
@@ -96,14 +95,7 @@ namespace Shooting_Game
             AudioManager.StopMusic();
             presenter.StartGame();
             this.Hide();
-            if (GameManager.Instance.IsSinglePlayer)
-            {
-                MessageBox.Show("Starting Single Player Game");
-            }
-            else
-            {
-                MessageBox.Show("Starting Two Player Game");
-            }
+
 
 
 

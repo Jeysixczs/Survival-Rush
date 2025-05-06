@@ -338,56 +338,96 @@ namespace Shooting_Game.Presenter
                 // Movement and animation for W
                 if (pressedKeys.Contains(Keys.W) && player1.PictureBox.Top > 0)
                 {
-                    player1.PictureBox.Top -= moveAmount;
-                    player1.SetLastDirection(Direction.Up);
-                    player1Moved = true;
+                    Rectangle proposedPosition = new Rectangle(
+                        player1.PictureBox.Left,
+                        player1.PictureBox.Top - moveAmount,
+                        player1.PictureBox.Width,
+                        player1.PictureBox.Height
+                    );
 
-                    if (animationElapsed >= animationSwitchInterval)
+                    if (!IsCollidingWithWall(proposedPosition))
                     {
-                        isUpGif1 = !isUpGif1;
-                        player1.PictureBox.Image = isUpGif1 ? Properties.Resources.walkingupbluebirds : Properties.Resources.walkingup2bluebird;
+                        player1.PictureBox.Top -= moveAmount;
+                        player1.SetLastDirection(Direction.Up);
+                        player1Moved = true;
+
+                        if (animationElapsed >= animationSwitchInterval)
+                        {
+                            isUpGif1 = !isUpGif1;
+                            player1.PictureBox.Image = isUpGif1 ? Properties.Resources.walkingupbluebirds : Properties.Resources.walkingup2bluebird;
+                        }
                     }
                 }
 
                 // Movement and animation for S
                 if (pressedKeys.Contains(Keys.S) && player1.PictureBox.Bottom + moveAmount < FormHeight)
                 {
-                    player1.PictureBox.Top += moveAmount;
-                    player1.SetLastDirection(Direction.Down);
-                    player1Moved = true;
+                    Rectangle proposedPosition = new Rectangle(
+                        player1.PictureBox.Left,
+                        player1.PictureBox.Top + moveAmount,
+                        player1.PictureBox.Width,
+                        player1.PictureBox.Height
+                    );
 
-                    if (animationElapsed >= animationSwitchInterval)
+                    if (!IsCollidingWithWall(proposedPosition))
                     {
-                        isDownGif1 = !isDownGif1;
-                        player1.PictureBox.Image = isDownGif1 ? Properties.Resources.walkingdownbluebird : Properties.Resources.walkingdown2bluebird;
+                        player1.PictureBox.Top += moveAmount;
+                        player1.SetLastDirection(Direction.Down);
+                        player1Moved = true;
+
+                        if (animationElapsed >= animationSwitchInterval)
+                        {
+                            isDownGif1 = !isDownGif1;
+                            player1.PictureBox.Image = isDownGif1 ? Properties.Resources.walkingdownbluebird : Properties.Resources.walkingdown2bluebird;
+                        }
                     }
                 }
 
-                // Movement and animation for A
+                // Movement and animation for A (Left)
                 if (pressedKeys.Contains(Keys.A) && player1.PictureBox.Left > 0)
                 {
-                    player1.PictureBox.Left -= moveAmount;
-                    player1.SetLastDirection(Direction.Left);
-                    player1Moved = true;
+                    Rectangle proposedPosition = new Rectangle(
+                        player1.PictureBox.Left - moveAmount,
+                        player1.PictureBox.Top,
+                        player1.PictureBox.Width,
+                        player1.PictureBox.Height
+                    );
 
-                    if (animationElapsed >= animationSwitchInterval)
+                    if (!IsCollidingWithWall(proposedPosition))
                     {
-                        isLeftGif1 = !isLeftGif1;
-                        player1.PictureBox.Image = isLeftGif1 ? Properties.Resources.walkingleftbluebird : Properties.Resources.walingleft2bluebird;
+                        player1.PictureBox.Left -= moveAmount;
+                        player1.SetLastDirection(Direction.Left);
+                        player1Moved = true;
+
+                        if (animationElapsed >= animationSwitchInterval)
+                        {
+                            isLeftGif1 = !isLeftGif1;
+                            player1.PictureBox.Image = isLeftGif1 ? Properties.Resources.walkingleftbluebird : Properties.Resources.walingleft2bluebird;
+                        }
                     }
                 }
 
-                // Movement and animation for D
+                // Movement and animation for D (Right)
                 if (pressedKeys.Contains(Keys.D) && player1.PictureBox.Right + moveAmount < FormWidth)
                 {
-                    player1.PictureBox.Left += moveAmount;
-                    player1.SetLastDirection(Direction.Right);
-                    player1Moved = true;
+                    Rectangle proposedPosition = new Rectangle(
+                        player1.PictureBox.Left + moveAmount,
+                        player1.PictureBox.Top,
+                        player1.PictureBox.Width,
+                        player1.PictureBox.Height
+                    );
 
-                    if (animationElapsed >= animationSwitchInterval)
+                    if (!IsCollidingWithWall(proposedPosition))
                     {
-                        isRightGif1 = !isRightGif1;
-                        player1.PictureBox.Image = isRightGif1 ? Properties.Resources.walkingrightbluebird : Properties.Resources.walkinright2bluebird;
+                        player1.PictureBox.Left += moveAmount;
+                        player1.SetLastDirection(Direction.Right);
+                        player1Moved = true;
+
+                        if (animationElapsed >= animationSwitchInterval)
+                        {
+                            isRightGif1 = !isRightGif1;
+                            player1.PictureBox.Image = isRightGif1 ? Properties.Resources.walkingrightbluebird : Properties.Resources.walkinright2bluebird;
+                        }
                     }
                 }
 
@@ -419,9 +459,16 @@ namespace Shooting_Game.Presenter
             animationElapsed += movementTimer.Interval;
 
 
-            if (player2 != null)
+            if (pressedKeys.Contains(Keys.Up) && player2.PictureBox.Top > 0)
             {
-                if (pressedKeys.Contains(Keys.Up) && player2.PictureBox.Top > 0)
+                Rectangle proposedPosition = new Rectangle(
+                    player2.PictureBox.Left,
+                    player2.PictureBox.Top - moveAmount,
+                    player2.PictureBox.Width,
+                    player2.PictureBox.Height
+                );
+
+                if (!IsCollidingWithWall(proposedPosition))
                 {
                     player2.PictureBox.Top -= moveAmount;
                     player2.SetLastDirection(Direction.Up);
@@ -433,8 +480,19 @@ namespace Shooting_Game.Presenter
                         player2.PictureBox.Image = isUpGif2 ? Properties.Resources.walkingupwhitebird : Properties.Resources.walkingup2whitebird;
                     }
                 }
+            }
 
-                if (pressedKeys.Contains(Keys.Down) && player2.PictureBox.Bottom + moveAmount < FormHeight)
+            // Movement and animation for Down
+            if (pressedKeys.Contains(Keys.Down) && player2.PictureBox.Bottom + moveAmount < FormHeight)
+            {
+                Rectangle proposedPosition = new Rectangle(
+                    player2.PictureBox.Left,
+                    player2.PictureBox.Top + moveAmount,
+                    player2.PictureBox.Width,
+                    player2.PictureBox.Height
+                );
+
+                if (!IsCollidingWithWall(proposedPosition))
                 {
                     player2.PictureBox.Top += moveAmount;
                     player2.SetLastDirection(Direction.Down);
@@ -446,8 +504,19 @@ namespace Shooting_Game.Presenter
                         player2.PictureBox.Image = isDownGif2 ? Properties.Resources.walkingdownwhitebird : Properties.Resources.walkingdown2whitebird;
                     }
                 }
+            }
 
-                if (pressedKeys.Contains(Keys.Left) && player2.PictureBox.Left > 0)
+            // Movement and animation for Left
+            if (pressedKeys.Contains(Keys.Left) && player2.PictureBox.Left > 0)
+            {
+                Rectangle proposedPosition = new Rectangle(
+                    player2.PictureBox.Left - moveAmount,
+                    player2.PictureBox.Top,
+                    player2.PictureBox.Width,
+                    player2.PictureBox.Height
+                );
+
+                if (!IsCollidingWithWall(proposedPosition))
                 {
                     player2.PictureBox.Left -= moveAmount;
                     player2.SetLastDirection(Direction.Left);
@@ -459,8 +528,19 @@ namespace Shooting_Game.Presenter
                         player2.PictureBox.Image = isLeftGif2 ? Properties.Resources.walkingleftwhitebird : Properties.Resources.walkingleft2whitebird;
                     }
                 }
+            }
 
-                if (pressedKeys.Contains(Keys.Right) && player2.PictureBox.Right + moveAmount < FormWidth)
+            // Movement and animation for Right
+            if (pressedKeys.Contains(Keys.Right) && player2.PictureBox.Right + moveAmount < FormWidth)
+            {
+                Rectangle proposedPosition = new Rectangle(
+                    player2.PictureBox.Left + moveAmount,
+                    player2.PictureBox.Top,
+                    player2.PictureBox.Width,
+                    player2.PictureBox.Height
+                );
+
+                if (!IsCollidingWithWall(proposedPosition))
                 {
                     player2.PictureBox.Left += moveAmount;
                     player2.SetLastDirection(Direction.Right);
@@ -472,27 +552,27 @@ namespace Shooting_Game.Presenter
                         player2.PictureBox.Image = isRightGif2 ? Properties.Resources.walkingrightwhitebird : Properties.Resources.walkingright2whitebird;
                     }
                 }
-
-                if (!player2Moved)
-                {
-                    switch (player2.GetLastDirection())
-                    {
-                        case Direction.Up:
-                            player2.PictureBox.Image = Properties.Resources.idleupwhitebird;
-                            break;
-                        case Direction.Down:
-                            player2.PictureBox.Image = Properties.Resources.idledownwhitebird;
-                            break;
-                        case Direction.Left:
-                            player2.PictureBox.Image = Properties.Resources.idleleftwhitebird;
-                            break;
-                        case Direction.Right:
-                            player2.PictureBox.Image = Properties.Resources.idlerightwhitebird;
-                            break;
-                    }
-                }
             }
 
+            // Handle Idle Animation for Player 2
+            if (!player2Moved)
+            {
+                switch (player2.GetLastDirection())
+                {
+                    case Direction.Up:
+                        player2.PictureBox.Image = Properties.Resources.idleupwhitebird;
+                        break;
+                    case Direction.Down:
+                        player2.PictureBox.Image = Properties.Resources.idledownwhitebird;
+                        break;
+                    case Direction.Left:
+                        player2.PictureBox.Image = Properties.Resources.idleleftwhitebird;
+                        break;
+                    case Direction.Right:
+                        player2.PictureBox.Image = Properties.Resources.idlerightwhitebird;
+                        break;
+                }
+            }
             if (animationElapsed >= animationSwitchInterval)
                 animationElapsed = 0;
 
@@ -850,6 +930,25 @@ namespace Shooting_Game.Presenter
                     }
                 }
             }
+        }
+
+
+
+        // add wals
+        private bool IsCollidingWithWall(Rectangle bounds)
+        {
+            // Get all PictureBox controls with "WALL" tag from the form
+            var walls = singlePlayerView?.GetWalls() ?? twoPlayerView?.GetWalls();
+            if (walls == null) return false;
+
+            foreach (var wall in walls)
+            {
+                if (wall.Bounds.IntersectsWith(bounds))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
