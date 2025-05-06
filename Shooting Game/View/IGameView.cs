@@ -18,6 +18,6 @@ namespace Shooting_Game.View
         void RemoveEntity(GameEntity entity);
         List<PictureBox> GetWalls();
 
-
+        Panel GetGamePanel();
     }
 }

@@ -333,5 +333,200 @@
   <ItemGroup>
     <None Include="Resources\death.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_hole_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_mid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_hole_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\column.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\column_wall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_banner_yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_edge_bottom_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_edge_bottom_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_edge_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_edge_mid_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_edge_mid_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_edge_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_edge_top_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_edge_top_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_edge_tshape_bottom_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_edge_tshape_bottom_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_edge_tshape_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_edge_tshape_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_fountain_basin_blue_anim_f0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_fountain_basin_blue_anim_f1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_fountain_basin_blue_anim_f2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_fountain_basin_red_anim_f0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_fountain_basin_red_anim_f1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_fountain_basin_red_anim_f2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_fountain_mid_blue_anim_f0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_fountain_mid_blue_anim_f1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_fountain_mid_blue_anim_f2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_fountain_mid_red_anim_f0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_fountain_mid_red_anim_f1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_fountain_mid_red_anim_f2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_fountain_top_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_fountain_top_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_fountain_top_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_goo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_goo_base.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_outer_front_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_outer_front_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_outer_mid_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_outer_mid_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_outer_top_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_outer_top_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_top_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_top_mid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_top_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\floor_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\floor_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\floor_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\floor_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\floor_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\floor_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\floor_21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flooring.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_edge_right1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\florring3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_hole_21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_left1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_mid1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall_right1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\doors_leaf_closed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\big_zombie_run_anim_f1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\floor_ladder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coin_anim_f0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\running5.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

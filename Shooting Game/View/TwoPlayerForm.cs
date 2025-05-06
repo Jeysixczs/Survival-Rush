@@ -87,11 +87,16 @@ namespace Shooting_Game.View
 
             player1.PictureBox.Location = new Point(150, 150);
             player2.PictureBox.Location = new Point(300, 150);
-            Controls.Add(player1.PictureBox);
-            Controls.Add(player2.PictureBox);
+
 
             presenter.SetTwoPlayerView(this);
             presenter.StartTwoPlayerGame(player1, player2);
+            player1.PictureBox.BackColor = Color.Transparent;
+            player2.PictureBox.BackColor = Color.Transparent;
+            player1.PictureBox.BringToFront();
+            player2.PictureBox.BringToFront();
+            Controls.Add(player1.PictureBox);
+            Controls.Add(player2.PictureBox);
 
 
         }

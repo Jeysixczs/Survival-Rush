@@ -41,8 +41,8 @@ namespace Shooting_Game.Presenter
         private bool isDownGif2 = true;
         private bool isLeftGif2 = true;
         private bool isRightGif2 = true;
-        private const int FormWidth = 1463;
-        private const int FormHeight = 868;
+        private const int FormWidth = 1453; //1463
+        private const int FormHeight = 858; //868
 
         private List<Zombie> zombies = new List<Zombie>();
         private Timer zombieMoveTimer;
@@ -71,7 +71,7 @@ namespace Shooting_Game.Presenter
             // Reset player state
             player1.Health = 100;
             player1.Ammo = 30;
-
+            player1.PictureBox.BackColor = Color.Transparent;
             // Update view
             singlePlayerView?.UpdatePlayerStatus(player1.Health, player1.Ammo);
             twoPlayerView = null; // Ensure two player view is not used
@@ -97,6 +97,7 @@ namespace Shooting_Game.Presenter
             //SpawnAmmo();
             StartZombieChase();
             StartMovementTimer();
+            player2.PictureBox.BackColor = Color.Transparent;
         }
 
         private void SetDifficulty(int difficulty)
@@ -119,12 +120,14 @@ namespace Shooting_Game.Presenter
                     Size = new Size(64, 64),
                     BackColor = Color.Transparent,
                     SizeMode = PictureBoxSizeMode.Zoom,
+
                     Image = Properties.Resources.idledownbluebird,
                     Location = new Point(new Random().Next(0, FormWidth - 40), new Random().Next(0, FormHeight - 40))
                 }
             };
 
             zombies.Add(zombie);
+            zombie.PictureBox.BringToFront();
             singlePlayerView?.SpawnEntity(zombie);
             twoPlayerView?.SpawnEntity(zombie);
         }
@@ -338,6 +341,7 @@ namespace Shooting_Game.Presenter
         {
             int moveAmount = 5;
             bool player1Moved = false;
+            player1.PictureBox.BackColor = Color.Transparent;
 
             animationElapsed += movementTimer.Interval;
 
@@ -346,11 +350,13 @@ namespace Shooting_Game.Presenter
                 // Movement and animation for W
                 if (pressedKeys.Contains(Keys.W) && player1.PictureBox.Top > 0)
                 {
+                    player1.PictureBox.BackColor = Color.Transparent;
                     Rectangle proposedPosition = new Rectangle(
                         player1.PictureBox.Left,
                         player1.PictureBox.Top - moveAmount,
                         player1.PictureBox.Width,
                         player1.PictureBox.Height
+
                     );
 
                     if (!IsCollidingWithWall(proposedPosition))
@@ -365,13 +371,18 @@ namespace Shooting_Game.Presenter
                             player1.PictureBox.Image = isUpGif1 ?
                                 Properties.Resources.walkingupbluebirds :
                                 Properties.Resources.walkingup2bluebird;
+
+                            player1.PictureBox.BackColor = Color.Transparent;
                         }
+                        player1.PictureBox.BackColor = Color.Transparent;
                     }
+                    player1.PictureBox.BackColor = Color.Transparent;
                 }
 
                 // Movement and animation for S
                 if (pressedKeys.Contains(Keys.S) && player1.PictureBox.Bottom + moveAmount < FormHeight)
                 {
+                    player1.PictureBox.BackColor = Color.Transparent;
                     Rectangle proposedPosition = new Rectangle(
                         player1.PictureBox.Left,
                         player1.PictureBox.Top + moveAmount,
@@ -398,6 +409,7 @@ namespace Shooting_Game.Presenter
                 // Movement and animation for A (Left)
                 if (pressedKeys.Contains(Keys.A) && player1.PictureBox.Left > 0)
                 {
+                    player1.PictureBox.BackColor = Color.Transparent;
                     Rectangle proposedPosition = new Rectangle(
                         player1.PictureBox.Left - moveAmount,
                         player1.PictureBox.Top,
@@ -424,6 +436,7 @@ namespace Shooting_Game.Presenter
                 // Movement and animation for D (Right)
                 if (pressedKeys.Contains(Keys.D) && player1.PictureBox.Right + moveAmount < FormWidth)
                 {
+                    player1.PictureBox.BackColor = Color.Transparent;
                     Rectangle proposedPosition = new Rectangle(
                         player1.PictureBox.Left + moveAmount,
                         player1.PictureBox.Top,
@@ -454,15 +467,19 @@ namespace Shooting_Game.Presenter
                     {
                         case Direction.Up:
                             player1.PictureBox.Image = Properties.Resources.idleupbluebird;
+                            player1.PictureBox.BackColor = Color.Transparent;
                             break;
                         case Direction.Down:
                             player1.PictureBox.Image = Properties.Resources.idledownbluebird;
+                            player1.PictureBox.BackColor = Color.Transparent;
                             break;
                         case Direction.Left:
                             player1.PictureBox.Image = Properties.Resources.idleleftbluebird;
+                            player1.PictureBox.BackColor = Color.Transparent;
                             break;
                         case Direction.Right:
                             player1.PictureBox.Image = Properties.Resources.idlerightbluebird;
+                            player1.PictureBox.BackColor = Color.Transparent;
                             break;
                     }
                 }
@@ -477,6 +494,8 @@ namespace Shooting_Game.Presenter
 
             if (player2 != null)
             {
+                player2.PictureBox.BackColor = Color.Transparent;
+
                 bool player2moved = false;
 
                 // ... (keep existing player 2 movement code)
@@ -544,6 +563,7 @@ namespace Shooting_Game.Presenter
                         }
                     }
                 }
+                player2.PictureBox.BackColor = Color.Transparent;
 
                 // Movement and animation for Right
                 if (pressedKeys.Contains(Keys.Right) && player2.PictureBox.Right + moveAmount < FormWidth)
@@ -572,15 +592,23 @@ namespace Shooting_Game.Presenter
                     {
                         case Direction.Up:
                             player2.PictureBox.Image = Properties.Resources.idleupwhitebird;
+                            player2.PictureBox.BackColor = Color.Transparent;
                             break;
                         case Direction.Down:
                             player2.PictureBox.Image = Properties.Resources.idledownwhitebird;
+                            player2.PictureBox.BackColor = Color.Transparent;
+
+
                             break;
                         case Direction.Left:
                             player2.PictureBox.Image = Properties.Resources.idleleftwhitebird;
+                            player2.PictureBox.BackColor = Color.Transparent;
+
                             break;
                         case Direction.Right:
                             player2.PictureBox.Image = Properties.Resources.idlerightwhitebird;
+                            player2.PictureBox.BackColor = Color.Transparent;
+
                             break;
                     }
                 }
@@ -598,6 +626,10 @@ namespace Shooting_Game.Presenter
             twoPlayerView?.UpdatePlayer1Status(player1?.Health ?? 0, player1?.Ammo ?? 0);
             if (player2 != null)
                 twoPlayerView?.UpdatePlayer2Status(player2.Health, player2.Ammo);
+            player1.PictureBox.BackColor = Color.Transparent;
+
+            //      player2.PictureBox.BackColor = Color.Transparent;
+
         }
 
 
@@ -986,59 +1018,59 @@ namespace Shooting_Game.Presenter
 
         //test path finder
 
-        //private void MoveZombieTowards(Zombie zombie, Player target)
-        //{
-        //    int speed = 5;
-        //    Point zPos = zombie.PictureBox.Location;
-        //    Point tPos = target.PictureBox.Location;
+        private void MoveZombieTowards(Zombie zombie, Player target)
+        {
+            int speed = 5;
+            Point zPos = zombie.PictureBox.Location;
+            Point tPos = target.PictureBox.Location;
 
-        //    // Calculate direct path vector
-        //    int dx = tPos.X - zPos.X;
-        //    int dy = tPos.Y - zPos.Y;
+            // Calculate direct path vector
+            int dx = tPos.X - zPos.X;
+            int dy = tPos.Y - zPos.Y;
 
-        //    double length = Math.Sqrt(dx * dx + dy * dy);
-        //    if (length == 0) return;
+            double length = Math.Sqrt(dx * dx + dy * dy);
+            if (length == 0) return;
 
-        //    // Normalize direction vector
-        //    int moveX = (int)(dx / length * speed);
-        //    int moveY = (int)(dy / length * speed);
+            // Normalize direction vector
+            int moveX = (int)(dx / length * speed);
+            int moveY = (int)(dy / length * speed);
 
-        //    // Try direct path first
-        //    Rectangle proposedPosition = new Rectangle(
-        //        zPos.X + moveX,
-        //        zPos.Y + moveY,
-        //        zombie.PictureBox.Width,
-        //        zombie.PictureBox.Height
-        //    );
+            // Try direct path first
+            Rectangle proposedPosition = new Rectangle(
+                zPos.X + moveX,
+                zPos.Y + moveY,
+                zombie.PictureBox.Width,
+                zombie.PictureBox.Height
+            );
 
-        //    if (!IsCollidingWithWall(proposedPosition))
-        //    {
-        //        zombie.PictureBox.Location = new Point(zPos.X + moveX, zPos.Y + moveY);
-        //        return;
-        //    }
+            if (!IsCollidingWithWall(proposedPosition))
+            {
+                zombie.PictureBox.Location = new Point(zPos.X + moveX, zPos.Y + moveY);
+                return;
+            }
 
-        //    // If direct path blocked, try alternative paths (simple obstacle avoidance)
-        //    Point[] alternativeDirections = GetAlternativeDirections(zPos, tPos, speed);
+            // If direct path blocked, try alternative paths (simple obstacle avoidance)
+            Point[] alternativeDirections = GetAlternativeDirections(zPos, tPos, speed);
 
-        //    foreach (var direction in alternativeDirections)
-        //    {
-        //        proposedPosition = new Rectangle(
-        //            zPos.X + direction.X,
-        //            zPos.Y + direction.Y,
-        //            zombie.PictureBox.Width,
-        //            zombie.PictureBox.Height
-        //        );
+            foreach (var direction in alternativeDirections)
+            {
+                proposedPosition = new Rectangle(
+                    zPos.X + direction.X,
+                    zPos.Y + direction.Y,
+                    zombie.PictureBox.Width,
+                    zombie.PictureBox.Height
+                );
 
-        //        if (!IsCollidingWithWall(proposedPosition))
-        //        {
-        //            zombie.PictureBox.Location = new Point(zPos.X + direction.X, zPos.Y + direction.Y);
-        //            return;
-        //        }
-        //    }
+                if (!IsCollidingWithWall(proposedPosition))
+                {
+                    zombie.PictureBox.Location = new Point(zPos.X + direction.X, zPos.Y + direction.Y);
+                    return;
+                }
+            }
 
-        //    // If all paths blocked, try random movement to get unstuck
-        //    TryRandomMovement(zombie, speed);
-        //}
+            // If all paths blocked, try random movement to get unstuck
+            TryRandomMovement(zombie, speed);
+        }
 
         private Point[] GetAlternativeDirections(Point currentPos, Point targetPos, int speed)
         {
@@ -1119,82 +1151,7 @@ namespace Shooting_Game.Presenter
             }
         }
 
-        private void MoveZombieTowards(Zombie zombie, Player target)
-        {
-            int speed = 5;
-            Point zPos = zombie.PictureBox.Location;
-            Point tPos = target.PictureBox.Location;
 
-            // Calculate direct path vector
-            int dx = tPos.X - zPos.X;
-            int dy = tPos.Y - zPos.Y;
-
-            double length = Math.Sqrt(dx * dx + dy * dy);
-            if (length == 0) return;
-
-            // Normalize direction vector
-            int moveX = (int)(dx / length * speed);
-            int moveY = (int)(dy / length * speed);
-
-            // Try direct path first
-            Rectangle proposedPosition = new Rectangle(
-                zPos.X + moveX,
-                zPos.Y + moveY,
-                zombie.PictureBox.Width,
-                zombie.PictureBox.Height
-            );
-
-            if (!IsCollidingWithWall(proposedPosition) && !IsCollidingWithOtherZombies(zombie, proposedPosition))
-            {
-                zombie.PictureBox.Location = new Point(zPos.X + moveX, zPos.Y + moveY);
-                return;
-            }
-
-            // If direct path blocked, try alternative paths (simple obstacle avoidance)
-            Point[] alternativeDirections = GetAlternativeDirections(zPos, tPos, speed);
-
-            foreach (var direction in alternativeDirections)
-            {
-                proposedPosition = new Rectangle(
-                    zPos.X + direction.X,
-                    zPos.Y + direction.Y,
-                    zombie.PictureBox.Width,
-                    zombie.PictureBox.Height
-                );
-
-                if (!IsCollidingWithWall(proposedPosition) && !IsCollidingWithOtherZombies(zombie, proposedPosition))
-                {
-                    zombie.PictureBox.Location = new Point(zPos.X + direction.X, zPos.Y + direction.Y);
-                    return;
-                }
-            }
-
-            // If all paths blocked, try random movement to get unstuck
-            TryRandomMovement(zombie, speed);
-        }
-
-        private bool IsCollidingWithOtherZombies(Zombie currentZombie, Rectangle proposedBounds)
-        {
-            int padding = 5; // Small buffer to keep zombies slightly apart
-            Rectangle paddedBounds = new Rectangle(
-                proposedBounds.X - padding,
-                proposedBounds.Y - padding,
-                proposedBounds.Width + padding * 2,
-                proposedBounds.Height + padding * 2
-            );
-
-            foreach (var otherZombie in zombies)
-            {
-                if (otherZombie == currentZombie || otherZombie.State != ZombieState.Alive)
-                    continue;
-
-                if (otherZombie.PictureBox.Bounds.IntersectsWith(paddedBounds))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
     }
 
 }

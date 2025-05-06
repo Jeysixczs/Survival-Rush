@@ -25,9 +25,8 @@ namespace Shooting_Game.View
             this.MinimizeBox = false;
             this.MaximizeBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
-
+            this.DoubleBuffered = true;
             InitializeComponent();
-
 
             KeyDown += (s, e) =>
             {
@@ -38,6 +37,24 @@ namespace Shooting_Game.View
             {
                 presenter.OnKeyUp(e.KeyCode);
             };
+
+
+            player = new Player
+            {
+                PictureBox = new PictureBox
+                {
+                    Size = new Size(64, 64),
+                    BackColor = Color.Transparent,
+                    SizeMode = PictureBoxSizeMode.Zoom,
+                    Image = Properties.Resources.idledownbluebird // Must be a PNG with alpha
+                }
+            };
+
+            player.PictureBox.Parent = this; // Assign parent first
+            player.PictureBox.Location = new Point(200, 200);
+            Controls.Add(player.PictureBox);
+            player.PictureBox.BringToFront();
+            player.PictureBox.Invalidate(); // Refresh
 
 
 
@@ -86,20 +103,23 @@ namespace Shooting_Game.View
 
         protected override void OnLoad(EventArgs e)
         {
-            base.OnLoad(e);
-            player = new Player
-            {
-                PictureBox = new PictureBox
-                {
-                    Size = new Size(64, 64),
-                    BackColor = Color.Transparent,
+            //base.OnLoad(e);
+            //player = new Player
+            //{
+            //    PictureBox = new PictureBox
+            //    {
+            //        Size = new Size(64, 64),
+            //        BackColor = Color.Transparent,
 
-                    SizeMode = PictureBoxSizeMode.Zoom
-                }
-            };
-            player.PictureBox.Location = new Point(200, 200);
-            Controls.Add(player.PictureBox);
-
+            //        SizeMode = PictureBoxSizeMode.Zoom
+            //    }
+            //};
+            //player.PictureBox.Location = new Point(200, 200);
+            //Controls.Add(player.PictureBox);
+            //player.PictureBox.BringToFront();
+            //player.PictureBox.BackColor = Color.Transparent;
+            //presenter.SetSinglePlayerView(this);
+            //presenter.StartSinglePlayerGame(player);
             presenter.SetSinglePlayerView(this);
             presenter.StartSinglePlayerGame(player);
 
@@ -133,6 +153,21 @@ namespace Shooting_Game.View
                 }
             }
             return walls;
+        }
+
+        private void pictureBox8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public Panel GetGamePanel()
+        {
+            throw new NotImplementedException();
         }
     }
 }
