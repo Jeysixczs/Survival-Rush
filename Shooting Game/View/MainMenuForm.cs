@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,6 +25,8 @@ namespace Shooting_Game
             InitializeComponent();
             presenter = new MainMenuPresenter(this);
             SetPresenter(presenter);
+
+
         }
 
         public void SetPresenter(MainMenuPresenter presenter)
@@ -56,33 +59,40 @@ namespace Shooting_Game
 
         private void btnSinglePlayer_Click(object sender, EventArgs e)
         {
+            clicksound();
             presenter?.SelectSinglePlayer();
-            MessageBox.Show("Single Player Selected");
+
+
         }
 
         private void btnTwoPlayer_Click(object sender, EventArgs e)
         {
+            clicksound();
             presenter?.SelectTwoPlayer();
         }
 
         private void btnDifficultyEasy_Click(object sender, EventArgs e)
         {
+            clicksound();
             presenter?.SelectDifficulty(1);
-            MessageBox.Show("Easy Difficulty Selected");
+
         }
 
         private void btnDifficultyMedium_Click(object sender, EventArgs e)
         {
+            clicksound();
             presenter?.SelectDifficulty(2);
         }
 
         private void btnDifficultyHard_Click(object sender, EventArgs e)
         {
+            clicksound();
             presenter?.SelectDifficulty(3);
         }
 
         private void pictureBoxStart_Click(object sender, EventArgs e)
         {
+            clicksound();
             AudioManager.StopMusic();
             presenter.StartGame();
             this.Hide();
@@ -109,6 +119,14 @@ namespace Shooting_Game
         {
 
             AudioManager.PlayMusic(Properties.Resources.mainmenumusic, 0.5f);
+        }
+
+
+
+        private void clicksound()
+        {
+            SoundPlayer clickSound = new SoundPlayer(Properties.Resources.selectsound);
+            clickSound.Play();
         }
     }
 }

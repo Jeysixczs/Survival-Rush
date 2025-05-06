@@ -328,5 +328,8 @@
   <ItemGroup>
     <None Include="Resources\stg_bs007.ogg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\selectsound.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
