@@ -759,13 +759,8 @@ namespace Shooting_Game.Presenter
                     case 1:
                         zombie.PictureBox.Image = Properties.Resources.fireball_side_medium_explode;
                         break;
+
                     case 2:
-                        zombie.PictureBox.Image = Properties.Resources.fireball_side_medium_explode;
-                        break;
-                    case 3:
-                        zombie.PictureBox.Image = Properties.Resources.fireball_side_medium_explode;
-                        break;
-                    case 4:
                         // Animation complete
                         deathTimer.Stop();
                         zombie.State = ZombieState.Dead;
@@ -856,12 +851,5 @@ namespace Shooting_Game.Presenter
                 }
             }
         }
-
-        //adding background music in all forms
-
-
-
-
-
     }
 }
