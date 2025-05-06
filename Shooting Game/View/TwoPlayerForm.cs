@@ -127,6 +127,11 @@ namespace Shooting_Game.View
             }
         }
 
+        private void TwoPlayerForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void CheckBothPlayersDead()
         {
             if (player1Dead && player2Dead)

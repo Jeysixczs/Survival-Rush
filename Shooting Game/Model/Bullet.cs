@@ -10,13 +10,13 @@ namespace Shooting_Game.Model
 {
     public class Bullet : GameEntity
     {
-        // public PictureBox PictureBox { get; set; }
+
         public Direction Direction { get; set; }
         public bool IsActive { get; set; }
 
         public Bullet(Direction direction)
         {
-            PictureBox = new PictureBox { Size = new Size(10, 10), Image = Properties.Resources.antidote_potion };
+            PictureBox = new PictureBox { Size = new Size(10, 10) };
             IsActive = true;
             Direction = direction;
         }

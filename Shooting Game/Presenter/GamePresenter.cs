@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Shooting_Game.Model.Zombie;
 
 namespace Shooting_Game.Presenter
 {
@@ -123,81 +124,81 @@ namespace Shooting_Game.Presenter
             twoPlayerView = view;
         }
 
-        private void CheckBulletZombieCollision()
-        {
-            foreach (var bullet in bullets.ToList())
-            {
-                foreach (var zombie in zombies.ToList())
-                {
-                    if (bullet.PictureBox.Bounds.IntersectsWith(zombie.PictureBox.Bounds))
-                    {
-                        bullets.Remove(bullet);
-                        singlePlayerView?.RemoveEntity(bullet);
-                        twoPlayerView?.RemoveEntity(bullet);
+        //private void CheckBulletZombieCollision()
+        //{
+        //    foreach (var bullet in bullets.ToList())
+        //    {
+        //        foreach (var zombie in zombies.ToList())
+        //        {
+        //            if (bullet.PictureBox.Bounds.IntersectsWith(zombie.PictureBox.Bounds))
+        //            {
+        //                bullets.Remove(bullet);
+        //                singlePlayerView?.RemoveEntity(bullet);
+        //                twoPlayerView?.RemoveEntity(bullet);
 
-                        zombies.Remove(zombie);
-                        singlePlayerView?.RemoveEntity(zombie);
-                        twoPlayerView?.RemoveEntity(zombie);
+        //                zombies.Remove(zombie);
+        //                singlePlayerView?.RemoveEntity(zombie);
+        //                twoPlayerView?.RemoveEntity(zombie);
 
-                        // Get the location where the zombie died
-                        Point dropLocation = zombie.PictureBox.Location;
+        //                // Get the location where the zombie died
+        //                Point dropLocation = zombie.PictureBox.Location;
 
-                        Random rand = new Random();
-                        if (rand.Next(100) < 50)
-                        {
-                            if (rand.Next(2) == 0)
-                                SpawnPotion(dropLocation); // Pass the zombie's location
-                            else
-                                SpawnAmmo(dropLocation); // Pass the zombie's location
-                        }
+        //                Random rand = new Random();
+        //                if (rand.Next(100) < 50)
+        //                {
+        //                    if (rand.Next(2) == 0)
+        //                        SpawnPotion(dropLocation); // Pass the zombie's location
+        //                    else
+        //                        SpawnAmmo(dropLocation); // Pass the zombie's location
+        //                }
 
-                        // Spawn a new zombie to maintain count
-                        SpawnZombie();
-                        break;
-                    }
-
-
-                }
-            }
-        }
+        //                // Spawn a new zombie to maintain count
+        //                SpawnZombie();
+        //                break;
+        //            }
 
 
-        private void StartZombieChase()
-        {
-            zombieMoveTimer = new Timer { Interval = 100 };
-            zombieMoveTimer.Tick += (s, e) =>
-            {
-                foreach (var zombie in zombies.ToList())
-                {
-                    Player target = player1;
-                    if (player2 != null)
-                    {
-                        double d1 = GetDistance(zombie.PictureBox.Location, player1.PictureBox.Location);
-                        double d2 = GetDistance(zombie.PictureBox.Location, player2.PictureBox.Location);
-                        target = d2 < d1 ? player2 : player1;
-                    }
+        //        }
+        //    }
+        //}
 
-                    MoveZombieTowards(zombie, target);
 
-                    if (zombie.PictureBox.Bounds.IntersectsWith(player1.PictureBox.Bounds))
-                    {
-                        player1.Health -= 1;
-                        singlePlayerView?.UpdatePlayerStatus(player1.Health, player1.Ammo);
-                        twoPlayerView?.UpdatePlayer1Status(player1.Health, player1.Ammo);
-                    }
+        //private void StartZombieChase()
+        //{
+        //    zombieMoveTimer = new Timer { Interval = 100 };
+        //    zombieMoveTimer.Tick += (s, e) =>
+        //    {
+        //        foreach (var zombie in zombies.ToList())
+        //        {
+        //            Player target = player1;
+        //            if (player2 != null)
+        //            {
+        //                double d1 = GetDistance(zombie.PictureBox.Location, player1.PictureBox.Location);
+        //                double d2 = GetDistance(zombie.PictureBox.Location, player2.PictureBox.Location);
+        //                target = d2 < d1 ? player2 : player1;
+        //            }
 
-                    if (player2 != null && zombie.PictureBox.Bounds.IntersectsWith(player2.PictureBox.Bounds))
-                    {
-                        player2.Health -= 1;
-                        twoPlayerView?.UpdatePlayer2Status(player2.Health, player2.Ammo);
-                    }
-                }
+        //            MoveZombieTowards(zombie, target);
 
-                CheckBulletZombieCollision();
-                CheckPlayerPickupCollision(); // Check for player-item collisions
-            };
-            zombieMoveTimer.Start();
-        }
+        //            if (zombie.PictureBox.Bounds.IntersectsWith(player1.PictureBox.Bounds))
+        //            {
+        //                player1.Health -= 1;
+        //                singlePlayerView?.UpdatePlayerStatus(player1.Health, player1.Ammo);
+        //                twoPlayerView?.UpdatePlayer1Status(player1.Health, player1.Ammo);
+        //            }
+
+        //            if (player2 != null && zombie.PictureBox.Bounds.IntersectsWith(player2.PictureBox.Bounds))
+        //            {
+        //                player2.Health -= 1;
+        //                twoPlayerView?.UpdatePlayer2Status(player2.Health, player2.Ammo);
+        //            }
+        //        }
+
+        //        CheckBulletZombieCollision();
+        //        CheckPlayerPickupCollision(); // Check for player-item collisions
+        //    };
+        //    zombieMoveTimer.Start();
+        //}
 
         private void CheckPlayerPickupCollision()
         {
@@ -626,31 +627,6 @@ namespace Shooting_Game.Presenter
             }
         }
 
-        //try
-
-
-        private void ShootBullet(Player player, Direction direction)
-        {
-            if (player.Ammo <= 0) return;
-
-            if (player.IsSpreadShotActive)
-            {
-                // Shoot 5 bullets in a spread pattern
-                ShootSpreadBullets(player, direction);
-                player.Ammo -= 5; // Deduct 5 ammo for the spread shot
-            }
-            else
-            {
-                // Normal single bullet
-                CreateBullet(player, direction);
-                player.Ammo--;
-            }
-
-            // Update UI
-            singlePlayerView?.UpdatePlayerStatus(player1.Health, player1.Ammo);
-            twoPlayerView?.UpdatePlayer1Status(player1.Health, player1.Ammo);
-            if (player2 != null) twoPlayerView?.UpdatePlayer2Status(player2.Health, player2.Ammo);
-        }
 
         private void ShootSpreadBullets(Player player, Direction mainDirection)
         {
@@ -744,11 +720,216 @@ namespace Shooting_Game.Presenter
                 case Direction.DownRight:
                     return Properties.Resources.firedownright;
                 default:
-                    return Properties.Resources.fireball_high_speed_side_small; // fallback
+                    return Properties.Resources.fireball_side_medium; // Default image
             }
+
         }
 
         //test
+
+        //cooldown bullet attack 
+
+        private bool player1CanShoot = true;
+        private bool player2CanShoot = true;
+        private const int NORMAL_SHOT_COOLDOWN_MS = 300;  // 0.3 second for normal shots
+        private const int SPREAD_SHOT_COOLDOWN_MS = 1000; // 0.5 second cooldown
+        private Timer player1CooldownTimer;
+        private Timer player2CooldownTimer;
+
+        private void ShootBullet(Player player, Direction direction)
+        {
+            // Check if player can shoot based on cooldown
+            if ((player == player1 && !player1CanShoot) ||
+                (player == player2 && !player2CanShoot))
+            {
+                return;
+            }
+
+            if (player.Ammo <= 0) return;
+
+            int cooldownTime = NORMAL_SHOT_COOLDOWN_MS; // Default to normal shot cooldown
+            bool attemptedSpreadShot = player.IsSpreadShotActive;
+
+            // Check if trying to do spread shot but not enough ammo
+            if (attemptedSpreadShot && player.Ammo < 5)
+            {
+
+                attemptedSpreadShot = false;
+            }
+
+            if (attemptedSpreadShot)
+            {
+                ShootSpreadBullets(player, direction);
+                player.Ammo -= 5;
+                cooldownTime = SPREAD_SHOT_COOLDOWN_MS; // Use longer cooldown for spread shot
+            }
+            else
+            {
+                CreateBullet(player, direction);
+                player.Ammo--;
+            }
+
+            // Start cooldown
+            if (player == player1)
+            {
+                player1CanShoot = false;
+                player1CooldownTimer = new Timer { Interval = cooldownTime };
+                player1CooldownTimer.Tick += (s, e) =>
+                {
+                    player1CanShoot = true;
+                    player1CooldownTimer.Stop();
+                    player1CooldownTimer.Dispose();
+                };
+                player1CooldownTimer.Start();
+            }
+            else if (player == player2)
+            {
+                player2CanShoot = false;
+                player2CooldownTimer = new Timer { Interval = cooldownTime };
+                player2CooldownTimer.Tick += (s, e) =>
+                {
+                    player2CanShoot = true;
+                    player2CooldownTimer.Stop();
+                    player2CooldownTimer.Dispose();
+                };
+                player2CooldownTimer.Start();
+            }
+
+            // Update UI
+            singlePlayerView?.UpdatePlayerStatus(player1.Health, player1.Ammo);
+            twoPlayerView?.UpdatePlayer1Status(player1.Health, player1.Ammo);
+            if (player2 != null) twoPlayerView?.UpdatePlayer2Status(player2.Health, player2.Ammo);
+        }
+
+        //try dead annimation
+
+        private async void StartZombieDeathAnimation(Zombie zombie)
+        {
+            zombie.State = ZombieState.Dying;
+
+            await Task.Run(() =>
+            {
+                System.Media.SoundPlayer explosionSound = new System.Media.SoundPlayer(Properties.Resources.explosion);
+                explosionSound.Play();
+            });
+
+            // Set the initial size for death animation (make it bigger than regular zombie)
+            zombie.PictureBox.Size = new Size(200, 200); // Adjust these values as needed
+            zombie.PictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            zombie.PictureBox.Location = new Point(zombie.PictureBox.Left - 64, zombie.PictureBox.Top - 50); // Center the explosion
+
+            // Change to first frame of death animation
+            zombie.PictureBox.Image = Properties.Resources.fireball_side_medium_explode;
+
+            var deathTimer = new Timer { Interval = 50 };
+            deathTimer.Tick += (s, e) =>
+            {
+                zombie.DeathAnimationFrame++;
+
+                // Update animation frame
+                switch (zombie.DeathAnimationFrame)
+                {
+                    case 1:
+                        zombie.PictureBox.Image = Properties.Resources.fireball_side_medium_explode;
+                        break;
+                    case 2:
+                        zombie.PictureBox.Image = Properties.Resources.fireball_side_medium_explode;
+                        break;
+                    case 3:
+                        zombie.PictureBox.Image = Properties.Resources.fireball_side_medium_explode;
+                        break;
+                    case 4:
+                        // Animation complete
+                        deathTimer.Stop();
+                        zombie.State = ZombieState.Dead;
+
+                        // Get the location where the zombie died
+                        Point dropLocation = zombie.PictureBox.Location;
+
+                        // Remove the zombie
+                        zombies.Remove(zombie);
+                        singlePlayerView?.RemoveEntity(zombie);
+                        twoPlayerView?.RemoveEntity(zombie);
+
+                        // Random drop
+                        Random rand = new Random();
+                        if (rand.Next(100) < 50)
+                        {
+                            if (rand.Next(2) == 0)
+                                SpawnPotion(dropLocation);
+                            else
+                                SpawnAmmo(dropLocation);
+                        }
+
+                        // Spawn a new zombie to maintain count
+                        SpawnZombie();
+                        break;
+                }
+            };
+            deathTimer.Start();
+        }
+
+        private void StartZombieChase()
+        {
+            zombieMoveTimer = new Timer { Interval = 100 };
+            zombieMoveTimer.Tick += (s, e) =>
+            {
+                foreach (var zombie in zombies.ToList())
+                {
+                    // Skip if zombie is dying or dead
+                    if (zombie.State != ZombieState.Alive) continue;
+
+                    Player target = player1;
+                    if (player2 != null)
+                    {
+                        double d1 = GetDistance(zombie.PictureBox.Location, player1.PictureBox.Location);
+                        double d2 = GetDistance(zombie.PictureBox.Location, player2.PictureBox.Location);
+                        target = d2 < d1 ? player2 : player1;
+                    }
+
+                    MoveZombieTowards(zombie, target);
+
+                    if (zombie.PictureBox.Bounds.IntersectsWith(player1.PictureBox.Bounds))
+                    {
+                        player1.Health -= 1;
+                        singlePlayerView?.UpdatePlayerStatus(player1.Health, player1.Ammo);
+                        twoPlayerView?.UpdatePlayer1Status(player1.Health, player1.Ammo);
+                    }
+
+                    if (player2 != null && zombie.PictureBox.Bounds.IntersectsWith(player2.PictureBox.Bounds))
+                    {
+                        player2.Health -= 1;
+                        twoPlayerView?.UpdatePlayer2Status(player2.Health, player2.Ammo);
+                    }
+                }
+
+                CheckBulletZombieCollision();
+                CheckPlayerPickupCollision();
+            };
+            zombieMoveTimer.Start();
+        }
+
+        private void CheckBulletZombieCollision()
+        {
+            foreach (var bullet in bullets.ToList())
+            {
+                foreach (var zombie in zombies.ToList())
+                {
+                    if (zombie.State == ZombieState.Alive &&
+                        bullet.PictureBox.Bounds.IntersectsWith(zombie.PictureBox.Bounds))
+                    {
+                        bullets.Remove(bullet);
+                        singlePlayerView?.RemoveEntity(bullet);
+                        twoPlayerView?.RemoveEntity(bullet);
+
+                        // Start dying animation instead of immediately removing
+                        StartZombieDeathAnimation(zombie);
+                        break;
+                    }
+                }
+            }
+        }
+
 
 
 

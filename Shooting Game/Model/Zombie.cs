@@ -13,7 +13,15 @@ namespace Shooting_Game.Model
             player.Health -= 10;
 
         }
-        public bool IsDying { get; set; } = false;
 
+        public ZombieState State { get; set; } = ZombieState.Alive;
+        public int DeathAnimationFrame { get; set; } = 0;
+
+        public enum ZombieState
+        {
+            Alive,
+            Dying,
+            Dead
+        }
     }
 }

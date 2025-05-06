@@ -75,9 +75,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBar2);
             this.Controls.Add(this.progressBar1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TwoPlayerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TwoPlayerForm";
+            this.Load += new System.EventHandler(this.TwoPlayerForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

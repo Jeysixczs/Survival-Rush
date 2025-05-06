@@ -121,12 +121,11 @@ namespace Shooting_Game.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        internal static System.Drawing.Bitmap fireball_high_speed_side_small {
+        internal static System.IO.UnmanagedMemoryStream explosion {
             get {
-                object obj = ResourceManager.GetObject("fireball_high_speed_side_small", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetStream("explosion", resourceCulture);
             }
         }
         
