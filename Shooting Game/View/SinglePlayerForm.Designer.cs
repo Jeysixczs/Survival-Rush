@@ -639,7 +639,7 @@
             // pictureBox28
             // 
             this.pictureBox28.Image = global::Shooting_Game.Properties.Resources.wall_edge_left;
-            this.pictureBox28.Location = new System.Drawing.Point(1431, 798);
+            this.pictureBox28.Location = new System.Drawing.Point(1431, 808);
             this.pictureBox28.Name = "pictureBox28";
             this.pictureBox28.Size = new System.Drawing.Size(55, 68);
             this.pictureBox28.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3048,7 +3048,7 @@
             // pictureBox171
             // 
             this.pictureBox171.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox171.Location = new System.Drawing.Point(826, 700);
+            this.pictureBox171.Location = new System.Drawing.Point(826, 681);
             this.pictureBox171.Name = "pictureBox171";
             this.pictureBox171.Size = new System.Drawing.Size(29, 73);
             this.pictureBox171.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3061,7 +3061,7 @@
             // 
             this.pictureBox172.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox172.Image = global::Shooting_Game.Properties.Resources.column;
-            this.pictureBox172.Location = new System.Drawing.Point(825, 700);
+            this.pictureBox172.Location = new System.Drawing.Point(825, 681);
             this.pictureBox172.Name = "pictureBox172";
             this.pictureBox172.Size = new System.Drawing.Size(30, 95);
             this.pictureBox172.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

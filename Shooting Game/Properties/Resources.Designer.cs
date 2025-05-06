@@ -462,6 +462,16 @@ namespace Shooting_Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap florrings {
+            get {
+                object obj = ResourceManager.GetObject("florrings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap idledownbluebird {
             get {
                 object obj = ResourceManager.GetObject("idledownbluebird", resourceCulture);
@@ -601,9 +611,9 @@ namespace Shooting_Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] singleplayermusic {
+        internal static byte[] singleplayermussic {
             get {
-                object obj = ResourceManager.GetObject("singleplayermusic", resourceCulture);
+                object obj = ResourceManager.GetObject("singleplayermussic", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -794,6 +804,16 @@ namespace Shooting_Game.Properties {
         internal static System.Drawing.Bitmap walkinright2bluebird {
             get {
                 object obj = ResourceManager.GetObject("walkinright2bluebird", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wall_banner_green {
+            get {
+                object obj = ResourceManager.GetObject("wall_banner_green", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

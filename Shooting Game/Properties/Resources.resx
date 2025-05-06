@@ -139,9 +139,6 @@
   <data name="walkingleft2whitebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\walkingleft2whitebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="idlerightbluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\idlerightbluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="walkingdown2bluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\walkingdown2bluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -241,9 +238,6 @@
   <data name="coin_anim_f0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\coin_anim_f0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btnhardicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnhardicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="wall_edge_bottom_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wall_edge_bottom_left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -262,14 +256,17 @@
   <data name="mainmenumusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\stg_st005.ogg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="florrings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\florrings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="meteor_side_medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\meteor_side_medium.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="wall_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wall_left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="singleplayermusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\stg_bs002.ogg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="idlerightbluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\idlerightbluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="wall_outer_front_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wall_outer_front_left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -282,6 +279,9 @@
   </data>
   <data name="wall_fountain_basin_blue_anim_f2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wall_fountain_basin_blue_anim_f2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="idleleftbluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\idleleftbluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="wall_fountain_mid_blue_anim_f0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wall_fountain_mid_blue_anim_f0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -312,6 +312,9 @@
   </data>
   <data name="walkingup2bluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\walkingup2bluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="singleplayermussic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stg_bs002.ogg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="wall_outer_mid_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wall_outer_mid_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -379,8 +382,8 @@
   <data name="fireballup" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fireballup.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="idleleftbluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\idleleftbluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="running5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\running5.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="walingleft2bluebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\walingleft2bluebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -403,8 +406,8 @@
   <data name="wall_edge_bottom_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wall_edge_bottom_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="wall_edge_top_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\wall_edge_top_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnhardicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnhardicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="idledownwhitebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\idledownwhitebird.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -439,8 +442,8 @@
   <data name="wall_banner_yellow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wall_banner_yellow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="floor_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\floor_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="wall_edge_top_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wall_edge_top_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="wall_edge_mid_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wall_edge_mid_left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -472,6 +475,9 @@
   <data name="wall_goo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wall_goo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="floor_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\floor_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="wall_hole_21" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wall_hole_21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -484,7 +490,7 @@
   <data name="doors_leaf_closed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\doors_leaf_closed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="running5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\running5.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="wall_banner_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wall_banner_green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

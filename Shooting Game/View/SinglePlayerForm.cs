@@ -128,7 +128,7 @@ namespace Shooting_Game.View
 
         private void SinglePlayerForm_Load(object sender, EventArgs e)
         {
-            AudioManager.PlayMusic(Properties.Resources.singleplayermusic, 0.5f);
+            AudioManager.PlayMusic(Properties.Resources.singleplayermussic, 0.5f);
         }
 
         private void SinglePlayerForm_FormClosed(object sender, FormClosedEventArgs e)

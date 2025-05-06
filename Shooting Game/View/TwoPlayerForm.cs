@@ -33,8 +33,39 @@ namespace Shooting_Game.View
                 presenter.OnKeyUp(e.KeyCode);
             };
 
+            player1 = new Player
+            {
+                PictureBox = new PictureBox
+                {
+                    Size = new Size(64, 64),
+                    BackColor = Color.Transparent,
+
+                    SizeMode = PictureBoxSizeMode.Zoom
+                }
+            };
+
+            player2 = new Player
+            {
+                PictureBox = new PictureBox
+                {
+                    Size = new Size(64, 64),
+                    BackColor = Color.Transparent,
+
+                    SizeMode = PictureBoxSizeMode.Zoom
+                }
+            };
+
+            player1.PictureBox.Location = new Point(150, 150);
+            player2.PictureBox.Location = new Point(1069, 132);
 
 
+
+            player1.PictureBox.BackColor = Color.Transparent;
+            player2.PictureBox.BackColor = Color.Transparent;
+            player1.PictureBox.BringToFront();
+            player2.PictureBox.BringToFront();
+            Controls.Add(player1.PictureBox);
+            Controls.Add(player2.PictureBox);
 
 
         }
@@ -63,40 +94,40 @@ namespace Shooting_Game.View
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            player1 = new Player
-            {
-                PictureBox = new PictureBox
-                {
-                    Size = new Size(64, 64),
-                    BackColor = Color.Transparent,
+            //player1 = new Player
+            //{
+            //    PictureBox = new PictureBox
+            //    {
+            //        Size = new Size(64, 64),
+            //        BackColor = Color.Transparent,
 
-                    SizeMode = PictureBoxSizeMode.Zoom
-                }
-            };
+            //        SizeMode = PictureBoxSizeMode.Zoom
+            //    }
+            //};
 
-            player2 = new Player
-            {
-                PictureBox = new PictureBox
-                {
-                    Size = new Size(64, 64),
-                    BackColor = Color.Transparent,
+            //player2 = new Player
+            //{
+            //    PictureBox = new PictureBox
+            //    {
+            //        Size = new Size(64, 64),
+            //        BackColor = Color.Transparent,
 
-                    SizeMode = PictureBoxSizeMode.Zoom
-                }
-            };
+            //        SizeMode = PictureBoxSizeMode.Zoom
+            //    }
+            //};
 
-            player1.PictureBox.Location = new Point(150, 150);
-            player2.PictureBox.Location = new Point(300, 150);
+            //player1.PictureBox.Location = new Point(150, 150);
+            //player2.PictureBox.Location = new Point(1069, 132);
 
 
             presenter.SetTwoPlayerView(this);
             presenter.StartTwoPlayerGame(player1, player2);
-            player1.PictureBox.BackColor = Color.Transparent;
-            player2.PictureBox.BackColor = Color.Transparent;
-            player1.PictureBox.BringToFront();
-            player2.PictureBox.BringToFront();
-            Controls.Add(player1.PictureBox);
-            Controls.Add(player2.PictureBox);
+            //player1.PictureBox.BackColor = Color.Transparent;
+            //player2.PictureBox.BackColor = Color.Transparent;
+            //player1.PictureBox.BringToFront();
+            //player2.PictureBox.BringToFront();
+            //Controls.Add(player1.PictureBox);
+            //Controls.Add(player2.PictureBox);
 
 
         }
@@ -113,7 +144,7 @@ namespace Shooting_Game.View
             if (health == 0 && !player1Dead)
             {
                 player1Dead = true;
-                //   MessageBox.Show("Player 1 is dead!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                 CheckBothPlayersDead();
             }
         }
@@ -127,7 +158,7 @@ namespace Shooting_Game.View
             if (health == 0 && !player2Dead)
             {
                 player2Dead = true;
-                //  MessageBox.Show("Player 2 is dead!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                 CheckBothPlayersDead();
             }
         }
@@ -147,7 +178,7 @@ namespace Shooting_Game.View
             if (player1Dead && player2Dead)
             {
                 MessageBox.Show("Both players are dead! Game Over.", "Game Over", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close(); // Closes the game window
+                this.Close();
                 MainMenuForm mainMenu = new MainMenuForm();
                 mainMenu.Show();
             }
