@@ -98,7 +98,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Presenter\Vector2.cs" />
     <Compile Include="Sound System\AudioManager.cs" />
     <Compile Include="Factory\AmmoFactory.cs" />
     <Compile Include="Factory\EntityFactory.cs" />
