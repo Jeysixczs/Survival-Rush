@@ -74,6 +74,8 @@ namespace Shooting_Game.Model
 
         public bool IsSpreadShotActive => isSpreadShotActive && DateTime.Now < spreadShotEndTime;
 
+        public bool IsAlive { get; internal set; } = true;
+
         public void SpreadShot()
         {
             if (!canSpread) return;

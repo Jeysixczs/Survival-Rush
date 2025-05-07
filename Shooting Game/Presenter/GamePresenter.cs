@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using static Shooting_Game.Model.Zombie;
 
 using NAudio.Wave;
+using System.Numerics;
 
 
 namespace Shooting_Game.Presenter
@@ -71,7 +72,7 @@ namespace Shooting_Game.Presenter
             // Reset player state
             player1.Health = 100;
             player1.Ammo = 30;
-            player1.PictureBox.BackColor = Color.Transparent;
+
             // Update view
             singlePlayerView?.UpdatePlayerStatus(player1.Health, player1.Ammo);
             twoPlayerView = null; // Ensure two player view is not used
@@ -97,7 +98,7 @@ namespace Shooting_Game.Presenter
             //SpawnAmmo();
             StartZombieChase();
             StartMovementTimer();
-            player2.PictureBox.BackColor = Color.Transparent;
+
         }
 
         private void SetDifficulty(int difficulty)
@@ -113,16 +114,105 @@ namespace Shooting_Game.Presenter
 
         private void SpawnZombie()
         {
+            const int zombieSize = 64;
+            const int playerBuffer = 150;
+            const int zombieBuffer = 50;
+            const int maxAttempts = 100;
+            const int fallbackAttempts = 100;
+
+            Random random = new Random();
+            Point spawnLocation = Point.Empty;
+            bool foundValidLocation = false;
+            int attempts = 0;
+
+            // Position finding logic (same as before)
+            while (!foundValidLocation && attempts < maxAttempts)
+            {
+                attempts++;
+                spawnLocation = new Point(
+                    random.Next(0, FormWidth - zombieSize),
+                    random.Next(0, FormHeight - zombieSize)
+                );
+
+                Rectangle zombieBounds = new Rectangle(spawnLocation, new Size(zombieSize, zombieSize));
+
+                if (IsCollidingWithWall(zombieBounds)) continue;
+
+                bool tooCloseToPlayer = false;
+                if (player1 != null)
+                {
+                    Rectangle playerArea = player1.PictureBox.Bounds;
+                    playerArea.Inflate(playerBuffer, playerBuffer);
+                    if (playerArea.IntersectsWith(zombieBounds)) tooCloseToPlayer = true;
+                }
+                if (player2 != null && !tooCloseToPlayer)
+                {
+                    Rectangle playerArea = player2.PictureBox.Bounds;
+                    playerArea.Inflate(playerBuffer, playerBuffer);
+                    if (playerArea.IntersectsWith(zombieBounds)) tooCloseToPlayer = true;
+                }
+                if (tooCloseToPlayer) continue;
+
+                if (zombies.Any(z =>
+                {
+                    Rectangle zombieArea = z.PictureBox.Bounds;
+                    zombieArea.Inflate(zombieBuffer, zombieBuffer);
+                    return zombieArea.IntersectsWith(zombieBounds);
+                })) continue;
+
+                foundValidLocation = true;
+            }
+
+            if (!foundValidLocation)
+            {
+                attempts = 0;
+                while (!foundValidLocation && attempts < fallbackAttempts)
+                {
+                    attempts++;
+                    spawnLocation = new Point(
+                        random.Next(0, FormWidth - zombieSize),
+                        random.Next(0, FormHeight - zombieSize)
+                    );
+                    if (!IsCollidingWithWall(new Rectangle(spawnLocation, new Size(zombieSize, zombieSize))))
+                        foundValidLocation = true;
+                }
+            }
+
+            if (!foundValidLocation)
+                spawnLocation = new Point(FormWidth / 2 - zombieSize / 2, FormHeight / 2 - zombieSize / 2);
+
+            // Randomly select one of three zombie types
+            Image zombieImage;
+            int zombieType = random.Next(3); // 0, 1, or 2
+
+            switch (zombieType)
+            {
+                case 0:
+                    zombieImage = Properties.Resources.enemypic; // Blue zombie
+                    break;
+                case 1:
+                    zombieImage = Properties.Resources.enemypic2; // Green zombie
+                    break;
+                case 2:
+                    zombieImage = Properties.Resources.enemypic3; // Red zombie
+                    break;
+                default:
+                    zombieImage = Properties.Resources.enemypic; // Default fallback
+                    break;
+            }
+
+            // Create zombie with the selected image
             var zombie = new Zombie
             {
+                ZombieType = zombieType, // Store type if needed for gameplay
                 PictureBox = new PictureBox
                 {
-                    Size = new Size(64, 64),
+                    Size = new Size(zombieSize, zombieSize),
                     BackColor = Color.Transparent,
                     SizeMode = PictureBoxSizeMode.Zoom,
-
-                    Image = Properties.Resources.idledownbluebird,
-                    Location = new Point(new Random().Next(0, FormWidth - 40), new Random().Next(0, FormHeight - 40))
+                    Image = zombieImage,
+                    Location = spawnLocation,
+                    Tag = $"ZombieType{zombieType}" // Optional tagging
                 }
             };
 
@@ -131,8 +221,6 @@ namespace Shooting_Game.Presenter
             singlePlayerView?.SpawnEntity(zombie);
             twoPlayerView?.SpawnEntity(zombie);
         }
-
-
         private double GetDistance(Point a, Point b)
         {
             int dx = a.X - b.X;
@@ -345,7 +433,7 @@ namespace Shooting_Game.Presenter
 
             animationElapsed += movementTimer.Interval;
 
-            if (player1 != null)
+            if (player1 != null && player1.IsAlive)
             {
                 // Movement and animation for W
                 if (pressedKeys.Contains(Keys.W) && player1.PictureBox.Top > 0)
@@ -372,11 +460,11 @@ namespace Shooting_Game.Presenter
                                 Properties.Resources.walkingupbluebirds :
                                 Properties.Resources.walkingup2bluebird;
 
-                            player1.PictureBox.BackColor = Color.Transparent;
+
                         }
-                        player1.PictureBox.BackColor = Color.Transparent;
+
                     }
-                    player1.PictureBox.BackColor = Color.Transparent;
+
                 }
 
                 // Movement and animation for S
@@ -467,19 +555,19 @@ namespace Shooting_Game.Presenter
                     {
                         case Direction.Up:
                             player1.PictureBox.Image = Properties.Resources.idleupbluebird;
-                            player1.PictureBox.BackColor = Color.Transparent;
+
                             break;
                         case Direction.Down:
                             player1.PictureBox.Image = Properties.Resources.idledownbluebird;
-                            player1.PictureBox.BackColor = Color.Transparent;
+
                             break;
                         case Direction.Left:
                             player1.PictureBox.Image = Properties.Resources.idleleftbluebird;
-                            player1.PictureBox.BackColor = Color.Transparent;
+
                             break;
                         case Direction.Right:
                             player1.PictureBox.Image = Properties.Resources.idlerightbluebird;
-                            player1.PictureBox.BackColor = Color.Transparent;
+
                             break;
                     }
                 }
@@ -492,7 +580,7 @@ namespace Shooting_Game.Presenter
 
             animationElapsed += movementTimer.Interval;
 
-            if (player2 != null)
+            if (player2 != null && player2.IsAlive)
             {
                 player2.PictureBox.BackColor = Color.Transparent;
 
@@ -592,22 +680,19 @@ namespace Shooting_Game.Presenter
                     {
                         case Direction.Up:
                             player2.PictureBox.Image = Properties.Resources.idleupwhitebird;
-                            player2.PictureBox.BackColor = Color.Transparent;
+
                             break;
                         case Direction.Down:
                             player2.PictureBox.Image = Properties.Resources.idledownwhitebird;
-                            player2.PictureBox.BackColor = Color.Transparent;
 
 
                             break;
                         case Direction.Left:
                             player2.PictureBox.Image = Properties.Resources.idleleftwhitebird;
-                            player2.PictureBox.BackColor = Color.Transparent;
 
                             break;
                         case Direction.Right:
                             player2.PictureBox.Image = Properties.Resources.idlerightwhitebird;
-                            player2.PictureBox.BackColor = Color.Transparent;
 
                             break;
                     }
@@ -938,30 +1023,52 @@ namespace Shooting_Game.Presenter
             {
                 foreach (var zombie in zombies.ToList())
                 {
-                    // Skip if zombie is dying or dead
                     if (zombie.State != ZombieState.Alive) continue;
 
-                    Player target = player1;
-                    if (player2 != null)
+                    // Find closest living player
+                    Player target = null;
+                    double minDistance = double.MaxValue;
+
+                    if (player1 != null && player1.IsAlive)
                     {
                         double d1 = GetDistance(zombie.PictureBox.Location, player1.PictureBox.Location);
-                        double d2 = GetDistance(zombie.PictureBox.Location, player2.PictureBox.Location);
-                        target = d2 < d1 ? player2 : player1;
+                        if (d1 < minDistance)
+                        {
+                            minDistance = d1;
+                            target = player1;
+                        }
                     }
 
-                    MoveZombieTowards(zombie, target);
+                    if (player2 != null && player2.IsAlive)
+                    {
+                        double d2 = GetDistance(zombie.PictureBox.Location, player2.PictureBox.Location);
+                        if (d2 < minDistance)
+                        {
+                            target = player2;
+                        }
+                    }
 
-                    if (zombie.PictureBox.Bounds.IntersectsWith(player1.PictureBox.Bounds))
+                    // Only move if there's a living target
+                    if (target != null)
+                    {
+                        MoveZombieTowards(zombie, target);
+                    }
+
+                    // Only damage living players
+                    if (player1 != null && player1.IsAlive &&
+                        zombie.PictureBox.Bounds.IntersectsWith(player1.PictureBox.Bounds))
                     {
                         player1.Health -= 1;
-                        singlePlayerView?.UpdatePlayerStatus(player1.Health, player1.Ammo);
                         twoPlayerView?.UpdatePlayer1Status(player1.Health, player1.Ammo);
+                        if (player1.Health <= 0) PlayerDied(player1);
                     }
 
-                    if (player2 != null && zombie.PictureBox.Bounds.IntersectsWith(player2.PictureBox.Bounds))
+                    if (player2 != null && player2.IsAlive &&
+                        zombie.PictureBox.Bounds.IntersectsWith(player2.PictureBox.Bounds))
                     {
                         player2.Health -= 1;
                         twoPlayerView?.UpdatePlayer2Status(player2.Health, player2.Ammo);
+                        if (player2.Health <= 0) PlayerDied(player2);
                     }
                 }
 
@@ -970,6 +1077,35 @@ namespace Shooting_Game.Presenter
             };
             zombieMoveTimer.Start();
         }
+
+        private void PlayerDied(Player deadPlayer)
+        {
+            deadPlayer.IsAlive = false;
+            deadPlayer.PictureBox.Image = Properties.Resources.death;
+            deadPlayer.PictureBox.Enabled = false;
+
+            // Update UI
+            if (GameManager.Instance.IsSinglePlayer)
+            {
+                singlePlayerView?.UpdatePlayerStatus(0, 0);
+                //  GameOver(); // Immediately end in single-player
+            }
+            else
+            {
+
+                if (deadPlayer == player1)
+                {
+                    twoPlayerView?.UpdatePlayer1Status(0, 0);
+                }
+                else
+                {
+                    twoPlayerView?.UpdatePlayer2Status(0, 0);
+                }
+
+            }
+        }
+
+
 
         private void CheckBulletZombieCollision()
         {
@@ -1150,8 +1286,6 @@ namespace Shooting_Game.Presenter
                 }
             }
         }
-
-
     }
 
 }

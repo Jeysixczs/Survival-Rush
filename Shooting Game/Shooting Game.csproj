@@ -534,5 +534,17 @@
   <ItemGroup>
     <None Include="Resources\wall_banner_green.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemypic.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemypic2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemypic3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stg_bs012.ogg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

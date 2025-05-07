@@ -246,6 +246,7 @@
             this.pictureBox214 = new System.Windows.Forms.PictureBox();
             this.pictureBox215 = new System.Windows.Forms.PictureBox();
             this.pictureBox216 = new System.Windows.Forms.PictureBox();
+            this.pictureBox217 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
@@ -462,6 +463,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox214)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox215)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox216)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox217)).BeginInit();
             this.SuspendLayout();
             // 
             // progressBar1
@@ -2000,7 +2002,7 @@
             this.pictureBox123.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox123.TabIndex = 7;
             this.pictureBox123.TabStop = false;
-            this.pictureBox123.Tag = "WALL";
+            this.pictureBox123.Tag = "";
             this.pictureBox123.Click += new System.EventHandler(this.pictureBox6_Click);
             // 
             // pictureBox126
@@ -2013,7 +2015,7 @@
             this.pictureBox126.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox126.TabIndex = 7;
             this.pictureBox126.TabStop = false;
-            this.pictureBox126.Tag = "WALL";
+            this.pictureBox126.Tag = "";
             this.pictureBox126.Click += new System.EventHandler(this.pictureBox6_Click);
             // 
             // pictureBox127
@@ -3172,6 +3174,17 @@
             this.pictureBox216.Tag = "WALL";
             this.pictureBox216.Click += new System.EventHandler(this.pictureBox6_Click);
             // 
+            // pictureBox217
+            // 
+            this.pictureBox217.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox217.Location = new System.Drawing.Point(61, 631);
+            this.pictureBox217.Name = "pictureBox217";
+            this.pictureBox217.Size = new System.Drawing.Size(175, 23);
+            this.pictureBox217.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox217.TabIndex = 8;
+            this.pictureBox217.TabStop = false;
+            this.pictureBox217.Tag = "WALL";
+            // 
             // SinglePlayerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3397,8 +3410,10 @@
             this.Controls.Add(this.pictureBox118);
             this.Controls.Add(this.pictureBox63);
             this.Controls.Add(this.pictureBox58);
+            this.Controls.Add(this.pictureBox217);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SinglePlayerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -3622,6 +3637,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox214)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox215)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox216)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox217)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3847,5 +3863,6 @@
         private System.Windows.Forms.PictureBox pictureBox214;
         private System.Windows.Forms.PictureBox pictureBox215;
         private System.Windows.Forms.PictureBox pictureBox216;
+        private System.Windows.Forms.PictureBox pictureBox217;
     }
 }

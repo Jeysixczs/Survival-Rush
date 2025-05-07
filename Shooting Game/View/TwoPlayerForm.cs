@@ -94,40 +94,10 @@ namespace Shooting_Game.View
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            //player1 = new Player
-            //{
-            //    PictureBox = new PictureBox
-            //    {
-            //        Size = new Size(64, 64),
-            //        BackColor = Color.Transparent,
-
-            //        SizeMode = PictureBoxSizeMode.Zoom
-            //    }
-            //};
-
-            //player2 = new Player
-            //{
-            //    PictureBox = new PictureBox
-            //    {
-            //        Size = new Size(64, 64),
-            //        BackColor = Color.Transparent,
-
-            //        SizeMode = PictureBoxSizeMode.Zoom
-            //    }
-            //};
-
-            //player1.PictureBox.Location = new Point(150, 150);
-            //player2.PictureBox.Location = new Point(1069, 132);
 
 
             presenter.SetTwoPlayerView(this);
             presenter.StartTwoPlayerGame(player1, player2);
-            //player1.PictureBox.BackColor = Color.Transparent;
-            //player2.PictureBox.BackColor = Color.Transparent;
-            //player1.PictureBox.BringToFront();
-            //player2.PictureBox.BringToFront();
-            //Controls.Add(player1.PictureBox);
-            //Controls.Add(player2.PictureBox);
 
 
         }
@@ -195,6 +165,14 @@ namespace Shooting_Game.View
                 }
             }
             return walls;
+        }
+
+        public void ShowGameOver()
+        {
+            this.Enabled = false;
+
+            // Show game over panel/message
+            MessageBox.Show("Game Over!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }

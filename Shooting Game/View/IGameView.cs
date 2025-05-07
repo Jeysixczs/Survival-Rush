@@ -19,5 +19,6 @@ namespace Shooting_Game.View
         List<PictureBox> GetWalls();
 
         Panel GetGamePanel();
+        void ShowGameOver();
     }
 }

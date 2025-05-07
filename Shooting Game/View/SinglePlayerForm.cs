@@ -55,7 +55,7 @@ namespace Shooting_Game.View
             Controls.Add(player.PictureBox);
             player.PictureBox.BringToFront();
             player.PictureBox.Invalidate(); // Refresh
-
+            AudioManager.PlayMusic(Properties.Resources.singlemusic, 0.5f);
 
 
         }
@@ -103,23 +103,7 @@ namespace Shooting_Game.View
 
         protected override void OnLoad(EventArgs e)
         {
-            //base.OnLoad(e);
-            //player = new Player
-            //{
-            //    PictureBox = new PictureBox
-            //    {
-            //        Size = new Size(64, 64),
-            //        BackColor = Color.Transparent,
 
-            //        SizeMode = PictureBoxSizeMode.Zoom
-            //    }
-            //};
-            //player.PictureBox.Location = new Point(200, 200);
-            //Controls.Add(player.PictureBox);
-            //player.PictureBox.BringToFront();
-            //player.PictureBox.BackColor = Color.Transparent;
-            //presenter.SetSinglePlayerView(this);
-            //presenter.StartSinglePlayerGame(player);
             presenter.SetSinglePlayerView(this);
             presenter.StartSinglePlayerGame(player);
 
@@ -128,7 +112,7 @@ namespace Shooting_Game.View
 
         private void SinglePlayerForm_Load(object sender, EventArgs e)
         {
-            AudioManager.PlayMusic(Properties.Resources.singleplayermussic, 0.5f);
+            AudioManager.PlayMusic(Properties.Resources.singlemusic, 0.5f);
         }
 
         private void SinglePlayerForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -168,6 +152,14 @@ namespace Shooting_Game.View
         public Panel GetGamePanel()
         {
             throw new NotImplementedException();
+        }
+
+        public void ShowGameOver()
+        {
+            this.Enabled = false;
+
+            // Show game over panel/message
+            //  MessageBox.Show("Game Over!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }

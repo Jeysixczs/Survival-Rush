@@ -221,6 +221,36 @@ namespace Shooting_Game.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap enemypic {
+            get {
+                object obj = ResourceManager.GetObject("enemypic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap enemypic2 {
+            get {
+                object obj = ResourceManager.GetObject("enemypic2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap enemypic3 {
+            get {
+                object obj = ResourceManager.GetObject("enemypic3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream explosion {
@@ -605,6 +635,16 @@ namespace Shooting_Game.Properties {
         internal static System.IO.UnmanagedMemoryStream selectsound {
             get {
                 return ResourceManager.GetStream("selectsound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] singlemusic {
+            get {
+                object obj = ResourceManager.GetObject("singlemusic", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

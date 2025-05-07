@@ -16,6 +16,7 @@ namespace Shooting_Game.Model
 
         public ZombieState State { get; set; } = ZombieState.Alive;
         public int DeathAnimationFrame { get; set; } = 0;
+        public int ZombieType { get; internal set; }
 
         public enum ZombieState
         {
