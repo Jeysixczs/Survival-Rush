@@ -5,13 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Shooting_Game.Model.Zombie;
-
-using NAudio.Wave;
-using System.Numerics;
 
 
 namespace Shooting_Game.Presenter
@@ -53,13 +49,7 @@ namespace Shooting_Game.Presenter
 
         public void StartSinglePlayerGame(Player player)
         {
-            //player1 = player;
-            //singlePlayerView.UpdatePlayerStatus(player1.Health, player1.Ammo);
-            //SetDifficulty(GameManager.Instance.Difficulty);
-            //for (int i = 0; i < zombieCount; i++) SpawnZombie();
-            //twoPlayerView = null;
-            //StartZombieChase();
-            //StartMovementTimer();
+
             zombies.Clear();
             bullets.Clear();
             potionDrops.Clear();
@@ -67,7 +57,7 @@ namespace Shooting_Game.Presenter
 
             // Initialize single player
             player1 = player;
-            player2 = null; // Explicitly set player2 to null
+            player2 = null;
 
             // Reset player state
             player1.Health = 100;

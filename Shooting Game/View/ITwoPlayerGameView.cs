@@ -1,11 +1,7 @@
 ﻿using Shooting_Game.Model;
 using Shooting_Game.Presenter;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Shooting_Game.View
@@ -21,5 +17,6 @@ namespace Shooting_Game.View
         void RemoveEntity(GameEntity entity);
         List<PictureBox> GetWalls();
         void ShowGameOver();
+
     }
 }

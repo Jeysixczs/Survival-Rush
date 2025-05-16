@@ -2,12 +2,7 @@
 using Shooting_Game.Presenter;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Shooting_Game.View
@@ -161,5 +156,7 @@ namespace Shooting_Game.View
             // Show game over panel/message
             //  MessageBox.Show("Game Over!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
+
+
     }
 }

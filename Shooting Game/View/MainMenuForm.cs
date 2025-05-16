@@ -1,15 +1,8 @@
-﻿using Shooting_Game.Model;
-using Shooting_Game.Presenter;
+﻿using Shooting_Game.Presenter;
 using Shooting_Game.View;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Media;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Shooting_Game
@@ -60,20 +53,51 @@ namespace Shooting_Game
         {
             clicksound();
             presenter?.SelectSinglePlayer();
+            btnSinglePlayer.Enabled = false;
+            btnTwoPlayer.Enabled = true;
 
+            using (Graphics g = btnSinglePlayer.CreateGraphics())
+            {
+                using (SolidBrush brush = new SolidBrush(Color.FromArgb(30, Color.Gray))) // 50% opacity
+                {
+                    g.FillRectangle(brush, btnSinglePlayer.ClientRectangle);
+                }
+            }
 
         }
+
 
         private void btnTwoPlayer_Click(object sender, EventArgs e)
         {
             clicksound();
             presenter?.SelectTwoPlayer();
+            btnTwoPlayer.Enabled = false;
+            btnSinglePlayer.Enabled = true;
+
+
+            using (Graphics g = btnTwoPlayer.CreateGraphics())
+            {
+                using (SolidBrush brush = new SolidBrush(Color.FromArgb(30, Color.Gray))) // 50% opacity
+                {
+                    g.FillRectangle(brush, btnSinglePlayer.ClientRectangle);
+                }
+            }
         }
 
         private void btnDifficultyEasy_Click(object sender, EventArgs e)
         {
             clicksound();
             presenter?.SelectDifficulty(1);
+            btnDifficultyEasy.Enabled = false;
+            btnDifficultyMedium.Enabled = true;
+            btnDifficultyHard.Enabled = true;
+            using (Graphics g = btnDifficultyEasy.CreateGraphics())
+            {
+                using (SolidBrush brush = new SolidBrush(Color.FromArgb(80, Color.Gray))) // 50% opacity
+                {
+                    g.FillRectangle(brush, btnSinglePlayer.ClientRectangle);
+                }
+            }
 
         }
 
@@ -81,12 +105,34 @@ namespace Shooting_Game
         {
             clicksound();
             presenter?.SelectDifficulty(2);
+            btnDifficultyEasy.Enabled = true;
+            btnDifficultyMedium.Enabled = false;
+            btnDifficultyHard.Enabled = true;
+
+            using (Graphics g = btnDifficultyMedium.CreateGraphics())
+            {
+                using (SolidBrush brush = new SolidBrush(Color.FromArgb(80, Color.Gray))) // 50% opacity
+                {
+                    g.FillRectangle(brush, btnSinglePlayer.ClientRectangle);
+                }
+            }
         }
 
         private void btnDifficultyHard_Click(object sender, EventArgs e)
         {
             clicksound();
             presenter?.SelectDifficulty(3);
+            btnDifficultyEasy.Enabled = true;
+            btnDifficultyMedium.Enabled = true;
+            btnDifficultyHard.Enabled = false;
+            using (Graphics g = btnDifficultyHard.CreateGraphics())
+            {
+                using (SolidBrush brush = new SolidBrush(Color.FromArgb(80, Color.Gray))) // 50% opacity
+                {
+                    g.FillRectangle(brush, btnSinglePlayer.ClientRectangle);
+                }
+            }
+
         }
 
         private void pictureBoxStart_Click(object sender, EventArgs e)
@@ -96,6 +142,13 @@ namespace Shooting_Game
             presenter.StartGame();
             this.Hide();
 
+            using (Graphics g = pictureBoxStart.CreateGraphics())
+            {
+                using (SolidBrush brush = new SolidBrush(Color.FromArgb(30, Color.Gray))) // 50% opacity
+                {
+                    g.FillRectangle(brush, btnSinglePlayer.ClientRectangle);
+                }
+            }
 
 
 
