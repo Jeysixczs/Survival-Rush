@@ -103,13 +103,3 @@ Feel free to open issues or PRs!
 
 ---
 
-### ✅ To Do
-
-- [ ] Add README screenshots/gifs  
-- [ ] Provide release builds  
-- [ ] Include unit tests (e.g., for Presenter logic)  
-- [ ] Consider cross-platform support (Windows/macOS/Linux)
-
----
-
-Enjoy the chase—and good luck staying alive! 💥`
