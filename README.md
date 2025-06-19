@@ -4,11 +4,6 @@
 
 ---
 
-## 🎮 Demo & Preview
-
-(No demo link provided—feel free to add a screenshot or video here)
-
----
 
 ## 🧩 Features
 
@@ -37,31 +32,31 @@
 ### Installation
 
 Clone the repo:  
-\`\`\`bash
+```bash
 git clone https://github.com/Jeysixczs/Survival-Rush.git
 cd Survival-Rush
-\`\`\`
+```
 
 Restore packages and build:  
-\`\`\`bash
+```bash
 dotnet restore
 dotnet build
-\`\`\`
+```
 
 Run the game:  
-\`\`\`bash
+```bash
 dotnet run --project src/SurvivalRushGame/SurvivalRushGame.csproj
-\`\`\`
+```
 
 ---
 
 ## 🧠 Architecture
 
-\`\`\`
+```
 +-----------+       +-------------+        +----------------+
 |   View    | <---> | Presenter   | <--->  |   Model (EF)   |
 +-----------+       +-------------+        +----------------+
-\`\`\`
+```
 
 1. **View**: UI layer (console, WinForms, Unity, etc.)  
 2. **Presenter**: handles input, updates, and state logic  
